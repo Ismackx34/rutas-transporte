@@ -4,11 +4,11 @@
 -- ==================================================
 -- ==============================================
 -- CREACIÓN DE TABLAS E INGRESO DE DATOS 
--- ==============================================
+-- 
 create database transporte_urbano_new;
 use transporte_urbano_new;
 
-CREATE TABLE Rutas (
+CREATE TABLE Rutas (	
     id_ruta INT PRIMARY KEY AUTO_INCREMENT,
     nombre_ruta VARCHAR(100) NOT NULL,
     origen VARCHAR(50),
@@ -254,219 +254,743 @@ INSERT INTO Tipo_Usuario (id_tipo_usuario, nombre_tipo, descripcion) VALUES
 
 CREATE TABLE Usuarios (
     id_usuario INT PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(100) NOT NULL,
+    nombre VARCHAR(500) NOT NULL,
     edad INT NOT NULL,
     genero ENUM('M','F','Otro'),
-    email VARCHAR(100) NOT NULL UNIQUE,
+    email VARCHAR(500) NOT NULL UNIQUE,
     id_tipo_usuario INT NOT NULL, 
     FOREIGN KEY (id_tipo_usuario) REFERENCES Tipo_Usuario(id_tipo_usuario) ON DELETE RESTRICT 
 );
-   
-INSERT INTO Usuarios (id_usuario, nombre, edad, genero, email, id_tipo_usuario) VALUES
-	(1, 'Ana Torres', 25, 'F', 'ana.torres@mail.com', 2), -- Trabajador
-	(2, 'Carlos Pérez', 32, 'M', 'carlos.perez@mail.com', 2), -- Trabajador
-	(3, 'María Gómez', 20, 'F', 'maria.gomez@mail.com', 1), -- Estudiante
-	(4, 'Luis Ramírez', 40, 'M', 'luis.ramirez@mail.com', 2), -- Trabajador
-	(5, 'Paola Sánchez', 22, 'F', 'paola.sanchez@mail.com', 1), -- Estudiante
-	(6, 'Andrés Silva', 30, 'M', 'andres.silva@mail.com', 2), -- Trabajador
-	(7, 'Elena Ríos', 21, 'F', 'elena.rios@mail.com', 1), -- Estudiante
-	(8, 'Javier Castro', 35, 'M', 'javier.castro@mail.com', 2), -- Trabajador
-	(9, 'Lucía Fernández', 19, 'F', 'lucia.fernandez@mail.com', 1), -- Estudiante
-	(10, 'Mateo Herrera', 29, 'M', 'mateo.herrera@mail.com', 2), -- Trabajador
-	(11, 'Valeria Ortiz', 33, 'F', 'valeria.ortiz@mail.com', 2), -- Trabajador
-	(12, 'Fernando López', 41, 'M', 'fernando.lopez@mail.com', 2), -- Trabajador
-	(13, 'Isabel Morales', 24, 'F', 'isabel.morales@mail.com', 1), -- Estudiante
-	(14, 'Daniel Cruz', 38, 'M', 'daniel.cruz@mail.com', 2), -- Trabajador
-	(15, 'Camila Vega', 21, 'F', 'camila.vega@mail.com', 3), -- Turista
-	(16, 'Ricardo Peña', 36, 'M', 'ricardo.pena@mail.com', 2), -- Trabajador
-	(17, 'Gabriela León', 26, 'F', 'gabriela.leon@mail.com', 1), -- Estudiante
-	(18, 'Sebastián Ruiz', 31, 'M', 'sebastian.ruiz@mail.com', 2), -- Trabajador
-	(19, 'Laura Delgado', 23, 'F', 'laura.delgado@mail.com', 3), -- Turista
-	(20, 'Tomás Bravo', 27, 'M', 'tomas.bravo@mail.com', 1), -- Estudiante
-	(21, 'Sofía Ramos', 20, 'F', 'sofia.ramos@mail.com', 1), -- Estudiante
-	(22, 'Alejandro Vargas', 34, 'M', 'alejandro.vargas@mail.com', 2), -- Trabajador
-	(23, 'Martina Soto', 29, 'F', 'martina.soto@mail.com', 2), -- Trabajador
-	(24, 'Diego Navarro', 23, 'M', 'diego.navarro@mail.com', 1), -- Estudiante
-	(25, 'Paula Montes', 28, 'F', 'paula.montes@mail.com', 2), -- Trabajador
-	(26, 'Gabriel Guzmán', 45, 'M', 'gabriel.guzman@mail.com', 2), -- Trabajador
-	(27, 'Silvia Romero', 55, 'F', 'silvia.romero@mail.com', 5), -- Jubilado
-	(28, 'Emilio Cifuentes', 18, 'M', 'emilio.cifuentes@mail.com', 1), -- Estudiante
-	(29, 'Natalia Luna', 25, 'F', 'natalia.luna@mail.com', 2), -- Trabajador
-	(30, 'Jorge Rivas', 39, 'M', 'jorge.rivas@mail.com', 2), -- Trabajador
-	(31, 'Daniela Rojas', 22, 'F', 'daniela.rojas@mail.com', 1), -- Estudiante
-	(32, 'Felipe Morales', 30, 'M', 'felipe.morales@mail.com', 2), -- Trabajador
-	(33, 'Andrea Salas', 27, 'F', 'andrea.salas@mail.com', 2), -- Trabajador
-	(34, 'Juan Peña', 58, 'M', 'juan.pena@mail.com', 5), -- Jubilado
-	(35, 'Victoria Flores', 20, 'F', 'victoria.flores@mail.com', 1), -- Estudiante
-	(36, 'Manuel Cortés', 31, 'M', 'manuel.cortes@mail.com', 2), -- Trabajador
-	(37, 'Luciana Paredes', 24, 'F', 'luciana.paredes@mail.com', 1), -- Estudiante
-	(38, 'Benjamín Vidal', 42, 'M', 'benjamin.vidal@mail.com', 2), -- Trabajador
-	(39, 'Ximena Bustos', 26, 'F', 'ximena.bustos@mail.com', 2), -- Trabajador
-	(40, 'Pedro Díaz', 62, 'M', 'pedro.diaz@mail.com', 5), -- Jubilado
-	(41, 'Ignacia Soto', 21, 'F', 'ignacia.soto@mail.com', 1), -- Estudiante
-	(42, 'Gonzalo Olivares', 37, 'M', 'gonzalo.olivares@mail.com', 2), -- Trabajador
-	(43, 'Antonella Soto', 28, 'F', 'antonella.soto@mail.com', 2), -- Trabajador
-	(44, 'Cristóbal Leiva', 23, 'M', 'cristobal.leiva@mail.com', 1), -- Estudiante
-	(45, 'Francisca Miranda', 29, 'F', 'francisca.miranda@mail.com', 2), -- Trabajador
-	(46, 'José Garrido', 48, 'M', 'jose.garrido@mail.com', 2), -- Trabajador
-	(47, 'Florencia Núñez', 19, 'F', 'florencia.nunez@mail.com', 1), -- Estudiante
-	(48, 'Joaquín Salas', 33, 'M', 'joaquin.salas@mail.com', 2), -- Trabajador
-	(49, 'Sofía Cifuentes', 25, 'F', 'sofia.cifuentes@mail.com', 2), -- Trabajador
-	(50, 'Esteban Gatica', 65, 'M', 'esteban.gatica@mail.com', 5), -- Jubilado
-	(51, 'Martina Cortés', 20, 'F', 'martina.cortes@mail.com', 1), -- Estudiante
-	(52, 'Sebastián Ramos', 36, 'M', 'sebastian.ramos@mail.com', 2), -- Trabajador
-	(53, 'Valentina Soto', 27, 'F', 'valentina.soto@mail.com', 2), -- Trabajador
-	(54, 'Lucas Fuentes', 22, 'M', 'lucas.fuentes@mail.com', 1), -- Estudiante
-	(55, 'Renata Rojas', 30, 'F', 'renata.rojas@mail.com', 2), -- Trabajador
-	(56, 'Diego Herrera', 41, 'M', 'diego.herrera@mail.com', 2), -- Trabajador
-	(57, 'Emilia Vidal', 18, 'F', 'emilia.vidal@mail.com', 1), -- Estudiante
-	(58, 'Javier Pérez', 34, 'M', 'javier.perez2@mail.com', 2), -- Trabajador
-	(59, 'Catalina Vega', 26, 'F', 'catalina.vega@mail.com', 2), -- Trabajador
-	(60, 'Gabriel Castro', 59, 'M', 'gabriel.castro@mail.com', 5), -- Jubilado
-	(61, 'Rocío Morales', 21, 'F', 'rocio.morales@mail.com', 1), -- Estudiante
-	(62, 'Pablo Navarro', 32, 'M', 'pablo.navarro@mail.com', 2), -- Trabajador
-	(63, 'Carla Ibáñez', 29, 'F', 'carla.ibanez@mail.com', 2), -- Trabajador
-	(64, 'Arturo Garcés', 24, 'M', 'arturo.garces@mail.com', 1), -- Estudiante
-	(65, 'Pilar Espinoza', 28, 'F', 'pilar.espinoza@mail.com', 2), -- Trabajador
-	(66, 'Marcelo Núñez', 46, 'M', 'marcelo.nunez@mail.com', 2), -- Trabajador
-	(67, 'Viviana Soto', 57, 'F', 'viviana.soto@mail.com', 5), -- Jubilado
-	(68, 'Omar Reyes', 19, 'M', 'omar.reyes@mail.com', 1), -- Estudiante
-	(69, 'Constanza Vera', 25, 'F', 'constanza.vera@mail.com', 2), -- Trabajador
-	(70, 'Ricardo Flores', 38, 'M', 'ricardo.flores@mail.com', 2), -- Trabajador
-	(71, 'Fernanda Rojas', 22, 'F', 'fernanda.rojas@mail.com', 1), -- Estudiante
-	(72, 'Álvaro Cruz', 30, 'M', 'alvaro.cruz@mail.com', 2), -- Trabajador
-	(73, 'Cristina Gómez', 27, 'F', 'cristina.gomez@mail.com', 2), -- Trabajador
-	(74, 'Marco Morales', 60, 'M', 'marco.morales@mail.com', 5), -- Jubilado
-	(75, 'Daniela Vidal', 20, 'F', 'daniela.vidal@mail.com', 1), -- Estudiante
-	(76, 'Patricio Rivas', 31, 'M', 'patricio.rivas@mail.com', 2), -- Trabajador
-	(77, 'Paulina Silva', 24, 'F', 'paulina.silva@mail.com', 1), -- Estudiante
-	(78, 'Jorge Herrera', 43, 'M', 'jorge.herrera@mail.com', 2), -- Trabajador
-	(79, 'Andrea Tapia', 26, 'F', 'andrea.tapia@mail.com', 2), -- Trabajador
-	(80, 'Francisco Soto', 63, 'M', 'francisco.soto@mail.com', 5), -- Jubilado
-	(81, 'Alejandra Núñez', 21, 'F', 'alejandra.nunez@mail.com', 1), -- Estudiante
-	(82, 'Luis Gatica', 37, 'M', 'luis.gatica@mail.com', 2), -- Trabajador
-	(83, 'Carolina Fuentes', 28, 'F', 'carolina.fuentes@mail.com', 2), -- Trabajador
-	(84, 'Sergio Leiva', 23, 'M', 'sergio.leiva@mail.com', 1), -- Estudiante
-	(85, 'Pamela Bustos', 29, 'F', 'pamela.bustos@mail.com', 2), -- Trabajador
-	(86, 'Héctor Díaz', 49, 'M', 'hector.diaz@mail.com', 2), -- Trabajador
-	(87, 'Camila Espinoza', 19, 'F', 'camila.espinoza@mail.com', 1), -- Estudiante
-	(88, 'Roberto Guzmán', 33, 'M', 'roberto.guzman@mail.com', 2), -- Trabajador
-	(89, 'Nicole Ramos', 25, 'F', 'nicole.ramos@mail.com', 2), -- Trabajador
-	(90, 'Daniel Salas', 66, 'M', 'daniel.salas@mail.com', 5), -- Jubilado
-	(91, 'Vanessa Montes', 20, 'F', 'vanessa.montes@mail.com', 1), -- Estudiante
-	(92, 'Mauricio Vega', 35, 'M', 'mauricio.vega@mail.com', 2), -- Trabajador
-	(93, 'Claudia Ibáñez', 27, 'F', 'claudia.ibanez@mail.com', 2), -- Trabajador
-	(94, 'Andrés Vera', 22, 'M', 'andres.vera@mail.com', 1), -- Estudiante
-	(95, 'Laura Morales', 30, 'F', 'laura.morales@mail.com', 2), -- Trabajador
-	(96, 'Gonzalo Peña', 40, 'M', 'gonzalo.pena@mail.com', 2), -- Trabajador
-	(97, 'Valeria Silva', 50, 'F', 'valeria.silva@mail.com', 5), -- Jubilado
-	(98, 'Sebastián Miranda', 18, 'M', 'sebastian.miranda@mail.com', 1), -- Estudiante
-	(99, 'Fernanda Castro', 24, 'F', 'fernanda.castro@mail.com', 2), -- Trabajador
-	(100, 'Felipe Soto', 39, 'M', 'felipe.soto@mail.com', 2), -- Trabajador
-	(101, 'Martina Leiva', 21, 'F', 'martina.leiva@mail.com', 1), -- Estudiante
-	(102, 'Álvaro Olivares', 31, 'M', 'alvaro.olivares@mail.com', 2), -- Trabajador
-	(103, 'Antonia Guzmán', 28, 'F', 'antonia.guzman@mail.com', 2), -- Trabajador
-	(104, 'Nicolás Rivas', 23, 'M', 'nicolas.rivas@mail.com', 1), -- Estudiante
-	(105, 'Sofía Vera', 29, 'F', 'sofia.vera2@mail.com', 2), -- Trabajador
-	(106, 'Esteban Ibáñez', 47, 'M', 'esteban.ibanez@mail.com', 2), -- Trabajador
-	(107, 'Javiera Díaz', 56, 'F', 'javiera.diaz@mail.com', 5), -- Jubilado
-	(108, 'Maximiliano Cifuentes', 19, 'M', 'maximiliano.cifuentes@mail.com', 1), -- Estudiante
-	(109, 'Paz Fuentes', 25, 'F', 'paz.fuentes@mail.com', 2), -- Trabajador
-	(110, 'Cristian Vidal', 38, 'M', 'cristian.vidal@mail.com', 2), -- Trabajador
-	(111, 'Romina Morales', 22, 'F', 'romina.morales@mail.com', 1), -- Estudiante
-	(112, 'Marcelo Herrera', 30, 'M', 'marcelo.herrera@mail.com', 2), -- Trabajador
-	(113, 'Alejandra Pérez', 27, 'F', 'alejandra.perez@mail.com', 2), -- Trabajador
-	(114, 'Julio Flores', 61, 'M', 'julio.flores@mail.com', 5), -- Jubilado
-	(115, 'Constanza Rojas', 20, 'F', 'constanza.rojas@mail.com', 1), -- Estudiante
-	(116, 'Vicente Silva', 31, 'M', 'vicente.silva@mail.com', 2), -- Trabajador
-	(117, 'Beatriz Tapia', 24, 'F', 'beatriz.tapia@mail.com', 1), -- Estudiante
-	(118, 'Carlos Garcés', 42, 'M', 'carlos.garces@mail.com', 2), -- Trabajador
-	(119, 'Natalia Espinosa', 26, 'F', 'natalia.espinosa@mail.com', 2), -- Trabajador
-	(120, 'Benjamín Navarro', 64, 'M', 'benjamin.navarro@mail.com', 5), -- Jubilado
-	(121, 'Florencia Reyes', 21, 'F', 'florencia.reyes@mail.com', 1), -- Estudiante
-	(122, 'Gabriel Vásquez', 36, 'M', 'gabriel.vasquez@mail.com', 2), -- Trabajador
-	(123, 'Isidora Núñez', 28, 'F', 'isidora.nunez@mail.com', 2), -- Trabajador
-	(124, 'Diego Cornejo', 23, 'M', 'diego.cornejo@mail.com', 1), -- Estudiante
-	(125, 'Ignacia Vargas', 29, 'F', 'ignacia.vargas@mail.com', 2), -- Trabajador
-	(126, 'Matías Soto', 48, 'M', 'matias.soto@mail.com', 2), -- Trabajador
-	(127, 'Sofía Morales', 18, 'F', 'sofia.morales@mail.com', 1), -- Estudiante
-	(128, 'Emiliano Pérez', 33, 'M', 'emiliano.perez@mail.com', 2), -- Trabajador
-	(129, 'Daniela Bustos', 25, 'F', 'daniela.bustos@mail.com', 2), -- Trabajador
-	(130, 'Manuel Rojas', 67, 'M', 'manuel.rojas@mail.com', 5), -- Jubilado
-	(131, 'Javiera Fuentes', 20, 'F', 'javiera.fuentes@mail.com', 1), -- Estudiante
-	(132, 'Fernando Leiva', 35, 'M', 'fernando.leiva@mail.com', 2), -- Trabajador
-	(133, 'Valeria Herrera', 27, 'F', 'valeria.herrera2@mail.com', 2), -- Trabajador
-	(134, 'Andrés Díaz', 22, 'M', 'andres.diaz@mail.com', 1), -- Estudiante
-	(135, 'Camila Sánchez', 30, 'F', 'camila.sanchez@mail.com', 2), -- Trabajador
-	(136, 'Nicolás Silva', 41, 'M', 'nicolas.silva@mail.com', 2), -- Trabajador
-	(137, 'Lucía Gómez', 52, 'F', 'lucia.gomez@mail.com', 5), -- Jubilado
-	(138, 'Pedro Tapia', 19, 'M', 'pedro.tapia@mail.com', 1), -- Estudiante
-	(139, 'María Fernanda Morales', 26, 'F', 'maria.fernanda.morales@mail.com', 2), -- Trabajador
-	(140, 'Sebastián Ramos', 40, 'M', 'sebastian.ramos2@mail.com', 2), -- Trabajador
-	(141, 'Valentina Soto', 21, 'F', 'valentina.soto2@mail.com', 1), -- Estudiante
-	(142, 'Lucas Espinosa', 32, 'M', 'lucas.espinosa@mail.com', 2), -- Trabajador
-	(143, 'Renata Vega', 29, 'F', 'renata.vega@mail.com', 2), -- Trabajador
-	(144, 'Diego Cifuentes', 24, 'M', 'diego.cifuentes@mail.com', 1), -- Estudiante
-	(145, 'Emilia Gatica', 28, 'F', 'emilia.gatica@mail.com', 2), -- Trabajador
-	(146, 'Javier Ibáñez', 46, 'M', 'javier.ibanez@mail.com', 2), -- Trabajador
-	(147, 'Catalina Navarro', 57, 'F', 'catalina.navarro@mail.com', 5), -- Jubilado
-	(148, 'Gabriel Cortés', 18, 'M', 'gabriel.cortes@mail.com', 1), -- Estudiante
-	(149, 'Rocío Salas', 25, 'F', 'rocio.salas@mail.com', 2), -- Trabajador
-	(150, 'Pablo Miranda', 38, 'M', 'pablo.miranda@mail.com', 2), -- Trabajador
-	(151, 'Carla Vásquez', 22, 'F', 'carla.vasquez@mail.com', 1), -- Estudiante
-	(152, 'Arturo Reyes', 30, 'M', 'arturo.reyes@mail.com', 2), -- Trabajador
-	(153, 'Pilar Flores', 27, 'F', 'pilar.flores@mail.com', 2), -- Trabajador
-	(154, 'Marcelo Vera', 60, 'M', 'marcelo.vera@mail.com', 5), -- Jubilado
-	(155, 'Viviana Cruz', 20, 'F', 'viviana.cruz@mail.com', 1), -- Estudiante
-	(156, 'Omar Garcés', 31, 'M', 'omar.garces@mail.com', 2), -- Trabajador
-	(157, 'Constanza Herrera', 24, 'F', 'constanza.herrera@mail.com', 1), -- Estudiante
-	(158, 'Ricardo Núñez', 43, 'M', 'ricardo.nunez@mail.com', 2), -- Trabajador
-	(159, 'Fernanda Garcés', 26, 'F', 'fernanda.garces@mail.com', 2), -- Trabajador
-	(160, 'Álvaro Soto', 63, 'M', 'alvaro.soto@mail.com', 5), -- Jubilado
-	(161, 'Cristina Gómez', 21, 'F', 'cristina.gomez2@mail.com', 1), -- Estudiante
-	(162, 'Marco Morales', 37, 'M', 'marco.morales2@mail.com', 2), -- Trabajador
-	(163, 'Daniela Tapia', 28, 'F', 'daniela.tapia@mail.com', 2), -- Trabajador
-	(164, 'Patricio Silva', 23, 'M', 'patricio.silva@mail.com', 1), -- Estudiante
-	(165, 'Paulina Pérez', 29, 'F', 'paulina.perez@mail.com', 2), -- Trabajador
-	(166, 'Jorge Vidal', 49, 'M', 'jorge.vidal@mail.com', 2), -- Trabajador
-	(167, 'Andrea Miranda', 19, 'F', 'andrea.miranda@mail.com', 1), -- Estudiante
-	(168, 'Francisco Herrera', 33, 'M', 'francisco.herrera@mail.com', 2), -- Trabajador
-	(169, 'Alejandra Montes', 25, 'F', 'alejandra.montes@mail.com', 2), -- Trabajador
-	(170, 'Luis Bustos', 66, 'M', 'luis.bustos@mail.com', 5), -- Jubilado
-	(171, 'Carolina Leiva', 20, 'F', 'carolina.leiva@mail.com', 1), -- Estudiante
-	(172, 'Sergio Rojas', 35, 'M', 'sergio.rojas@mail.com', 2), -- Trabajador
-	(173, 'Pamela Fuentes', 27, 'F', 'pamela.fuentes@mail.com', 2), -- Trabajador
-	(174, 'Héctor Vega', 22, 'M', 'hector.vega@mail.com', 1), -- Estudiante
-	(175, 'Camila Díaz', 30, 'F', 'camila.diaz@mail.com', 2), -- Trabajador
-	(176, 'Roberto Cifuentes', 41, 'M', 'roberto.cifuentes@mail.com', 2), -- Trabajador
-	(177, 'Nicole Ibáñez', 52, 'F', 'nicole.ibanez@mail.com', 5), -- Jubilado
-	(178, 'Daniel Ramos', 19, 'M', 'daniel.ramos@mail.com', 1), -- Estudiante
-	(179, 'Vanessa Salas', 26, 'F', 'vanessa.salas@mail.com', 2), -- Trabajador
-	(180, 'Mauricio Vera', 40, 'M', 'mauricio.vera@mail.com', 2), -- Trabajador
-	(181, 'Claudia López', 21, 'F', 'claudia.lopez@mail.com', 1), -- Estudiante
-	(182, 'Andrés Pérez', 32, 'M', 'andres.perez@mail.com', 2), -- Trabajador
-	(183, 'Laura Soto', 29, 'F', 'laura.soto@mail.com', 2), -- Trabajador
-	(184, 'Gonzalo Morales', 24, 'M', 'gonzalo.morales@mail.com', 1), -- Estudiante
-	(185, 'Valeria Espinoza', 28, 'F', 'valeria.espinosa@mail.com', 2), -- Trabajador
-	(186, 'Sebastián Guzmán', 46, 'M', 'sebastian.guzman@mail.com', 2), -- Trabajador
-	(187, 'Fernanda Tapia', 57, 'F', 'fernanda.tapia@mail.com', 5), -- Jubilado
-	(188, 'Felipe Cornejo', 18, 'M', 'felipe.cornejo@mail.com', 1), -- Estudiante
-	(189, 'Antonia Vega', 25, 'F', 'antonia.vega@mail.com', 2), -- Trabajador
-	(190, 'Nicolás Herrera', 39, 'M', 'nicolas.herrera@mail.com', 2), -- Trabajador
-	(191, 'Sofía Díaz', 20, 'F', 'sofia.diaz@mail.com', 1), -- Estudiante
-	(192, 'Esteban Reyes', 31, 'M', 'esteban.reyes@mail.com', 2), -- Trabajador
-	(193, 'Javiera Morales', 27, 'F', 'javiera.morales@mail.com', 2), -- Trabajador
-	(194, 'Maximiliano Gatica', 23, 'M', 'maximiliano.gatica@mail.com', 1), -- Estudiante
-	(195, 'Paz Marín', 29, 'F', 'paz.marin@mail.com', 2), -- Trabajador
-	(196, 'Cristian Soto', 48, 'M', 'cristian.soto@mail.com', 2), -- Trabajador
-	(197, 'Romina Silva', 19, 'F', 'romina.silva@mail.com', 1), -- Estudiante
-	(198, 'Marcelo Pérez', 34, 'M', 'marcelo.perez@mail.com', 2), -- Trabajador
-	(199, 'Alejandra Fuentes', 26, 'F', 'alejandra.fuentes@mail.com', 2), -- Trabajador
-	(200, 'Julio Bravo', 68, 'M', 'julio.bravo@mail.com', 5); -- Jubilado
+
+
+
+INSERT INTO Usuarios (nombre, edad, genero, email, id_tipo_usuario) VALUES
+    ('Ana Torres', 25, 'F', 'ana.torres_1@mail.com', 2),
+    ('Carlos Pérez', 32, 'M', 'carlos.perez_2@mail.com', 2),
+    ('María Gómez', 20, 'F', 'maria.gomez_3@mail.com', 1),
+    ('Luis Ramírez', 40, 'M', 'luis.ramirez_4@mail.com', 2),
+    ('Paola Sánchez', 22, 'F', 'paola.sanchez_5@mail.com', 1),
+    ('Andrés Silva', 30, 'M', 'andres.silva_6@mail.com', 2),
+    ('Elena Ríos', 21, 'F', 'elena.rios_7@mail.com', 1),
+    ('Javier Castro', 35, 'M', 'javier.castro_8@mail.com', 2),
+    ('Lucía Fernández', 19, 'F', 'lucia.fernandez_9@mail.com', 1),
+    ('Mateo Herrera', 29, 'M', 'mateo.herrera_10@mail.com', 2),
+    ('Valeria Ortiz', 33, 'F', 'valeria.ortiz_11@mail.com', 2),
+    ('Fernando López', 41, 'M', 'fernando.lopez_12@mail.com', 2),
+    ('Isabel Morales', 24, 'F', 'isabel.morales_13@mail.com', 1),
+    ('Daniel Cruz', 38, 'M', 'daniel.cruz_14@mail.com', 2),
+    ('Camila Vega', 21, 'F', 'camila.vega_15@mail.com', 3),
+    ('Ricardo Peña', 36, 'M', 'ricardo.pena_16@mail.com', 2),
+    ('Gabriela León', 26, 'F', 'gabriela.leon_17@mail.com', 1),
+    ('Sebastián Ruiz', 31, 'M', 'sebastian.ruiz_18@mail.com', 2),
+    ('Laura Delgado', 23, 'F', 'laura.delgado_19@mail.com', 3),
+    ('Tomás Bravo', 27, 'M', 'tomas.bravo_20@mail.com', 1),
+    ('Sofía Ramos', 20, 'F', 'sofia.ramos_21@mail.com', 1),
+    ('Alejandro Vargas', 34, 'M', 'alejandro.vargas_22@mail.com', 2),
+    ('Martina Soto', 29, 'F', 'martina.soto_23@mail.com', 2),
+    ('Diego Navarro', 23, 'M', 'diego.navarro_24@mail.com', 1),
+    ('Paula Montes', 28, 'F', 'paula.montes_25@mail.com', 2),
+    ('Gabriel Guzmán', 45, 'M', 'gabriel.guzman_26@mail.com', 2),
+    ('Silvia Romero', 55, 'F', 'silvia.romero_27@mail.com', 5),
+    ('Emilio Cifuentes', 18, 'M', 'emilio.cifuentes_28@mail.com', 1),
+    ('Natalia Luna', 25, 'F', 'natalia.luna_29@mail.com', 2),
+    ('Jorge Rivas', 39, 'M', 'jorge.rivas_30@mail.com', 2),
+    ('Daniela Rojas', 22, 'F', 'daniela.rojas_31@mail.com', 1),
+    ('Felipe Morales', 30, 'M', 'felipe.morales_32@mail.com', 2),
+    ('Andrea Salas', 27, 'F', 'andrea.salas_33@mail.com', 2),
+    ('Juan Peña', 58, 'M', 'juan.pena_34@mail.com', 5),
+    ('Victoria Flores', 20, 'F', 'victoria.flores_35@mail.com', 1),
+    ('Manuel Cortés', 31, 'M', 'manuel.cortes_36@mail.com', 2),
+    ('Luciana Paredes', 24, 'F', 'luciana.paredes_37@mail.com', 1),
+    ('Benjamín Vidal', 42, 'M', 'benjamin.vidal_38@mail.com', 2),
+    ('Ximena Bustos', 26, 'F', 'ximena.bustos_39@mail.com', 2),
+    ('Pedro Díaz', 62, 'M', 'pedro.diaz_40@mail.com', 5),
+    ('Ignacia Soto', 21, 'F', 'ignacia.soto_41@mail.com', 1),
+    ('Gonzalo Olivares', 37, 'M', 'gonzalo.olivares_42@mail.com', 2),
+    ('Antonella Soto', 28, 'F', 'antonella.soto_43@mail.com', 2),
+    ('Cristóbal Leiva', 23, 'M', 'cristobal.leiva_44@mail.com', 1),
+    ('Francisca Miranda', 29, 'F', 'francisca.miranda_45@mail.com', 2),
+    ('José Garrido', 48, 'M', 'jose.garrido_46@mail.com', 2),
+    ('Florencia Núñez', 19, 'F', 'florencia.nunez_47@mail.com', 1),
+    ('Joaquín Salas', 33, 'M', 'joaquin.salas_48@mail.com', 2),
+    ('Sofía Cifuentes', 25, 'F', 'sofia.cifuentes_49@mail.com', 2),
+    ('Esteban Gatica', 65, 'M', 'esteban.gatica_50@mail.com', 5),
+    ('Martina Cortés', 20, 'F', 'martina.cortes_51@mail.com', 1),
+    ('Sebastián Ramos', 36, 'M', 'sebastian.ramos_52@mail.com', 2),
+    ('Valentina Soto', 27, 'F', 'valentina.soto_53@mail.com', 2),
+    ('Lucas Fuentes', 22, 'M', 'lucas.fuentes_54@mail.com', 1),
+    ('Renata Rojas', 30, 'F', 'renata.rojas_55@mail.com', 2),
+    ('Diego Herrera', 41, 'M', 'diego.herrera_56@mail.com', 2),
+    ('Emilia Vidal', 18, 'F', 'emilia.vidal_57@mail.com', 1),
+    ('Javier Pérez', 34, 'M', 'javier.perez2_58@mail.com', 2),
+    ('Catalina Vega', 26, 'F', 'catalina.vega_59@mail.com', 2),
+    ('Gabriel Castro', 59, 'M', 'gabriel.castro_60@mail.com', 5),
+    ('Rocío Morales', 21, 'F', 'rocio.morales_61@mail.com', 1),
+    ('Pablo Navarro', 32, 'M', 'pablo.navarro_62@mail.com', 2),
+    ('Carla Ibáñez', 29, 'F', 'carla.ibanez_63@mail.com', 2),
+    ('Arturo Garcés', 24, 'M', 'arturo.garces_64@mail.com', 1),
+    ('Pilar Espinoza', 28, 'F', 'pilar.espinoza_65@mail.com', 2),
+    ('Marcelo Núñez', 46, 'M', 'marcelo.nunez_66@mail.com', 2),
+    ('Viviana Soto', 57, 'F', 'viviana.soto_67@mail.com', 5),
+    ('Omar Reyes', 19, 'M', 'omar.reyes_68@mail.com', 1),
+    ('Constanza Vera', 25, 'F', 'constanza.vera_69@mail.com', 2),
+    ('Ricardo Flores', 38, 'M', 'ricardo.flores_70@mail.com', 2),
+    ('Fernanda Rojas', 22, 'F', 'fernanda.rojas_71@mail.com', 1),
+    ('Álvaro Cruz', 30, 'M', 'alvaro.cruz_72@mail.com', 2),
+    ('Cristina Gómez', 27, 'F', 'cristina.gomez_73@mail.com', 2),
+    ('Marco Morales', 60, 'M', 'marco.morales_74@mail.com', 5),
+    ('Daniela Vidal', 20, 'F', 'daniela.vidal_75@mail.com', 1),
+    ('Patricio Rivas', 31, 'M', 'patricio.rivas_76@mail.com', 2),
+    ('Paulina Silva', 24, 'F', 'paulina.silva_77@mail.com', 1),
+    ('Jorge Herrera', 43, 'M', 'jorge.herrera_78@mail.com', 2),
+    ('Andrea Tapia', 26, 'F', 'andrea.tapia_79@mail.com', 2),
+    ('Francisco Soto', 63, 'M', 'francisco.soto_80@mail.com', 5),
+    ('Alejandra Núñez', 21, 'F', 'alejandra.nunez_81@mail.com', 1),
+    ('Luis Gatica', 37, 'M', 'luis.gatica_82@mail.com', 2),
+    ('Carolina Fuentes', 28, 'F', 'carolina.fuentes_83@mail.com', 2),
+    ('Sergio Leiva', 23, 'M', 'sergio.leiva_84@mail.com', 1),
+    ('Pamela Bustos', 29, 'F', 'pamela.bustos_85@mail.com', 2),
+    ('Héctor Díaz', 49, 'M', 'hector.diaz_86@mail.com', 2),
+    ('Camila Espinoza', 19, 'F', 'camila.espinosa_87@mail.com', 1),
+    ('Roberto Guzmán', 33, 'M', 'roberto.guzman_88@mail.com', 2),
+    ('Nicole Ramos', 25, 'F', 'nicole.ramos_89@mail.com', 2),
+    ('Daniel Salas', 66, 'M', 'daniel.salas_90@mail.com', 5),
+    ('Vanessa Montes', 20, 'F', 'vanessa.montes_91@mail.com', 1),
+    ('Mauricio Vega', 35, 'M', 'mauricio.vega_92@mail.com', 2),
+    ('Claudia Ibáñez', 27, 'F', 'claudia.ibanez_93@mail.com', 2),
+    ('Andrés Vera', 22, 'M', 'andres.vera_94@mail.com', 1),
+    ('Laura Morales', 30, 'F', 'laura.morales_95@mail.com', 2),
+    ('Gonzalo Peña', 40, 'M', 'gonzalo.pena_96@mail.com', 2),
+    ('Valeria Silva', 50, 'F', 'valeria.silva_97@mail.com', 5),
+    ('Sebastián Miranda', 18, 'M', 'sebastian.miranda_98@mail.com', 1),
+    ('Fernanda Castro', 24, 'F', 'fernanda.castro_99@mail.com', 2),
+    ('Felipe Soto', 39, 'M', 'felipe.soto_100@mail.com', 2);
+
+INSERT INTO Usuarios (nombre, edad, genero, email, id_tipo_usuario) VALUES
+    ('Martina Leiva', 21, 'F', 'martina.leiva_101@mail.com', 1),
+    ('Álvaro Olivares', 31, 'M', 'alvaro.olivares_102@mail.com', 2),
+    ('Antonia Guzmán', 28, 'F', 'antonia.guzman_103@mail.com', 2),
+    ('Nicolás Rivas', 23, 'M', 'nicolas.rivas_104@mail.com', 1),
+    ('Sofía Vera', 29, 'F', 'sofia.vera_105@mail.com', 2),
+    ('Esteban Ibáñez', 47, 'M', 'esteban.ibanez_106@mail.com', 2),
+    ('Javiera Díaz', 56, 'F', 'javiera.diaz_107@mail.com', 5),
+    ('Maximiliano Cifuentes', 19, 'M', 'maximiliano.cifuentes_108@mail.com', 1),
+    ('Paz Fuentes', 25, 'F', 'paz.fuentes_109@mail.com', 2),
+    ('Cristian Vidal', 38, 'M', 'cristian.vidal_110@mail.com', 2),
+    ('Romina Morales', 22, 'F', 'romina.morales_111@mail.com', 1),
+    ('Marcelo Herrera', 30, 'M', 'marcelo.herrera_112@mail.com', 2),
+    ('Alejandra Pérez', 27, 'F', 'alejandra.perez_113@mail.com', 2),
+    ('Julio Flores', 61, 'M', 'julio.flores_114@mail.com', 5),
+    ('Constanza Rojas', 20, 'F', 'constanza.rojas_115@mail.com', 1),
+    ('Vicente Silva', 31, 'M', 'vicente.silva_116@mail.com', 2),
+    ('Beatriz Tapia', 24, 'F', 'beatriz.tapia_117@mail.com', 1),
+    ('Carlos Garcés', 42, 'M', 'carlos.garces_118@mail.com', 2),
+    ('Natalia Espinosa', 26, 'F', 'natalia.espinosa_119@mail.com', 2),
+    ('Benjamín Navarro', 64, 'M', 'benjamin.navarro_120@mail.com', 5),
+    ('Florencia Reyes', 21, 'F', 'florencia.reyes_121@mail.com', 1),
+    ('Gabriel Vásquez', 36, 'M', 'gabriel.vasquez_122@mail.com', 2),
+    ('Isidora Núñez', 28, 'F', 'isidora.nunez_123@mail.com', 2),
+    ('Diego Cornejo', 23, 'M', 'diego.cornejo_124@mail.com', 1),
+    ('Ignacia Vargas', 29, 'F', 'ignacia.vargas_125@mail.com', 2),
+    ('Matías Soto', 48, 'M', 'matias.soto_126@mail.com', 2),
+    ('Sofía Morales', 18, 'F', 'sofia.morales_127@mail.com', 1),
+    ('Emiliano Pérez', 33, 'M', 'emiliano.perez_128@mail.com', 2),
+    ('Daniela Bustos', 25, 'F', 'daniela.bustos_129@mail.com', 2),
+    ('Manuel Rojas', 67, 'M', 'manuel.rojas_130@mail.com', 5),
+    ('Javiera Fuentes', 20, 'F', 'javiera.fuentes_131@mail.com', 1),
+    ('Fernando Leiva', 35, 'M', 'fernando.leiva_132@mail.com', 2),
+    ('Valeria Herrera', 27, 'F', 'valeria.herrera_133@mail.com', 2),
+    ('Andrés Díaz', 22, 'M', 'andres.diaz_134@mail.com', 1),
+    ('Camila Sánchez', 30, 'F', 'camila.sanchez_135@mail.com', 2),
+    ('Nicolás Silva', 41, 'M', 'nicolas.silva_136@mail.com', 2),
+    ('Lucía Gómez', 52, 'F', 'lucia.gomez_137@mail.com', 5),
+    ('Pedro Tapia', 19, 'M', 'pedro.tapia_138@mail.com', 1),
+    ('María Fernanda Morales', 26, 'F', 'maria.fernanda.morales_139@mail.com', 2),
+    ('Sebastián Ramos', 40, 'M', 'sebastian.ramos_140@mail.com', 2),
+    ('Valentina Soto', 21, 'F', 'valentina.soto_141@mail.com', 1),
+    ('Lucas Espinosa', 32, 'M', 'lucas.espinosa_142@mail.com', 2),
+    ('Renata Vega', 29, 'F', 'renata.vega_143@mail.com', 2),
+    ('Diego Cifuentes', 24, 'M', 'diego.cifuentes_144@mail.com', 1),
+    ('Emilia Gatica', 28, 'F', 'emilia.gatica_145@mail.com', 2),
+    ('Javier Ibáñez', 46, 'M', 'javier.ibanez_146@mail.com', 2),
+    ('Catalina Navarro', 57, 'F', 'catalina.navarro_147@mail.com', 5),
+    ('Gabriel Cortés', 18, 'M', 'gabriel.cortes_148@mail.com', 1),
+    ('Rocío Salas', 25, 'F', 'rocio.salas_149@mail.com', 2),
+    ('Pablo Miranda', 38, 'M', 'pablo.miranda_150@mail.com', 2);
+
+INSERT INTO Usuarios (nombre, edad, genero, email, id_tipo_usuario) VALUES
+    ('Carla Vásquez', 22, 'F', 'carla.vasquez_151@mail.com', 1),
+    ('Arturo Reyes', 30, 'M', 'arturo.reyes_152@mail.com', 2),
+    ('Pilar Flores', 27, 'F', 'pilar.flores_153@mail.com', 2),
+    ('Marcelo Vera', 60, 'M', 'marcelo.vera_154@mail.com', 5),
+    ('Viviana Cruz', 20, 'F', 'viviana.cruz_155@mail.com', 1),
+    ('Omar Garcés', 31, 'M', 'omar.garces_156@mail.com', 2),
+    ('Constanza Herrera', 24, 'F', 'constanza.herrera_157@mail.com', 1),
+    ('Ricardo Núñez', 43, 'M', 'ricardo.nunez_158@mail.com', 2),
+    ('Fernanda Garcés', 26, 'F', 'fernanda.garces_159@mail.com', 2),
+    ('Álvaro Soto', 63, 'M', 'alvaro.soto_160@mail.com', 5),
+    ('Cristina Gómez', 21, 'F', 'cristina.gomez_161@mail.com', 1),
+    ('Marco Morales', 37, 'M', 'marco.morales_162@mail.com', 2),
+    ('Daniela Tapia', 28, 'F', 'daniela.tapia_163@mail.com', 2),
+    ('Patricio Silva', 23, 'M', 'patricio.silva_164@mail.com', 1),
+    ('Paulina Pérez', 29, 'F', 'paulina.perez_165@mail.com', 2),
+    ('Jorge Vidal', 49, 'M', 'jorge.vidal_166@mail.com', 2),
+    ('Andrea Miranda', 19, 'F', 'andrea.miranda_167@mail.com', 1),
+    ('Francisco Herrera', 33, 'M', 'francisco.herrera_168@mail.com', 2),
+    ('Alejandra Montes', 25, 'F', 'alejandra.montes_169@mail.com', 2),
+    ('Luis Bustos', 66, 'M', 'luis.bustos_170@mail.com', 5),
+    ('Carolina Leiva', 20, 'F', 'carolina.leiva_171@mail.com', 1),
+    ('Sergio Rojas', 35, 'M', 'sergio.rojas_172@mail.com', 2),
+    ('Pamela Fuentes', 27, 'F', 'pamela.fuentes_173@mail.com', 2),
+    ('Héctor Vega', 22, 'M', 'hector.vega_174@mail.com', 1),
+    ('Camila Díaz', 30, 'F', 'camila.diaz_175@mail.com', 2),
+    ('Roberto Cifuentes', 41, 'M', 'roberto.cifuentes_176@mail.com', 2),
+    ('Nicole Ibáñez', 52, 'F', 'nicole.ibanez_177@mail.com', 5),
+    ('Daniel Ramos', 19, 'M', 'daniel.ramos_178@mail.com', 1),
+    ('Vanessa Salas', 26, 'F', 'vanessa.salas_179@mail.com', 2),
+    ('Mauricio Vera', 40, 'M', 'mauricio.vera_180@mail.com', 2),
+    ('Claudia López', 21, 'F', 'claudia.lopez_181@mail.com', 1),
+    ('Andrés Pérez', 32, 'M', 'andres.perez_182@mail.com', 2),
+    ('Laura Soto', 29, 'F', 'laura.soto_183@mail.com', 2),
+    ('Gonzalo Morales', 24, 'M', 'gonzalo.morales_184@mail.com', 1),
+    ('Valeria Espinoza', 28, 'F', 'valeria.espinosa_185@mail.com', 2),
+    ('Sebastián Guzmán', 46, 'M', 'sebastian.guzman_186@mail.com', 2),
+    ('Fernanda Tapia', 57, 'F', 'fernanda.tapia_187@mail.com', 5),
+    ('Felipe Cornejo', 18, 'M', 'felipe.cornejo_188@mail.com', 1),
+    ('Antonia Vega', 25, 'F', 'antonia.vega_189@mail.com', 2),
+    ('Nicolás Herrera', 39, 'M', 'nicolas.herrera_190@mail.com', 2),
+    ('Sofía Díaz', 20, 'F', 'sofia.diaz_191@mail.com', 1),
+    ('Esteban Reyes', 31, 'M', 'esteban.reyes_192@mail.com', 2),
+    ('Javiera Morales', 27, 'F', 'javiera.morales_193@mail.com', 2),
+    ('Maximiliano Gatica', 23, 'M', 'maximiliano.gatica_194@mail.com', 1),
+    ('Paz Marín', 29, 'F', 'paz.marin_195@mail.com', 2),
+    ('Cristian Soto', 48, 'M', 'cristian.soto_196@mail.com', 2),
+    ('Romina Silva', 19, 'F', 'romina.silva_197@mail.com', 1),
+    ('Marcelo Pérez', 34, 'M', 'marcelo.perez_198@mail.com', 2),
+    ('Alejandra Fuentes', 26, 'F', 'alejandra.fuentes_199@mail.com', 2),
+    ('Julio Bravo', 68, 'M', 'julio.bravo_200@mail.com', 5);
+
+INSERT INTO Usuarios (nombre, edad, genero, email, id_tipo_usuario) VALUES
+    ('Arturo Vera', 25, 'M', 'arturo.vera_201@mail.com', 2),
+    ('Bárbara Salas', 21, 'F', 'barbara.salas_202@mail.com', 1),
+    ('Camilo Cárdenas', 33, 'M', 'camilo.cardenas_203@mail.com', 2),
+    ('Diana Torres', 28, 'F', 'diana.torres_204@mail.com', 2),
+    ('Emilio Herrera', 19, 'M', 'emilio.herrera_205@mail.com', 1),
+    ('Fabiola Ramos', 40, 'F', 'fabiola.ramos_206@mail.com', 2),
+    ('Gustavo Soto', 65, 'M', 'gustavo.soto_207@mail.com', 5),
+    ('Helena Vidal', 22, 'F', 'helena.vidal_208@mail.com', 1),
+    ('Iván López', 30, 'M', 'ivan.lopez_209@mail.com', 2),
+    ('Julieta Castillo', 27, 'F', 'julieta.castillo_210@mail.com', 2),
+    ('Kevin González', 24, 'M', 'kevin.gonzalez_211@mail.com', 1),
+    ('Laura Moreno', 36, 'F', 'laura.moreno_212@mail.com', 2),
+    ('Miguel Rojas', 58, 'M', 'miguel.rojas_213@mail.com', 5),
+    ('Natalia Morales', 20, 'F', 'natalia.morales_214@mail.com', 1),
+    ('Oscar Fuentes', 31, 'M', 'oscar.fuentes_215@mail.com', 2),
+    ('Pilar Díaz', 26, 'F', 'pilar.diaz_216@mail.com', 2),
+    ('Roberto Méndez', 23, 'M', 'roberto.mendez_217@mail.com', 1),
+    ('Sofía Castro', 38, 'F', 'sofia.castro_218@mail.com', 2),
+    ('Tomás Ruiz', 17, 'M', 'tomas.ruiz_219@mail.com', 6),
+    ('Úrsula Silva', 29, 'F', 'ursula.silva_220@mail.com', 2),
+    ('Vicente Vargas', 42, 'M', 'vicente.vargas_221@mail.com', 2),
+    ('Wendy Herrera', 25, 'F', 'wendy.herrera_222@mail.com', 1),
+    ('Xavier Guzmán', 34, 'M', 'xavier.guzman_223@mail.com', 2),
+    ('Yolanda Ramos', 22, 'F', 'yolanda.ramos_224@mail.com', 1),
+    ('Zoe Navarro', 37, 'F', 'zoe.navarro_225@mail.com', 2),
+    ('Aarón Peña', 59, 'M', 'aaron.pena_226@mail.com', 5),
+    ('Brenda Ríos', 21, 'F', 'brenda.rios_227@mail.com', 1),
+    ('Christian Sánchez', 32, 'M', 'christian.sanchez_228@mail.com', 2),
+    ('Dalia Vega', 28, 'F', 'dalia.vega_229@mail.com', 2),
+    ('Efrén Rojas', 24, 'M', 'efren.rojas_230@mail.com', 1),
+    ('Fátima Montes', 35, 'F', 'fatima.montes_231@mail.com', 2),
+    ('Gerardo Salas', 60, 'M', 'gerardo.salas_232@mail.com', 5),
+    ('Hilda Cruz', 20, 'F', 'hilda.cruz_233@mail.com', 1),
+    ('Israel Morales', 33, 'M', 'israel.morales_234@mail.com', 2),
+    ('Jacqueline Luna', 29, 'F', 'jacqueline.luna_235@mail.com', 2),
+    ('Karen Rivas', 25, 'F', 'karen.rivas_236@mail.com', 1),
+    ('Lázaro Flores', 41, 'M', 'lazaro.flores_237@mail.com', 2),
+    ('Mónica Tapia', 16, 'F', 'monica.tapia_238@mail.com', 6),
+    ('Néstor Silva', 30, 'M', 'nestor.silva_239@mail.com', 2),
+    ('Olivia Vidal', 27, 'F', 'olivia.vidal_240@mail.com', 2),
+    ('Pablo Vargas', 23, 'M', 'pablo.vargas_241@mail.com', 1),
+    ('Quinn Herrera', 38, 'F', 'quinn.herrera_242@mail.com', 2),
+    ('Raquel Guzmán', 24, 'F', 'raquel.guzman_243@mail.com', 1),
+    ('Samuel Ramos', 63, 'M', 'samuel.ramos_244@mail.com', 5),
+    ('Teresa Navarro', 20, 'F', 'teresa.navarro_245@mail.com', 1),
+    ('Ulises Peña', 31, 'M', 'ulises.pena_246@mail.com', 2),
+    ('Violeta Ríos', 28, 'F', 'violeta.rios_247@mail.com', 2),
+    ('Walter Sánchez', 18, 'M', 'walter.sanchez_248@mail.com', 1),
+    ('Ximena Vega', 39, 'F', 'ximena.vega_249@mail.com', 2),
+    ('Yago Rojas', 25, 'M', 'yago.rojas_250@mail.com', 1),
+    ('Zoe Montes', 44, 'F', 'zoe.montes_251@mail.com', 2),
+    ('Abel Salas', 68, 'M', 'abel.salas_252@mail.com', 5),
+    ('Blanca Cruz', 22, 'F', 'blanca.cruz_253@mail.com', 1),
+    ('César Morales', 34, 'M', 'cesar.morales_254@mail.com', 2),
+    ('Dora Luna', 29, 'F', 'dora.luna_255@mail.com', 2),
+    ('Esteban Rivas', 26, 'M', 'esteban.rivas_256@mail.com', 1),
+    ('Fanny Flores', 37, 'F', 'fanny.flores_257@mail.com', 2),
+    ('Gonzalo Tapia', 17, 'M', 'gonzalo.tapia_258@mail.com', 6),
+    ('Hilda Silva', 32, 'F', 'hilda.silva_259@mail.com', 2),
+    ('Ignacio Vidal', 28, 'M', 'ignacio.vidal_260@mail.com', 2),
+    ('Jimena Vargas', 24, 'F', 'jimena.vargas_261@mail.com', 1),
+    ('Kevin Herrera', 39, 'M', 'kevin.herrera_262@mail.com', 2),
+    ('Liliana Guzmán', 25, 'F', 'liliana.guzman_263@mail.com', 1),
+    ('Mario Ramos', 64, 'M', 'mario.ramos_264@mail.com', 5),
+    ('Nora Navarro', 21, 'F', 'nora.navarro_265@mail.com', 1),
+    ('Óscar Peña', 33, 'M', 'oscar.pena_266@mail.com', 2),
+    ('Paola Ríos', 29, 'F', 'paola.rios_267@mail.com', 2),
+    ('Raúl Sánchez', 19, 'M', 'raul.sanchez_268@mail.com', 1),
+    ('Sara Vega', 40, 'F', 'sara.vega_269@mail.com', 2),
+    ('Teo Rojas', 26, 'M', 'teo.rojas_270@mail.com', 1),
+    ('Úrsula Montes', 45, 'F', 'ursula.montes_271@mail.com', 2),
+    ('Víctor Salas', 69, 'M', 'victor.salas_272@mail.com', 5),
+    ('Wanda Cruz', 23, 'F', 'wanda.cruz_273@mail.com', 1),
+    ('Xavier Morales', 35, 'M', 'xavier.morales_274@mail.com', 2),
+    ('Yara Luna', 30, 'F', 'yara.luna_275@mail.com', 2),
+    ('Zacarías Rivas', 27, 'M', 'zacarias.rivas_276@mail.com', 1),
+    ('Alma Flores', 38, 'F', 'alma.flores_277@mail.com', 2),
+    ('Bruno Tapia', 16, 'M', 'bruno.tapia_278@mail.com', 6),
+    ('Carla Silva', 33, 'F', 'carla.silva_279@mail.com', 2),
+    ('Darío Vidal', 29, 'M', 'dario.vidal_280@mail.com', 2),
+    ('Eva Vargas', 25, 'F', 'eva.vargas_281@mail.com', 1),
+    ('Franco Herrera', 40, 'M', 'franco.herrera_282@mail.com', 2),
+    ('Gloria Guzmán', 26, 'F', 'gloria.guzman_283@mail.com', 1),
+    ('Hugo Ramos', 65, 'M', 'hugo.ramos_284@mail.com', 5),
+    ('Inés Navarro', 22, 'F', 'ines.navarro_285@mail.com', 1),
+    ('Julián Peña', 34, 'M', 'julian.pena_286@mail.com', 2),
+    ('Karla Ríos', 30, 'F', 'karla.rios_287@mail.com', 2),
+    ('Leo Sánchez', 20, 'M', 'leo.sanchez_288@mail.com', 1),
+    ('Mara Vega', 41, 'F', 'mara.vega_289@mail.com', 2),
+    ('Nico Rojas', 27, 'M', 'nico.rojas_290@mail.com', 1),
+    ('Olga Montes', 46, 'F', 'olga.montes_291@mail.com', 2),
+    ('Paco Salas', 70, 'M', 'paco.salas_292@mail.com', 5),
+    ('Quira Cruz', 24, 'F', 'quira.cruz_293@mail.com', 1),
+    ('Rubén Morales', 36, 'M', 'ruben.morales_294@mail.com', 2),
+    ('Sonia Luna', 31, 'F', 'sonia.luna_295@mail.com', 2),
+    ('Thiago Rivas', 28, 'M', 'thiago.rivas_296@mail.com', 1),
+    ('Úrsula Flores', 39, 'F', 'ursula.flores_297@mail.com', 2),
+    ('Valerio Tapia', 17, 'M', 'valerio.tapia_298@mail.com', 6),
+    ('Ximena Silva', 34, 'F', 'ximena.silva_299@mail.com', 2),
+    ('Yael Vidal', 30, 'M', 'yael.vidal_300@mail.com', 2);
+
+INSERT INTO Usuarios (nombre, edad, genero, email, id_tipo_usuario) VALUES
+    ('Zaira Vargas', 26, 'F', 'zaira.vargas_301@mail.com', 1),
+    ('Aldo Herrera', 41, 'M', 'aldo.herrera_302@mail.com', 2),
+    ('Berta Guzmán', 27, 'F', 'berta.guzman_303@mail.com', 1),
+    ('Cristian Ramos', 66, 'M', 'cristian.ramos_304@mail.com', 5),
+    ('Dalia Navarro', 23, 'F', 'dalia.navarro_305@mail.com', 1),
+    ('Eugenio Peña', 35, 'M', 'eugenio.pena_306@mail.com', 2),
+    ('Fátima Ríos', 31, 'F', 'fatima.rios_307@mail.com', 2),
+    ('Gerardo Sánchez', 21, 'M', 'gerardo.sanchez_308@mail.com', 1),
+    ('Hilda Vega', 42, 'F', 'hilda.vega_309@mail.com', 2),
+    ('Ignacio Rojas', 28, 'M', 'ignacio.rojas_310@mail.com', 1),
+    ('Jimena Montes', 47, 'F', 'jimena.montes_311@mail.com', 2),
+    ('Kevin Salas', 71, 'M', 'kevin.salas_312@mail.com', 5),
+    ('Laura Cruz', 25, 'F', 'laura.cruz_313@mail.com', 1),
+    ('Marcos Morales', 37, 'M', 'marcos.morales_314@mail.com', 2),
+    ('Nerea Luna', 32, 'F', 'nerea.luna_315@mail.com', 2),
+    ('Octavio Rivas', 29, 'M', 'octavio.rivas_316@mail.com', 1),
+    ('Patricia Flores', 40, 'F', 'patricia.flores_317@mail.com', 2),
+    ('Quique Tapia', 18, 'M', 'quique.tapia_318@mail.com', 6),
+    ('Rocío Silva', 35, 'F', 'rocio.silva_319@mail.com', 2),
+    ('Sergio Vidal', 31, 'M', 'sergio.vidal_320@mail.com', 2),
+    ('Tania Vargas', 27, 'F', 'tania.vargas_321@mail.com', 1),
+    ('Uriel Herrera', 42, 'M', 'uriel.herrera_322@mail.com', 2),
+    ('Valeria Guzmán', 28, 'F', 'valeria.guzman_323@mail.com', 1),
+    ('Walter Ramos', 67, 'M', 'walter.ramos_324@mail.com', 5),
+    ('Ximena Navarro', 24, 'F', 'ximena.navarro_325@mail.com', 1),
+    ('Yago Peña', 36, 'M', 'yago.pena_326@mail.com', 2),
+    ('Zoe Ríos', 32, 'F', 'zoe.rios_327@mail.com', 2),
+    ('Adrián Sánchez', 22, 'M', 'adrian.sanchez_328@mail.com', 1),
+    ('Blanca Vega', 43, 'F', 'blanca.vega_329@mail.com', 2),
+    ('Carlos Rojas', 29, 'M', 'carlos.rojas_330@mail.com', 1),
+    ('Diana Montes', 48, 'F', 'diana.montes_331@mail.com', 2),
+    ('Emilio Salas', 72, 'M', 'emilio.salas_332@mail.com', 5),
+    ('Florencia Cruz', 26, 'F', 'florencia.cruz_333@mail.com', 1),
+    ('Gustavo Morales', 38, 'M', 'gustavo.morales_334@mail.com', 2),
+    ('Helena Luna', 33, 'F', 'helena.luna_335@mail.com', 2),
+    ('Iván Rivas', 30, 'M', 'ivan.rivas_336@mail.com', 1),
+    ('Julia Flores', 41, 'F', 'julia.flores_337@mail.com', 2),
+    ('Kevin Tapia', 17, 'M', 'kevin.tapia_338@mail.com', 6),
+    ('Laura Silva', 36, 'F', 'laura.silva_339@mail.com', 2),
+    ('Marco Vidal', 32, 'M', 'marco.vidal_340@mail.com', 2),
+    ('Nathalie Vargas', 28, 'F', 'nathalie.vargas_341@mail.com', 1),
+    ('Oscar Herrera', 43, 'M', 'oscar.herrera_342@mail.com', 2),
+    ('Patricia Guzmán', 29, 'F', 'patricia.guzman_343@mail.com', 1),
+    ('Quique Ramos', 68, 'M', 'quique.ramos_344@mail.com', 5),
+    ('Rosa Navarro', 25, 'F', 'rosa.navarro_345@mail.com', 1),
+    ('Sebastián Peña', 37, 'M', 'sebastian.pena_346@mail.com', 2),
+    ('Tania Ríos', 33, 'F', 'tania.rios_347@mail.com', 2),
+    ('Uriel Sánchez', 23, 'M', 'uriel.sanchez_348@mail.com', 1),
+    ('Valeria Vega', 44, 'F', 'valeria.vega_349@mail.com', 2),
+    ('Walter Rojas', 30, 'M', 'walter.rojas_350@mail.com', 1);
+
+INSERT INTO Usuarios (nombre, edad, genero, email, id_tipo_usuario) VALUES
+    ('Ximena Montes', 49, 'F', 'ximena.montes_351@mail.com', 2),
+    ('Yago Salas', 73, 'M', 'yago.salas_352@mail.com', 5),
+    ('Zoe Cruz', 27, 'F', 'zoe.cruz_353@mail.com', 1),
+    ('Ana Morales', 39, 'F', 'ana.morales_354@mail.com', 2),
+    ('Beto Luna', 34, 'M', 'beto.luna_355@mail.com', 2),
+    ('Carla Rivas', 31, 'F', 'carla.rivas_356@mail.com', 1),
+    ('Darío Flores', 42, 'M', 'dario.flores_357@mail.com', 2),
+    ('Elena Tapia', 18, 'F', 'elena.tapia_358@mail.com', 6),
+    ('Felipe Silva', 37, 'M', 'felipe.silva_359@mail.com', 2),
+    ('Gabriela Vidal', 33, 'F', 'gabriela.vidal_360@mail.com', 2),
+    ('Hugo Vargas', 29, 'M', 'hugo.vargas_361@mail.com', 1),
+    ('Inés Herrera', 44, 'F', 'ines.herrera_362@mail.com', 2),
+    ('Julián Guzmán', 30, 'M', 'julian.guzman_363@mail.com', 1),
+    ('Karla Ramos', 69, 'F', 'karla.ramos_364@mail.com', 5),
+    ('Lucas Navarro', 26, 'M', 'lucas.navarro_365@mail.com', 1),
+    ('Mara Peña', 38, 'F', 'mara.pena_366@mail.com', 2),
+    ('Nico Ríos', 34, 'M', 'nico.rios_367@mail.com', 2),
+    ('Olga Sánchez', 24, 'F', 'olga.sanchez_368@mail.com', 1),
+    ('Pedro Vega', 45, 'M', 'pedro.vega_369@mail.com', 2),
+    ('Quira Rojas', 31, 'F', 'quira.rojas_370@mail.com', 1),
+    ('Rubén Montes', 50, 'M', 'ruben.montes_371@mail.com', 5),
+    ('Sonia Salas', 28, 'F', 'sonia.salas_372@mail.com', 1),
+    ('Thiago Cruz', 40, 'M', 'thiago.cruz_373@mail.com', 2),
+    ('Úrsula Morales', 35, 'F', 'ursula.morales_374@mail.com', 2),
+    ('Valerio Luna', 32, 'M', 'valerio.luna_375@mail.com', 1),
+    ('Ximena Rivas', 43, 'F', 'ximena.rivas_376@mail.com', 2),
+    ('Yael Flores', 19, 'M', 'yael.flores_377@mail.com', 6),
+    ('Zaira Tapia', 38, 'F', 'zaira.tapia_378@mail.com', 2),
+    ('Aldo Silva', 34, 'M', 'aldo.silva_379@mail.com', 2),
+    ('Berta Vidal', 30, 'F', 'berta.vidal_380@mail.com', 1),
+    ('Cristian Vargas', 45, 'M', 'cristian.vargas_381@mail.com', 2),
+    ('Dalia Herrera', 31, 'F', 'dalia.herrera_382@mail.com', 1),
+    ('Eugenio Guzmán', 70, 'M', 'eugenio.guzman_383@mail.com', 5),
+    ('Fátima Ramos', 27, 'F', 'fatima.ramos_384@mail.com', 1),
+    ('Gerardo Navarro', 39, 'M', 'gerardo.navarro_385@mail.com', 2),
+    ('Hilda Peña', 35, 'F', 'hilda.pena_386@mail.com', 2),
+    ('Ignacio Ríos', 25, 'M', 'ignacio.rios_387@mail.com', 1),
+    ('Jimena Sánchez', 46, 'F', 'jimena.sanchez_388@mail.com', 2),
+    ('Kevin Vega', 32, 'M', 'kevin.vega_389@mail.com', 1),
+    ('Laura Rojas', 51, 'F', 'laura.rojas_390@mail.com', 5),
+    ('Marcos Montes', 29, 'M', 'marcos.montes_391@mail.com', 1),
+    ('Nerea Salas', 41, 'F', 'nerea.salas_392@mail.com', 2),
+    ('Octavio Cruz', 36, 'M', 'octavio.cruz_393@mail.com', 2),
+    ('Patricia Morales', 33, 'F', 'patricia.morales_394@mail.com', 1),
+    ('Quique Luna', 48, 'M', 'quique.luna_395@mail.com', 2),
+    ('Rocío Rivas', 20, 'F', 'rocio.rivas_396@mail.com', 6),
+    ('Sergio Flores', 39, 'M', 'sergio.flores_397@mail.com', 2),
+    ('Tania Tapia', 35, 'F', 'tania.tapia_398@mail.com', 2),
+    ('Uriel Silva', 31, 'M', 'uriel.silva_399@mail.com', 1),
+    ('Valeria Vidal', 46, 'F', 'valeria.vidal_400@mail.com', 2);
+
+INSERT INTO Usuarios (nombre, edad, genero, email, id_tipo_usuario) VALUES
+    ('Walter Vargas', 32, 'M', 'walter.vargas_401@mail.com', 1),
+    ('Ximena Herrera', 52, 'F', 'ximena.herrera_402@mail.com', 5),
+    ('Yago Guzmán', 29, 'M', 'yago.guzman_403@mail.com', 1),
+    ('Zoe Ramos', 41, 'F', 'zoe.ramos_404@mail.com', 2),
+    ('Adrián Navarro', 37, 'M', 'adrian.navarro_405@mail.com', 2),
+    ('Blanca Peña', 34, 'F', 'blanca.pena_406@mail.com', 1),
+    ('Carlos Ríos', 48, 'M', 'carlos.rios_407@mail.com', 2),
+    ('Diana Sánchez', 30, 'F', 'diana.sanchez_408@mail.com', 1),
+    ('Emilio Vega', 73, 'M', 'emilio.vega_409@mail.com', 5),
+    ('Florencia Rojas', 27, 'F', 'florencia.rojas_410@mail.com', 1),
+    ('Gustavo Montes', 40, 'M', 'gustavo.montes_411@mail.com', 2),
+    ('Helena Salas', 36, 'F', 'helena.salas_412@mail.com', 2),
+    ('Iván Cruz', 33, 'M', 'ivan.cruz_413@mail.com', 1),
+    ('Julia Flores', 41, 'F', 'julia.flores_414@mail.com', 2),
+    ('Kevin Luna', 18, 'M', 'kevin.luna_415@mail.com', 6),
+    ('Laura Rivas', 39, 'F', 'laura.rivas_416@mail.com', 2),
+    ('Marco Flores', 35, 'M', 'marco.flores_417@mail.com', 2),
+    ('Nathalie Tapia', 32, 'F', 'nathalie.tapia_418@mail.com', 1),
+    ('Oscar Silva', 46, 'M', 'osc.silva_419@mail.com', 2),
+    ('Patricia Vidal', 33, 'F', 'pat.vidal_420@mail.com', 1),
+    ('Quique Vargas', 71, 'M', 'qui.vargas_421@mail.com', 5),
+    ('Rosa Herrera', 28, 'F', 'rosa.herrera_422@mail.com', 1),
+    ('Sebastián Guzmán', 42, 'M', 'seb.guzman_423@mail.com', 2),
+    ('Tania Ramos', 38, 'F', 'tania.ramos_424@mail.com', 2),
+    ('Uriel Navarro', 25, 'M', 'uri.navarro_425@mail.com', 1),
+    ('Valeria Peña', 49, 'F', 'val.pena_426@mail.com', 2),
+    ('Walter Ríos', 32, 'M', 'wal.rios_427@mail.com', 1),
+    ('Ximena Sánchez', 55, 'F', 'xim.sanchez_428@mail.com', 5),
+    ('Yago Vega', 31, 'M', 'yago.vega_429@mail.com', 1),
+    ('Zoe Rojas', 42, 'F', 'zoe.rojas_430@mail.com', 2),
+    ('Abel Montes', 37, 'M', 'abel.montes_431@mail.com', 2),
+    ('Blanca Salas', 34, 'F', 'blanca.salas_432@mail.com', 1),
+    ('César Cruz', 49, 'M', 'cesar.cruz_433@mail.com', 2),
+    ('Dora Morales', 30, 'F', 'dora.morales_434@mail.com', 1),
+    ('Esteban Luna', 74, 'M', 'esteban.luna_435@mail.com', 5),
+    ('Fanny Rivas', 27, 'F', 'fanny.rivas_436@mail.com', 1),
+    ('Gerardo Flores', 40, 'M', 'gerardo.flores_437@mail.com', 2),
+    ('Hilda Tapia', 36, 'F', 'hilda.tapia_438@mail.com', 2),
+    ('Ignacio Silva', 33, 'M', 'ignacio.silva_439@mail.com', 1),
+    ('Jimena Vidal', 47, 'F', 'jimena.vidal_440@mail.com', 2),
+    ('Kevin Vargas', 30, 'M', 'kevin.vargas_441@mail.com', 1),
+    ('Laura Herrera', 52, 'F', 'laura.herrera_442@mail.com', 5),
+    ('Marcos Guzmán', 29, 'M', 'marcos.guzman_443@mail.com', 1),
+    ('Nerea Ramos', 41, 'F', 'nerea.ramos_444@mail.com', 2),
+    ('Octavio Navarro', 37, 'M', 'octavio.navarro_445@mail.com', 2),
+    ('Patricia Peña', 34, 'F', 'patricia.pena_446@mail.com', 1),
+    ('Quique Ríos', 48, 'M', 'quique.rios_447@mail.com', 2),
+    ('Rocío Sánchez', 30, 'F', 'rocio.sanchez_448@mail.com', 1),
+    ('Sergio Vega', 73, 'M', 'sergio.vega_449@mail.com', 5),
+    ('Tania Rojas', 27, 'F', 'tania.rojas_450@mail.com', 1);
+
+INSERT INTO Usuarios (nombre, edad, genero, email, id_tipo_usuario) VALUES
+    ('Uriel Montes', 40, 'M', 'uriel.montes_451@mail.com', 2),
+    ('Valeria Salas', 36, 'F', 'valeria.salas_452@mail.com', 2),
+    ('Walter Cruz', 33, 'M', 'walter.cruz_453@mail.com', 1),
+    ('Ximena Morales', 45, 'F', 'ximena.morales_454@mail.com', 2),
+    ('Yago Luna', 18, 'M', 'yago.luna_455@mail.com', 6),
+    ('Zoe Rivas', 39, 'F', 'zoe.rivas_456@mail.com', 2),
+    ('Adrián Flores', 35, 'M', 'adrian.flores_457@mail.com', 2),
+    ('Blanca Tapia', 32, 'F', 'blanca.tapia_458@mail.com', 1),
+    ('Carlos Silva', 46, 'M', 'carlos.silva_459@mail.com', 2),
+    ('Diana Vidal', 33, 'F', 'diana.vidal_460@mail.com', 1),
+    ('Emilio Vargas', 71, 'M', 'emilio.vargas_461@mail.com', 5),
+    ('Florencia Herrera', 28, 'F', 'florencia.herrera_462@mail.com', 1),
+    ('Gustavo Guzmán', 42, 'M', 'gustavo.guzman_463@mail.com', 2),
+    ('Helena Ramos', 38, 'F', 'helena.ramos_464@mail.com', 2),
+    ('Iván Navarro', 25, 'M', 'ivan.navarro_465@mail.com', 1),
+    ('Julia Peña', 49, 'F', 'julia.pena_466@mail.com', 2),
+    ('Kevin Ríos', 32, 'M', 'kevin.rios_467@mail.com', 1),
+    ('Laura Sánchez', 55, 'F', 'laura.sanchez_468@mail.com', 5),
+    ('Marcos Vega', 31, 'M', 'marcos.vega_469@mail.com', 1),
+    ('Nerea Rojas', 42, 'F', 'nerea.rojas_470@mail.com', 2),
+    ('Octavio Montes', 37, 'M', 'octavio.montes_471@mail.com', 2),
+    ('Patricia Salas', 34, 'F', 'patricia.salas_472@mail.com', 1),
+    ('Quique Cruz', 49, 'M', 'quique.cruz_473@mail.com', 2),
+    ('Rocío Morales', 30, 'F', 'rocio.morales_474@mail.com', 1),
+    ('Sergio Luna', 74, 'M', 'sergio.luna_475@mail.com', 5),
+    ('Tania Rivas', 27, 'F', 'tania.rivas_476@mail.com', 1),
+    ('Uriel Flores', 40, 'M', 'uriel.flores_477@mail.com', 2),
+    ('Valeria Tapia', 36, 'F', 'valeria.tapia_478@mail.com', 2),
+    ('Walter Silva', 33, 'M', 'walter.silva_479@mail.com', 1),
+    ('Ximena Vidal', 45, 'F', 'ximena.vidal_480@mail.com', 2),
+    ('Yago Vargas', 18, 'M', 'yago.vargas_481@mail.com', 6),
+    ('Zoe Herrera', 39, 'F', 'zoe.herrera_482@mail.com', 2),
+    ('Adrián Guzmán', 35, 'M', 'adrian.guzman_483@mail.com', 2),
+    ('Blanca Ramos', 32, 'F', 'blanca.ramos_484@mail.com', 1),
+    ('Carlos Navarro', 46, 'M', 'carlos.navarro_485@mail.com', 2),
+    ('Diana Peña', 33, 'F', 'diana.pena_486@mail.com', 1),
+    ('Emilio Ríos', 72, 'M', 'emilio.rios_487@mail.com', 5),
+    ('Florencia Sánchez', 28, 'F', 'florencia.sanchez_488@mail.com', 1),
+    ('Gustavo Vega', 40, 'M', 'gustavo.vega_489@mail.com', 2),
+    ('Helena Rojas', 36, 'F', 'helena.rojas_490@mail.com', 2),
+    ('Iván Montes', 33, 'M', 'ivan.montes_491@mail.com', 1),
+    ('Julia Salas', 45, 'F', 'julia.salas_492@mail.com', 2),
+    ('Kevin Cruz', 18, 'M', 'kevin.cruz_493@mail.com', 6),
+    ('Laura Morales', 39, 'F', 'laura.morales_494@mail.com', 2),
+    ('Marco Luna', 35, 'M', 'marco.luna_495@mail.com', 2),
+    ('Nathalie Rivas', 32, 'F', 'nathalie.rivas_496@mail.com', 1),
+    ('Oscar Flores', 46, 'M', 'oscar.flores_497@mail.com', 2),
+    ('Patricia Tapia', 33, 'F', 'patricia.tapia_498@mail.com', 1),
+    ('Quique Silva', 71, 'M', 'quique.silva_499@mail.com', 5),
+    ('Rosa Vidal', 28, 'F', 'rosa.vidal_500@mail.com', 1);
+
+INSERT INTO Usuarios (nombre, edad, genero, email, id_tipo_usuario) VALUES
+    ('Sebastián Vargas', 42, 'M', 'sebastian.vargas_501@mail.com', 2),
+    ('Tania Herrera', 38, 'F', 'tania.herrera_502@mail.com', 2),
+    ('Uriel Guzmán', 25, 'M', 'uriel.guzman_503@mail.com', 1),
+    ('Valeria Ramos', 49, 'F', 'valeria.ramos_504@mail.com', 2),
+    ('Walter Navarro', 32, 'M', 'walter.navarro_505@mail.com', 1),
+    ('Ximena Peña', 55, 'F', 'ximena.pena_506@mail.com', 5),
+    ('Yago Ríos', 31, 'M', 'yago.rios_507@mail.com', 1),
+    ('Zoe Sánchez', 42, 'F', 'zoe.sanchez_508@mail.com', 2),
+    ('Adrián Vega', 37, 'M', 'adrian.vega_509@mail.com', 2),
+    ('Blanca Rojas', 34, 'F', 'blanca.rojas_510@mail.com', 1),
+    ('Carlos Montes', 49, 'M', 'carlos.montes_511@mail.com', 2),
+    ('Diana Salas', 30, 'F', 'diana.salas_512@mail.com', 1),
+    ('Emilio Cruz', 74, 'M', 'emilio.cruz_513@mail.com', 5),
+    ('Florencia Morales', 27, 'F', 'florencia.morales_514@mail.com', 1),
+    ('Gustavo Luna', 40, 'M', 'gustavo.luna_515@mail.com', 2),
+    ('Helena Rivas', 36, 'F', 'helena.rivas_516@mail.com', 2),
+    ('Iván Flores', 33, 'M', 'ivan.flores_517@mail.com', 1),
+    ('Julia Tapia', 45, 'F', 'julia.tapia_518@mail.com', 2),
+    ('Kevin Silva', 18, 'M', 'kevin.silva_519@mail.com', 6),
+    ('Laura Vidal', 39, 'F', 'laura.vidal_520@mail.com', 2),
+    ('Marco Vargas', 35, 'M', 'marco.vargas_521@mail.com', 2),
+    ('Nathalie Herrera', 32, 'F', 'nathalie.herrera_522@mail.com', 1),
+    ('Oscar Guzmán', 46, 'M', 'oscar.guzman_523@mail.com', 2),
+    ('Patricia Ramos', 33, 'F', 'patricia.ramos_524@mail.com', 1),
+    ('Quique Navarro', 71, 'M', 'quique.navarro_525@mail.com', 5),
+    ('Rosa Peña', 28, 'F', 'rosa.pena_526@mail.com', 1),
+    ('Sebastián Ríos', 42, 'M', 'sebastian.rios_527@mail.com', 2),
+    ('Tania Sánchez', 38, 'F', 'tania.sanchez_528@mail.com', 2),
+    ('Uriel Vega', 25, 'M', 'uriel.vega_529@mail.com', 1),
+    ('Valeria Rojas', 49, 'F', 'valeria.rojas_530@mail.com', 2),
+    ('Walter Montes', 32, 'M', 'walter.montes_531@mail.com', 1),
+    ('Ximena Salas', 55, 'F', 'ximena.salas_532@mail.com', 5),
+    ('Yago Cruz', 31, 'M', 'yago.cruz_533@mail.com', 1),
+    ('Zoe Morales', 42, 'F', 'zoe.morales_534@mail.com', 2),
+    ('Adrián Luna', 37, 'M', 'adrian.luna_535@mail.com', 2),
+    ('Blanca Rivas', 34, 'F', 'blanca.rivas_536@mail.com', 1),
+    ('Carlos Flores', 49, 'M', 'carlos.flores_537@mail.com', 2),
+    ('Diana Tapia', 30, 'F', 'diana.tapia_538@mail.com', 1),
+    ('Emilio Silva', 74, 'M', 'emilio.silva_539@mail.com', 5),
+    ('Florencia Vidal', 27, 'F', 'florencia.vidal_540@mail.com', 1),
+    ('Gustavo Vargas', 40, 'M', 'gustavo.vargas_541@mail.com', 2),
+    ('Helena Herrera', 36, 'F', 'helena.herrera_542@mail.com', 2),
+    ('Iván Guzmán', 33, 'M', 'ivan.guzman_543@mail.com', 1),
+    ('Julia Ramos', 45, 'F', 'julia.ramos_544@mail.com', 2),
+    ('Kevin Navarro', 18, 'M', 'kevin.navarro_545@mail.com', 6),
+    ('Laura Peña', 39, 'F', 'laura.pena_546@mail.com', 2),
+    ('Marco Ríos', 35, 'M', 'marco.rios_547@mail.com', 2),
+    ('Nathalie Sánchez', 32, 'F', 'nathalie.sanchez_548@mail.com', 1),
+    ('Oscar Vega', 46, 'M', 'oscar.vega_549@mail.com', 2),
+    ('Patricia Rojas', 33, 'F', 'patricia.rojas_550@mail.com', 1);
+
+INSERT INTO Usuarios (nombre, edad, genero, email, id_tipo_usuario) VALUES
+    ('Quique Montes', 71, 'M', 'quique.montes_551@mail.com', 5),
+    ('Rosa Salas', 28, 'F', 'rosa.salas_552@mail.com', 1),
+    ('Sebastián Cruz', 42, 'M', 'sebastian.cruz_553@mail.com', 2),
+    ('Tania Morales', 38, 'F', 'tania.morales_554@mail.com', 2),
+    ('Uriel Luna', 25, 'M', 'uriel.luna_555@mail.com', 1),
+    ('Valeria Rivas', 49, 'F', 'valeria.rivas_556@mail.com', 2),
+    ('Walter Flores', 32, 'M', 'walter.flores_557@mail.com', 1),
+    ('Ximena Tapia', 55, 'F', 'ximena.tapia_558@mail.com', 5),
+    ('Yago Silva', 31, 'M', 'yago.silva_559@mail.com', 1),
+    ('Zoe Vidal', 42, 'F', 'zoe.vidal_560@mail.com', 2),
+    ('Adrián Vargas', 37, 'M', 'adrian.vargas_561@mail.com', 2),
+    ('Blanca Herrera', 34, 'F', 'blanca.herrera_562@mail.com', 1),
+    ('Carlos Guzmán', 49, 'M', 'carlos.guzman_563@mail.com', 2),
+    ('Diana Ramos', 30, 'F', 'diana.ramos_564@mail.com', 1),
+    ('Emilio Navarro', 74, 'M', 'emilio.navarro_565@mail.com', 5),
+    ('Florencia Peña', 27, 'F', 'florencia.pena_566@mail.com', 1),
+    ('Gustavo Ríos', 40, 'M', 'gustavo.rios_567@mail.com', 2),
+    ('Helena Sánchez', 36, 'F', 'helena.sanchez_568@mail.com', 2),
+    ('Iván Vega', 33, 'M', 'ivan.vega_569@mail.com', 1),
+    ('Julia Rojas', 45, 'F', 'julia.rojas_570@mail.com', 2),
+    ('Kevin Montes', 18, 'M', 'kevin.montes_571@mail.com', 6),
+    ('Laura Salas', 39, 'F', 'laura.salas_572@mail.com', 2),
+    ('Marco Cruz', 35, 'M', 'marco.cruz_573@mail.com', 2),
+    ('Nathalie Morales', 32, 'F', 'nathalie.morales_574@mail.com', 1),
+    ('Oscar Luna', 46, 'M', 'oscar.luna_575@mail.com', 2),
+    ('Patricia Rivas', 33, 'F', 'patricia.rivas_576@mail.com', 1),
+    ('Quique Flores', 71, 'M', 'quique.flores_577@mail.com', 5),
+    ('Rosa Tapia', 28, 'F', 'rosa.tapia_578@mail.com', 1),
+    ('Sebastián Silva', 42, 'M', 'sebastian.silva_579@mail.com', 2),
+    ('Tania Vidal', 38, 'F', 'tania.vidal_580@mail.com', 2),
+    ('Uriel Vargas', 25, 'M', 'uriel.vargas_581@mail.com', 1),
+    ('Valeria Herrera', 49, 'F', 'valeria.herrera_582@mail.com', 2),
+    ('Walter Guzmán', 32, 'M', 'walter.guzman_583@mail.com', 1),
+    ('Ximena Ramos', 55, 'F', 'ximena.ramos_584@mail.com', 5),
+    ('Yago Navarro', 31, 'M', 'yago.navarro_585@mail.com', 1),
+    ('Zoe Peña', 42, 'F', 'zoe.pena_586@mail.com', 2),
+    ('Adrián Ríos', 37, 'M', 'adrian.rios_587@mail.com', 2),
+    ('Blanca Sánchez', 34, 'F', 'blanca.sanchez_588@mail.com', 1),
+    ('Carlos Vega', 49, 'M', 'carlos.vega_589@mail.com', 2),
+    ('Diana Rojas', 30, 'F', 'diana.rojas_590@mail.com', 1),
+    ('Emilio Montes', 74, 'M', 'emilio.montes_591@mail.com', 5),
+    ('Florencia Salas', 27, 'F', 'florencia.salas_592@mail.com', 1),
+    ('Gustavo Cruz', 40, 'M', 'gustavo.cruz_593@mail.com', 2),
+    ('Helena Morales', 36, 'F', 'helena.morales_594@mail.com', 2),
+    ('Iván Luna', 33, 'M', 'ivan.luna_595@mail.com', 1),
+    ('Julia Rivas', 45, 'F', 'julia.rivas_596@mail.com', 2),
+    ('Kevin Flores', 18, 'M', 'kevin.flores_597@mail.com', 6),
+    ('Laura Tapia', 39, 'F', 'laura.tapia_598@mail.com', 2),
+    ('Marco Silva', 35, 'M', 'marco.silva_599@mail.com', 2),
+    ('Nathalie Vidal', 32, 'F', 'nathalie.vidal_600@mail.com', 1);
+
+INSERT INTO Usuarios (nombre, edad, genero, email, id_tipo_usuario) VALUES
+    ('Oscar Vargas', 46, 'M', 'oscar.vargas_601@mail.com', 2),
+    ('Patricia Herrera', 33, 'F', 'patricia.herrera_602@mail.com', 1),
+    ('Quique Guzmán', 71, 'M', 'quique.guzman_603@mail.com', 5),
+    ('Rosa Ramos', 28, 'F', 'rosa.ramos_604@mail.com', 1),
+    ('Sebastián Navarro', 42, 'M', 'sebastian.navarro_605@mail.com', 2),
+    ('Tania Peña', 38, 'F', 'tania.pena_606@mail.com', 2),
+    ('Uriel Ríos', 25, 'M', 'uriel.rios_607@mail.com', 1),
+    ('Valeria Sánchez', 49, 'F', 'valeria.sanchez_608@mail.com', 2),
+    ('Walter Vega', 32, 'M', 'walter.vega_609@mail.com', 1),
+    ('Ximena Rojas', 55, 'F', 'ximena.rojas_610@mail.com', 5),
+    ('Yago Montes', 31, 'M', 'yago.montes_611@mail.com', 1),
+    ('Zoe Salas', 42, 'F', 'zoe.salas_612@mail.com', 2),
+    ('Adrián Cruz', 37, 'M', 'adrian.cruz_613@mail.com', 2),
+    ('Blanca Morales', 34, 'F', 'blanca.morales_614@mail.com', 1),
+    ('Carlos Luna', 49, 'M', 'carlos.luna_615@mail.com', 2),
+    ('Diana Rivas', 30, 'F', 'diana.rivas_616@mail.com', 1),
+    ('Emilio Flores', 74, 'M', 'emilio.flores_617@mail.com', 5),
+    ('Florencia Tapia', 27, 'F', 'florencia.tapia_618@mail.com', 1),
+    ('Gustavo Silva', 40, 'M', 'gustavo.silva_619@mail.com', 2),
+    ('Helena Vidal', 36, 'F', 'helena.vidal_620@mail.com', 2),
+    ('Iván Vargas', 33, 'M', 'ivan.vargas_621@mail.com', 1),
+    ('Julia Herrera', 45, 'F', 'julia.herrera_622@mail.com', 2),
+    ('Kevin Guzmán', 18, 'M', 'kevin.guzman_623@mail.com', 6),
+    ('Laura Ramos', 39, 'F', 'laura.ramos_624@mail.com', 2),
+    ('Marco Navarro', 35, 'M', 'marco.navarro_625@mail.com', 2),
+    ('Nathalie Peña', 32, 'F', 'nathalie.pena_626@mail.com', 1),
+    ('Oscar Ríos', 46, 'M', 'oscar.rios_627@mail.com', 2),
+    ('Patricia Sánchez', 33, 'F', 'patricia.sanchez_628@mail.com', 1),
+    ('Quique Vega', 71, 'M', 'quique.vega_629@mail.com', 5),
+    ('Rosa Rojas', 28, 'F', 'rosa.rojas_630@mail.com', 1),
+    ('Sebastián Montes', 42, 'M', 'sebastian.montes_631@mail.com', 2),
+    ('Tania Salas', 38, 'F', 'tania.salas_632@mail.com', 2),
+    ('Uriel Cruz', 25, 'M', 'uriel.cruz_633@mail.com', 1),
+    ('Valeria Morales', 49, 'F', 'valeria.morales_634@mail.com', 2),
+    ('Walter Luna', 32, 'M', 'walter.luna_635@mail.com', 1),
+    ('Ximena Rivas', 55, 'F', 'ximena.rivas_636@mail.com', 5),
+    ('Yago Flores', 31, 'M', 'yago.flores_637@mail.com', 1),
+    ('Zoe Tapia', 42, 'F', 'zoe.tapia_638@mail.com', 2),
+    ('Adrián Vargas', 37, 'M', 'adrian.vargas_639@mail.com', 2),
+    ('Blanca Herrera', 34, 'F', 'blanca.herrera_640@mail.com', 1),
+    ('Carlos Guzmán', 49, 'M', 'carlos.guzman_641@mail.com', 2),
+    ('Diana Ramos', 30, 'F', 'diana.ramos_642@mail.com', 1),
+    ('Emilio Navarro', 74, 'M', 'emilio.navarro_643@mail.com', 5),
+    ('Florencia Peña', 27, 'F', 'florencia.pena_644@mail.com', 1),
+    ('Gustavo Ríos', 40, 'M', 'gustavo.rios_645@mail.com', 2),
+    ('Helena Sánchez', 36, 'F', 'helena.sanchez_646@mail.com', 2),
+    ('Iván Vega', 33, 'M', 'ivan.vega_647@mail.com', 1),
+    ('Julia Rojas', 45, 'F', 'julia.rojas_648@mail.com', 2),
+    ('Kevin Montes', 18, 'M', 'kevin.montes_649@mail.com', 6),
+    ('Laura Salas', 39, 'F', 'laura.salas_650@mail.com', 2);
+
+INSERT INTO Usuarios (nombre, edad, genero, email, id_tipo_usuario) VALUES
+    ('Marco Cruz', 35, 'M', 'marco.cruz_651@mail.com', 2),
+    ('Nathalie Morales', 32, 'F', 'nathalie.morales_652@mail.com', 1),
+    ('Oscar Luna', 46, 'M', 'oscar.luna_653@mail.com', 2),
+    ('Patricia Rivas', 33, 'F', 'patricia.rivas_654@mail.com', 1),
+    ('Quique Flores', 71, 'M', 'quique.flores_655@mail.com', 5),
+    ('Rosa Tapia', 28, 'F', 'rosa.tapia_656@mail.com', 1),
+    ('Sebastián Silva', 42, 'M', 'sebastian.silva_657@mail.com', 2),
+    ('Tania Vidal', 38, 'F', 'tania.vidal_658@mail.com', 2),
+    ('Uriel Vargas', 25, 'M', 'uriel.vargas_659@mail.com', 1),
+    ('Valeria Herrera', 49, 'F', 'valeria.herrera_660@mail.com', 2),
+    ('Walter Guzmán', 32, 'M', 'walter.guzman_661@mail.com', 1),
+    ('Ximena Ramos', 55, 'F', 'ximena.ramos_662@mail.com', 5),
+    ('Yago Navarro', 31, 'M', 'yago.navarro_663@mail.com', 1),
+    ('Zoe Peña', 42, 'F', 'zoe.pena_664@mail.com', 2),
+    ('Adrián Ríos', 37, 'M', 'adrian.rios_665@mail.com', 2),
+    ('Blanca Sánchez', 34, 'F', 'blanca.sanchez_666@mail.com', 1),
+    ('Carlos Vega', 49, 'M', 'carlos.vega_667@mail.com', 2),
+    ('Diana Rojas', 30, 'F', 'diana.rojas_668@mail.com', 1),
+    ('Emilio Montes', 74, 'M', 'emilio.montes_669@mail.com', 5),
+    ('Florencia Salas', 27, 'F', 'florencia.salas_670@mail.com', 1),
+    ('Gustavo Cruz', 40, 'M', 'gustavo.cruz_671@mail.com', 2),
+    ('Helena Morales', 36, 'F', 'helena.morales_672@mail.com', 2),
+    ('Iván Luna', 33, 'M', 'ivan.luna_673@mail.com', 1),
+    ('Julia Rivas', 45, 'F', 'julia.rivas_674@mail.com', 2),
+    ('Kevin Flores', 18, 'M', 'kevin.flores_675@mail.com', 6),
+    ('Laura Tapia', 39, 'F', 'laura.tapia_676@mail.com', 2),
+    ('Marco Silva', 35, 'M', 'marco.silva_677@mail.com', 2),
+    ('Nathalie Vidal', 32, 'F', 'nathalie.vidal_678@mail.com', 1),
+    ('Oscar Vargas', 46, 'M', 'oscar.vargas_679@mail.com', 2),
+    ('Patricia Herrera', 33, 'F', 'patricia.herrera_680@mail.com', 1),
+    ('Quique Guzmán', 71, 'M', 'quique.guzman_681@mail.com', 5),
+    ('Rosa Ramos', 28, 'F', 'rosa.ramos_682@mail.com', 1),
+    ('Sebastián Navarro', 42, 'M', 'sebastian.navarro_683@mail.com', 2),
+    ('Tania Peña', 38, 'F', 'tania.pena_684@mail.com', 2),
+    ('Uriel Ríos', 25, 'M', 'uriel.rios_685@mail.com', 1),
+    ('Valeria Sánchez', 49, 'F', 'valeria.sanchez_686@mail.com', 2),
+    ('Walter Vega', 32, 'M', 'walter.vega_687@mail.com', 1),
+    ('Ximena Rojas', 55, 'F', 'ximena.rojas_688@mail.com', 5),
+    ('Yago Montes', 31, 'M', 'yago.montes_689@mail.com', 1),
+    ('Zoe Salas', 42, 'F', 'zoe.salas_690@mail.com', 2),
+    ('Adrián Cruz', 37, 'M', 'adrian.cruz_691@mail.com', 2),
+    ('Blanca Morales', 34, 'F', 'blanca.morales_692@mail.com', 1),
+    ('Carlos Luna', 49, 'M', 'carlos.luna_693@mail.com', 2),
+    ('Diana Rivas', 30, 'F', 'diana.rivas_694@mail.com', 1),
+    ('Emilio Flores', 74, 'M', 'emilio.flores_695@mail.com', 5),
+    ('Florencia Tapia', 27, 'F', 'florencia.tapia_696@mail.com', 1),
+    ('Gustavo Silva', 40, 'M', 'gustavo.silva_697@mail.com', 2),
+    ('Helena Vidal', 36, 'F', 'helena.vidal_698@mail.com', 2),
+    ('Iván Vargas', 33, 'M', 'ivan.vargas_699@mail.com', 1),
+    ('Julia Herrera', 45, 'F', 'julia.herrera_700@mail.com', 2);
+
+select * from usuarios;
     
-    
-    
-    
+
 CREATE TABLE Uso_Transporte_NEW (
     id_uso INT PRIMARY KEY AUTO_INCREMENT,
     id_usuario INT NOT NULL,
@@ -485,237 +1009,802 @@ CREATE TABLE Uso_Transporte_NEW (
     FOREIGN KEY (id_parada_descenso) REFERENCES Paradas(id_parada) ON DELETE CASCADE,
     CONSTRAINT chk_ocupacion_positiva CHECK (ocupacion > 0)
 );
-            	
-    INSERT INTO Uso_Transporte_NEW (id_uso, id_usuario, id_ruta, id_horario, fecha, hora_abordaje, hora_descenso, id_parada_abordaje, id_parada_descenso, ocupacion) VALUES
-(1, 1, 1, 1, '2025-09-11', '06:17:15', '06:40:15', 1, 21, 31),
-(2, 2, 2, 6, '2025-09-11', '07:22:20', '07:44:20', 4, 24, 47),
-(3, 2, 2, 9, '2025-09-11', '18:13:02', '18:33:02', 24, 4, 30), 
-(4, 3, 3, 11, '2025-09-11', '07:49:15', '08:18:15', 7, 28, 48),
-(5, 4, 4, 16, '2025-09-11', '06:19:10', '06:49:10', 10, 19, 41),
-(6, 4, 4, 19, '2025-09-11', '17:35:45', '18:04:45', 19, 10, 42), 
-(7, 5, 5, 21, '2025-09-11', '07:11:47', '07:37:47', 26, 2, 33),
-(8, 6, 6, 25, '2025-09-11', '06:49:28', '07:09:28', 35, 24, 39),
-(9, 7, 7, 29, '2025-09-11', '07:05:46', '07:31:46', 8, 28, 23),
-(10, 8, 8, 33, '2025-09-11', '07:28:16', '07:54:16', 34, 31, 12),
-(11, 8, 8, 35, '2025-09-11', '17:34:25', '17:56:25', 31, 34, 47), 
-(12, 9, 1, 1, '2025-09-11', '08:00:23', '08:29:23', 2, 3, 37),
-(13, 10, 2, 6, '2025-09-11', '08:03:52', '08:26:52', 5, 6, 24),
-(14, 11, 3, 11, '2025-09-11', '06:50:31', '07:20:31', 29, 9, 36),
-(15, 12, 4, 16, '2025-09-11', '07:29:08', '07:52:08', 19, 12, 49),
-(16, 12, 4, 19, '2025-09-11', '18:14:04', '18:34:04', 12, 19, 31), 
-(17, 13, 5, 21, '2025-09-11', '08:14:55', '08:44:55', 27, 3, 17),
-(18, 14, 6, 25, '2025-09-11', '06:59:09', '07:20:09', 30, 23, 29),
-(19, 15, 7, 29, '2025-09-11', '08:18:24', '08:42:24', 7, 9, 44),
-(20, 16, 8, 33, '2025-09-11', '07:12:12', '07:37:12', 10, 12, 38),
-(21, 16, 8, 35, '2025-09-11', '19:16:30', '19:37:30', 12, 10, 25), 
-(22, 17, 1, 1, '2025-09-11', '06:26:40', '06:52:40', 21, 14, 21),
-(23, 18, 2, 6, '2025-09-11', '07:11:03', '07:40:03', 24, 16, 43),
-(24, 19, 3, 11, '2025-09-11', '07:38:09', '08:06:09', 28, 17, 16),
-(25, 20, 4, 16, '2025-09-11', '08:00:23', '08:21:23', 11, 34, 34),
-(26, 21, 5, 21, '2025-09-11', '07:51:24', '08:16:24', 27, 33, 46),
-(27, 22, 6, 25, '2025-09-11', '07:44:50', '08:11:50', 30, 22, 28),
-(28, 23, 7, 29, '2025-09-11', '06:19:47', '06:40:47', 29, 32, 20),
-(29, 24, 8, 33, '2025-09-11', '08:24:26', '08:44:26', 31, 19, 14),
-(30, 24, 8, 35, '2025-09-11', '17:39:18', '18:03:18', 19, 31, 39), 
-(31, 25, 1, 1, '2025-09-11', '07:30:17', '07:54:17', 2, 13, 11),
-(32, 26, 2, 6, '2025-09-11', '08:03:00', '08:23:00', 5, 31, 40),
-(33, 27, 3, 11, '2025-09-11', '06:06:55', '06:33:55', 29, 8, 13),
-(34, 28, 4, 16, '2025-09-11', '06:45:03', '07:12:03', 19, 20, 32),
-(35, 29, 5, 21, '2025-09-11', '07:10:48', '07:39:48', 27, 21, 15),
-(36, 30, 6, 25, '2025-09-11', '08:18:24', '08:40:24', 24, 22, 45),
-(37, 31, 7, 29, '2025-09-11', '06:21:49', '06:45:49', 7, 29, 26),
-(38, 32, 8, 33, '2025-09-11', '07:33:38', '07:53:38', 10, 25, 19),
-(39, 32, 8, 35, '2025-09-11', '18:27:07', '18:49:07', 25, 10, 41), 
-(40, 33, 1, 1, '2025-09-11', '08:18:07', '08:42:07', 21, 32, 44),
-(41, 34, 2, 6, '2025-09-11', '06:47:49', '07:15:49', 5, 15, 17),
-(42, 35, 3, 11, '2025-09-11', '07:07:37', '07:31:37', 28, 18, 30),
-(43, 36, 4, 16, '2025-09-11', '08:15:43', '08:44:43', 19, 34, 48),
-(44, 37, 5, 21, '2025-09-11', '06:55:04', '07:22:04', 2, 3, 22),
-(45, 38, 6, 25, '2025-09-11', '07:29:56', '07:56:56', 30, 6, 35),
-(46, 39, 7, 29, '2025-09-11', '06:53:14', '07:18:14', 29, 28, 10),
-(47, 40, 8, 33, '2025-09-11', '06:14:48', '06:40:48', 34, 31, 27),
-(48, 40, 8, 35, '2025-09-11', '18:31:35', '18:57:35', 31, 34, 18), 
-(49, 41, 1, 1, '2025-09-11', '07:58:33', '08:24:33', 13, 3, 38),
-(50, 42, 2, 6, '2025-09-11', '06:33:04', '06:53:04', 24, 15, 25),
-(51, 43, 3, 11, '2025-09-11', '08:08:47', '08:35:47', 28, 17, 42),
-(52, 44, 4, 16, '2025-09-11', '07:02:18', '07:32:18', 19, 20, 16),
-(53, 45, 5, 21, '2025-09-11', '07:40:53', '08:08:53', 2, 21, 36),
-(54, 46, 6, 25, '2025-09-11', '06:21:49', '06:44:49', 35, 24, 49),
-(55, 47, 7, 29, '2025-09-11', '07:05:46', '07:34:46', 7, 29, 20),
-(56, 48, 8, 33, '2025-09-11', '07:16:32', '07:44:32', 10, 31, 11),
-(57, 48, 8, 35, '2025-09-11', '17:34:25', '17:59:25', 31, 10, 33), 
-(58, 49, 1, 1, '2025-09-11', '07:05:46', '07:29:46', 2, 21, 30),
-(59, 50, 2, 6, '2025-09-11', '07:29:56', '07:56:56', 5, 31, 45),
-(60, 51, 3, 11, '2025-09-11', '07:16:32', '07:38:32', 28, 18, 12),
-(61, 52, 4, 16, '2025-09-11', '07:51:24', '08:14:24', 19, 20, 39),
-(62, 53, 5, 21, '2025-09-11', '06:40:15', '07:07:15', 26, 2, 26),
-(63, 54, 6, 25, '2025-09-11', '08:00:23', '08:29:23', 30, 24, 41),
-(64, 55, 7, 29, '2025-09-11', '07:30:17', '07:51:17', 29, 28, 14),
-(65, 56, 8, 33, '2025-09-11', '06:36:20', '07:06:20', 31, 25, 23),
-(66, 56, 8, 35, '2025-09-11', '18:18:24', '18:41:24', 25, 31, 46), 
-(67, 57, 1, 1, '2025-09-11', '06:06:55', '06:26:55', 1, 2, 35),
-(68, 58, 2, 6, '2025-09-11', '07:51:24', '08:11:24', 4, 5, 20),
-(69, 59, 3, 11, '2025-09-11', '06:45:03', '07:13:03', 7, 29, 47),
-(70, 60, 4, 16, '2025-09-11', '06:21:49', '06:47:49', 10, 19, 13),
-(71, 61, 5, 21, '2025-09-11', '07:02:18', '07:22:18', 26, 27, 40),
-(72, 62, 6, 25, '2025-09-11', '07:38:09', '08:00:09', 35, 30, 27),
-(73, 63, 7, 29, '2025-09-11', '06:00:23', '06:28:23', 8, 7, 18),
-(74, 64, 8, 33, '2025-09-11', '07:44:50', '08:12:50', 34, 10, 36),
-(75, 64, 8, 35, '2025-09-11', '18:50:23', '19:15:23', 10, 34, 49), 
-(76, 65, 1, 1, '2025-09-11', '06:33:04', '07:00:04', 1, 2, 49),
-(77, 66, 2, 6, '2025-09-11', '08:18:07', '08:42:07', 4, 5, 22),
-(78, 67, 3, 11, '2025-09-11', '06:26:40', '06:50:40', 7, 29, 31),
-(79, 68, 4, 16, '2025-09-11', '07:11:03', '07:34:03', 10, 19, 10),
-(80, 69, 5, 21, '2025-09-11', '07:22:04', '07:44:04', 26, 2, 43),
-(81, 70, 6, 25, '2025-09-11', '06:17:15', '06:40:15', 35, 30, 17),
-(82, 71, 7, 29, '2025-09-11', '07:49:15', '08:13:15', 8, 7, 34),
-(83, 72, 8, 33, '2025-09-11', '06:19:10', '06:41:10', 31, 25, 26),
-(84, 72, 8, 35, '2025-09-11', '19:07:59', '19:30:59', 25, 31, 40), 
-(85, 73, 1, 1, '2025-09-11', '07:11:47', '07:37:47', 21, 13, 14),
-(86, 74, 2, 6, '2025-09-11', '07:05:46', '07:33:46', 24, 31, 36),
-(87, 75, 3, 11, '2025-09-11', '08:03:52', '08:32:52', 28, 8, 41),
-(88, 76, 4, 16, '2025-09-11', '07:29:08', '07:56:08', 11, 25, 12),
-(89, 77, 5, 21, '2025-09-11', '08:14:55', '08:40:55', 27, 21, 37),
-(90, 78, 6, 25, '2025-09-11', '06:59:09', '07:24:09', 6, 22, 21),
-(91, 79, 7, 29, '2025-09-11', '07:58:33', '08:28:33', 7, 29, 30),
-(92, 80, 8, 33, '2025-09-11', '06:55:04', '07:25:04', 34, 10, 47),
-(93, 80, 8, 35, '2025-09-11', '19:23:42', '19:48:42', 10, 34, 15), 
-(94, 81, 1, 1, '2025-09-11', '06:21:49', '06:47:49', 14, 3, 29),
-(95, 82, 2, 6, '2025-09-11', '07:44:50', '08:06:50', 31, 15, 46),
-(96, 83, 3, 11, '2025-09-11', '06:19:47', '06:49:47', 29, 28, 18),
-(97, 84, 4, 16, '2025-09-11', '08:24:26', '08:44:26', 11, 20, 32),
-(98, 85, 5, 21, '2025-09-11', '07:30:17', '07:57:17', 2, 21, 24),
-(99, 86, 6, 25, '2025-09-11', '06:36:20', '07:05:20', 24, 6, 40),
-(100, 87, 7, 29, '2025-09-11', '07:02:18', '07:22:18', 7, 29, 10),
-(101, 88, 8, 33, '2025-09-11', '07:51:24', '08:18:24', 34, 31, 37),
-(102, 88, 8, 35, '2025-09-11', '18:03:52', '18:29:52', 31, 34, 13), 
-(103, 89, 1, 1, '2025-09-11', '07:10:48', '07:30:48', 21, 13, 20),
-(104, 90, 2, 6, '2025-09-11', '06:55:04', '07:17:04', 31, 15, 34),
-(105, 91, 3, 11, '2025-09-11', '08:18:24', '08:42:24', 29, 28, 46),
-(106, 92, 4, 16, '2025-09-11', '06:06:55', '06:33:55', 10, 19, 19),
-(107, 93, 5, 21, '2025-09-11', '07:38:09', '08:08:09', 27, 2, 31),
-(108, 94, 6, 25, '2025-09-11', '06:45:03', '07:07:03', 6, 22, 16),
-(109, 95, 7, 29, '2025-09-11', '07:22:04', '07:44:04', 28, 32, 49),
-(110, 96, 8, 33, '2025-09-11', '06:00:23', '06:29:23', 31, 25, 28),
-(111, 96, 8, 35, '2025-09-11', '19:16:30', '19:46:30', 25, 31, 43), 
-(112, 97, 1, 1, '2025-09-11', '07:05:46', '07:26:46', 13, 32, 27),
-(113, 98, 2, 6, '2025-09-11', '08:00:23', '08:29:23', 24, 15, 36),
-(114, 99, 3, 11, '2025-09-11', '06:17:15', '06:47:15', 7, 29, 11),
-(115, 100, 4, 16, '2025-09-11', '07:49:15', '08:15:15', 19, 11, 38),
-(116, 101, 5, 21, '2025-09-11', '07:29:08', '07:54:08', 2, 33, 25),
-(117, 102, 6, 25, '2025-09-11', '08:14:55', '08:44:55', 30, 24, 47),
-(118, 103, 7, 29, '2025-09-11', '06:59:09', '07:20:09', 29, 28, 19),
-(119, 104, 8, 33, '2025-09-11', '07:11:03', '07:31:03', 10, 31, 32),
-(120, 104, 8, 35, '2025-09-11', '18:47:04', '19:10:04', 31, 10, 45),
-(121, 105, 1, 1, '2025-09-11', '06:26:40', '06:56:40', 1, 2, 10),
-(122, 106, 2, 6, '2025-09-11', '07:38:09', '08:07:09', 4, 5, 30),
-(123, 107, 3, 11, '2025-09-11', '08:03:00', '08:31:00', 7, 29, 40),
-(124, 108, 4, 16, '2025-09-11', '06:06:55', '06:36:55', 10, 19, 14),
-(125, 109, 5, 21, '2025-09-11', '07:10:48', '07:30:48', 26, 27, 39),
-(126, 110, 6, 25, '2025-09-11', '08:18:07', '08:42:07', 35, 30, 27),
-(127, 111, 7, 29, '2025-09-11', '06:21:49', '06:44:49', 8, 7, 13),
-(128, 112, 8, 33, '2025-09-11', '07:33:38', '07:59:38', 34, 31, 35),
-(129, 112, 8, 35, '2025-09-11', '19:02:18', '19:25:18', 31, 34, 48), 
-(130, 113, 1, 1, '2025-09-11', '07:02:18', '07:22:18', 21, 13, 16),
-(131, 114, 2, 6, '2025-09-11', '06:40:15', '07:09:15', 5, 24, 33),
-(132, 115, 3, 11, '2025-09-11', '07:51:24', '08:16:24', 28, 8, 41),
-(133, 116, 4, 16, '2025-09-11', '06:47:49', '07:11:49', 19, 11, 22),
-(134, 117, 5, 21, '2025-09-11', '08:00:23', '08:29:23', 27, 21, 37),
-(135, 118, 6, 25, '2025-09-11', '07:11:03', '07:40:03', 24, 6, 20),
-(136, 119, 7, 29, '2025-09-11', '07:22:04', '07:48:04', 7, 29, 44),
-(137, 120, 8, 33, '2025-09-11', '06:33:04', '07:03:04', 34, 10, 15),
-(138, 120, 8, 35, '2025-09-11', '17:39:18', '18:00:18', 10, 34, 38),
-(139, 121, 1, 1, '2025-09-11', '07:40:53', '08:07:53', 2, 13, 29),
-(140, 122, 2, 6, '2025-09-11', '06:21:49', '06:48:49', 4, 24, 49),
-(141, 123, 3, 11, '2025-09-11', '06:53:14', '07:21:14', 29, 28, 10),
-(142, 124, 4, 16, '2025-09-11', '07:58:33', '08:26:33', 19, 11, 30),
-(143, 125, 5, 21, '2025-09-11', '06:17:15', '06:46:15', 26, 27, 46),
-(144, 126, 6, 25, '2025-09-11', '07:44:50', '08:09:50', 30, 24, 28),
-(145, 127, 7, 29, '2025-09-11', '08:18:24', '08:44:24', 28, 32, 20),
-(146, 128, 8, 33, '2025-09-11', '06:45:03', '07:13:03', 31, 25, 14),
-(147, 128, 8, 35, '2025-09-11', '18:13:02', '18:37:02', 25, 31, 39), 
-(148, 129, 1, 1, '2025-09-11', '07:30:17', '07:50:17', 1, 2, 11),
-(149, 130, 2, 6, '2025-09-11', '06:36:20', '07:05:20', 4, 5, 40),
-(150, 131, 3, 11, '2025-09-11', '07:02:18', '07:22:18', 7, 29, 13),
-(151, 132, 4, 16, '2025-09-11', '08:03:00', '08:23:00', 10, 19, 32),
-(152, 133, 5, 21, '2025-09-11', '07:22:04', '07:47:04', 27, 21, 15),
-(153, 134, 6, 25, '2025-09-11', '06:55:04', '07:15:04', 35, 30, 45),
-(154, 135, 7, 29, '2025-09-11', '06:00:23', '06:26:23', 29, 28, 26),
-(155, 136, 8, 33, '2025-09-11', '07:10:48', '07:30:48', 34, 10, 19),
-(156, 136, 8, 35, '2025-09-11', '19:07:59', '19:35:59', 10, 34, 41), 
-(157, 137, 1, 1, '2025-09-11', '06:40:15', '07:02:15', 1, 2, 44),
-(158, 138, 2, 6, '2025-09-11', '07:51:24', '08:14:24', 4, 5, 17),
-(159, 139, 3, 11, '2025-09-11', '06:33:04', '06:53:04', 7, 29, 30),
-(160, 140, 4, 16, '2025-09-11', '08:18:07', '08:44:07', 10, 19, 48),
-(161, 141, 5, 21, '2025-09-11', '07:29:56', '07:56:56', 26, 2, 22),
-(162, 142, 6, 25, '2025-09-11', '06:59:09', '07:20:09', 24, 31, 35),
-(163, 143, 7, 29, '2025-09-11', '07:16:32', '07:41:32', 29, 28, 10),
-(164, 144, 8, 33, '2025-09-11', '06:21:49', '06:48:49', 34, 31, 27),
-(165, 144, 8, 35, '2025-09-11', '19:16:30', '19:41:30', 31, 34, 18), 
-(166, 145, 1, 1, '2025-09-11', '07:05:46', '07:33:46', 13, 32, 38),
-(167, 146, 2, 6, '2025-09-11', '08:03:52', '08:26:52', 15, 16, 25),
-(168, 147, 3, 11, '2025-09-11', '07:49:15', '08:16:15', 8, 18, 42),
-(169, 148, 4, 16, '2025-09-11', '06:19:47', '06:45:47', 19, 11, 16),
-(170, 149, 5, 21, '2025-09-11', '08:14:55', '08:42:55', 2, 21, 36),
-(171, 150, 6, 25, '2025-09-11', '06:33:04', '07:00:04', 30, 24, 49),
-(172, 151, 7, 29, '2025-09-11', '07:58:33', '08:21:33', 29, 28, 20),
-(173, 152, 8, 33, '2025-09-11', '06:55:04', '07:25:04', 31, 25, 11),
-(174, 152, 8, 35, '2025-09-11', '18:18:24', '18:41:24', 25, 31, 33), 
-(175, 153, 1, 1, '2025-09-11', '06:21:49', '06:48:49', 21, 14, 29),
-(176, 154, 2, 6, '2025-09-11', '07:44:50', '08:11:50', 5, 15, 46),
-(177, 155, 3, 11, '2025-09-11', '06:19:47', '06:49:47', 7, 29, 18),
-(178, 156, 4, 16, '2025-09-11', '08:24:26', '08:44:26', 11, 20, 32),
-(179, 157, 5, 21, '2025-09-11', '07:30:17', '07:57:17', 27, 21, 24),
-(180, 158, 6, 25, '2025-09-11', '06:36:20', '07:05:20', 30, 24, 40),
-(181, 159, 7, 29, '2025-09-11', '07:02:18', '07:22:18', 29, 28, 10),
-(182, 160, 8, 33, '2025-09-11', '07:51:24', '08:18:24', 34, 31, 37),
-(183, 160, 8, 35, '2025-09-11', '18:03:52', '18:29:52', 31, 34, 13), 
-(184, 161, 1, 1, '2025-09-11', '07:10:48', '07:30:48', 21, 13, 20),
-(185, 162, 2, 6, '2025-09-11', '06:55:04', '07:17:04', 31, 15, 34),
-(186, 163, 3, 11, '2025-09-11', '08:18:24', '08:42:24', 29, 28, 46),
-(187, 164, 4, 16, '2025-09-11', '06:06:55', '06:33:55', 10, 19, 19),
-(188, 165, 5, 21, '2025-09-11', '07:38:09', '08:08:09', 27, 2, 31),
-(189, 166, 6, 25, '2025-09-11', '06:45:03', '07:07:03', 6, 22, 16),
-(190, 167, 7, 29, '2025-09-11', '07:22:04', '07:44:04', 28, 32, 49),
-(191, 168, 8, 33, '2025-09-11', '06:00:23', '06:29:23', 31, 25, 28),
-(192, 168, 8, 35, '2025-09-11', '19:16:30', '19:46:30', 25, 31, 43), 
-(193, 169, 1, 1, '2025-09-11', '07:05:46', '07:26:46', 13, 32, 27),
-(194, 170, 2, 6, '2025-09-11', '08:00:23', '08:29:23', 24, 15, 36),
-(195, 171, 3, 11, '2025-09-11', '06:17:15', '06:47:15', 7, 29, 11),
-(196, 172, 4, 16, '2025-09-11', '07:49:15', '08:15:15', 19, 11, 38),
-(197, 173, 5, 21, '2025-09-11', '07:29:08', '07:54:08', 2, 33, 25),
-(198, 174, 6, 25, '2025-09-11', '08:14:55', '08:44:55', 30, 24, 47),
-(199, 175, 7, 29, '2025-09-11', '06:59:09', '07:20:09', 29, 28, 19),
-(200, 176, 8, 33, '2025-09-11', '07:11:03', '07:31:03', 10, 31, 32),
-(201, 176, 8, 35, '2025-09-11', '18:47:04', '19:10:04', 31, 10, 45), 
-(202, 177, 1, 1, '2025-09-11', '06:26:40', '06:56:40', 1, 2, 10),
-(203, 178, 2, 6, '2025-09-11', '07:38:09', '08:07:09', 4, 5, 30),
-(204, 179, 3, 11, '2025-09-11', '08:03:00', '08:31:00', 7, 29, 40),
-(205, 180, 4, 16, '2025-09-11', '06:06:55', '06:36:55', 10, 19, 14),
-(206, 181, 5, 21, '2025-09-11', '07:10:48', '07:30:48', 26, 27, 39),
-(207, 182, 6, 25, '2025-09-11', '08:18:07', '08:42:07', 35, 30, 27),
-(208, 183, 7, 29, '2025-09-11', '06:21:49', '06:44:49', 8, 7, 13),
-(209, 184, 8, 33, '2025-09-11', '07:33:38', '07:59:38', 34, 31, 35),
-(210, 184, 8, 35, '2025-09-11', '19:02:18', '19:25:18', 31, 34, 48), 
-(211, 185, 1, 1, '2025-09-11', '07:02:18', '07:22:18', 21, 13, 16),
-(212, 186, 2, 6, '2025-09-11', '06:40:15', '07:09:15', 5, 24, 33),
-(213, 187, 3, 11, '2025-09-11', '07:51:24', '08:16:24', 28, 8, 41),
-(214, 188, 4, 16, '2025-09-11', '06:47:49', '07:11:49', 19, 11, 22),
-(215, 189, 5, 21, '2025-09-11', '08:00:23', '08:29:23', 27, 21, 37),
-(216, 190, 6, 25, '2025-09-11', '07:11:03', '07:40:03', 24, 6, 20),
-(217, 191, 7, 29, '2025-09-11', '07:22:04', '07:48:04', 7, 29, 44),
-(218, 192, 8, 33, '2025-09-11', '06:33:04', '07:03:04', 34, 10, 15),
-(219, 192, 8, 35, '2025-09-11', '17:39:18', '18:00:18', 10, 34, 38), 
-(220, 193, 1, 1, '2025-09-11', '07:40:53', '08:07:53', 2, 13, 29),
-(221, 194, 2, 6, '2025-09-11', '06:21:49', '06:48:49', 4, 24, 49),
-(222, 195, 3, 11, '2025-09-11', '06:53:14', '07:21:14', 29, 28, 10),
-(223, 196, 4, 16, '2025-09-11', '07:58:33', '08:26:33', 19, 11, 30),
-(224, 197, 5, 21, '2025-09-11', '06:17:15', '06:46:15', 26, 27, 46),
-(225, 198, 6, 25, '2025-09-11', '07:44:50', '08:09:50', 30, 24, 28),
-(226, 199, 7, 29, '2025-09-11', '08:18:24', '08:44:24', 28, 32, 20),
-(227, 200, 8, 33, '2025-09-11', '06:45:03', '07:13:03', 31, 25, 14),
-(228, 200, 8, 35, '2025-09-11', '18:13:02', '18:37:02', 25, 31, 39); 
+         	
 
+
+INSERT INTO Uso_Transporte_NEW (id_usuario, id_ruta, id_horario, fecha, hora_abordaje, hora_descenso, id_parada_abordaje, id_parada_descenso, ocupacion) VALUES
+    -- === Bloque 1: Primeros usuarios y rutas principales, enfocándose en picos ===
+    -- Rutas Cardinales (IDs 1-4) con mayor ocupación en picos
+    (1, 1, 1, '2025-09-11', '06:10:00', '06:45:00', 1, 2, 45), -- Ruta Norte, Pico Mañana
+    (2, 2, 6, '2025-09-11', '07:05:00', '07:35:00', 4, 24, 40), -- Ruta Sur, Pico Mañana
+    (3, 3, 11, '2025-09-11', '07:30:00', '08:05:00', 7, 28, 48), -- Ruta Este, Pico Mañana
+    (4, 4, 16, '2025-09-11', '06:40:00', '07:15:00', 10, 19, 38), -- Ruta Oeste, Pico Mañana
+    (1, 1, 4, '2025-09-11', '18:15:00', '18:50:00', 3, 1, 42), -- Ruta Norte, Pico Tarde (vuelta)
+    (5, 5, 21, '2025-09-11', '07:20:00', '07:50:00', 26, 2, 30), -- Ruta Noroeste, Pico Mañana
+    (6, 6, 25, '2025-09-11', '07:15:00', '07:45:00', 35, 24, 35), -- Ruta Sureste, Pico Mañana
+    (7, 7, 29, '2025-09-11', '07:40:00', '08:10:00', 8, 29, 25), -- Ruta Noreste, Pico Mañana
+    (8, 8, 33, '2025-09-11', '07:55:00', '08:25:00', 34, 10, 20), -- Ruta Suroeste, Pico Mañana
+    (2, 2, 9, '2025-09-11', '18:30:00', '19:00:00', 24, 4, 32), -- Ruta Sur, Pico Tarde (vuelta)
+    (9, 1, 2, '2025-09-11', '10:10:00', '10:40:00', 21, 13, 20), -- Ruta Norte, Valle Mañana
+    (10, 2, 7, '2025-09-11', '10:45:00', '11:15:00', 5, 15, 22), -- Ruta Sur, Valle Mañana
+    (11, 3, 12, '2025-09-11', '10:20:00', '10:50:00', 29, 28, 28), -- Ruta Este, Valle Mañana
+    (12, 4, 17, '2025-09-11', '11:00:00', '11:30:00', 11, 25, 25), -- Ruta Oeste, Valle Mañana
+    (3, 3, 14, '2025-09-11', '18:50:00', '19:20:00', 28, 7, 30), -- Ruta Este, Pico Tarde (vuelta)
+    (13, 5, 22, '2025-09-11', '14:00:00', '14:30:00', 33, 21, 15), -- Ruta Noroeste, Valle Largo
+    (14, 6, 26, '2025-09-11', '14:30:00', '15:00:00', 6, 22, 18), -- Ruta Sureste, Valle Largo
+    (15, 7, 30, '2025-09-11', '15:15:00', '15:45:00', 7, 9, 20), -- Ruta Noreste, Valle Largo
+    (16, 8, 34, '2025-09-11', '15:40:00', '16:10:00', 19, 12, 15), -- Ruta Suroeste, Valle Largo
+    (4, 4, 19, '2025-09-11', '19:30:00', '20:00:00', 19, 10, 35), -- Ruta Oeste, Pico Tarde (vuelta)
+    (17, 1, 3, '2025-09-11', '14:25:00', '14:55:00', 21, 13, 18), -- Ruta Norte, Valle Tarde
+    (18, 2, 8, '2025-09-11', '13:10:00', '13:40:00', 24, 31, 20), -- Ruta Sur, Valle Tarde
+    (19, 3, 13, '2025-09-11', '15:35:00', '16:05:00', 18, 17, 28), -- Ruta Este, Valle Tarde
+    (20, 4, 18, '2025-09-11', '14:40:00', '15:10:00', 25, 20, 19), -- Ruta Oeste, Valle Tarde
+    (5, 5, 23, '2025-09-11', '18:40:00', '19:10:00', 2, 26, 28), -- Ruta Noroeste, Pico Tarde (vuelta)
+    (21, 1, 4, '2025-09-11', '21:00:00', '21:30:00', 14, 3, 10), -- Ruta Norte, Noche Valle
+    (22, 2, 9, '2025-09-11', '21:20:00', '21:50:00', 15, 4, 12), -- Ruta Sur, Noche Valle
+    (23, 3, 14, '2025-09-11', '21:35:00', '22:05:00', 7, 28, 15), -- Ruta Este, Noche Valle
+    (24, 4, 19, '2025-09-11', '22:00:00', '22:30:00', 34, 12, 10), -- Ruta Oeste, Noche Valle
+    (6, 6, 27, '2025-09-11', '19:15:00', '19:45:00', 24, 35, 22), -- Ruta Sureste, Pico Tarde (vuelta)
+    (25, 1, 1, '2025-09-11', '07:10:00', '07:45:00', 1, 2, 40),
+    (26, 2, 6, '2025-09-11', '06:55:00', '07:25:00', 4, 5, 35),
+    (27, 3, 11, '2025-09-11', '08:15:00', '08:45:00', 7, 9, 42),
+    (28, 4, 16, '2025-09-11', '07:00:00', '07:35:00', 10, 11, 30),
+    (7, 7, 31, '2025-09-11', '19:20:00', '19:50:00', 9, 7, 18), -- Ruta Noreste, Pico Tarde (vuelta)
+    (29, 5, 21, '2025-09-11', '08:00:00', '08:30:00', 27, 21, 28),
+    (30, 6, 25, '2025-09-11', '07:30:00', '08:00:00', 6, 22, 30),
+    (31, 7, 29, '2025-09-11', '06:25:00', '06:55:00', 29, 28, 20),
+    (32, 8, 33, '2025-09-11', '08:10:00', '08:40:00', 31, 19, 15),
+    (8, 8, 36, '2025-09-11', '21:40:00', '22:10:00', 12, 34, 8), -- Ruta Suroeste, Noche Valle (vuelta)
+    (33, 1, 1, '2025-09-11', '08:40:00', '09:00:00', 3, 1, 40), -- Más viajes en pico mañana
+    (34, 2, 6, '2025-09-11', '08:50:00', '09:20:00', 24, 15, 30),
+    (35, 3, 11, '2025-09-11', '06:10:00', '06:45:00', 7, 8, 45),
+    (36, 4, 16, '2025-09-11', '08:20:00', '08:50:00', 12, 19, 40),
+    (37, 5, 21, '2025-09-11', '06:30:00', '07:00:00', 2, 33, 25),
+    (38, 6, 25, '2025-09-11', '08:35:00', '09:05:00', 30, 6, 32),
+    (39, 7, 29, '2025-09-11', '06:50:00', '07:20:00', 28, 32, 22),
+    (40, 8, 33, '2025-09-11', '06:15:00', '06:45:00', 31, 25, 10),
+    (41, 1, 3, '2025-09-11', '12:30:00', '13:00:00', 2, 21, 20),
+    (42, 2, 8, '2025-09-11', '14:00:00', '14:30:00', 24, 31, 25),
+    (43, 3, 13, '2025-09-11', '15:00:00', '15:30:00', 8, 18, 30),
+    (44, 4, 18, '2025-09-11', '13:00:00', '13:30:00', 11, 20, 20),
+    (45, 5, 22, '2025-09-11', '10:00:00', '10:30:00', 26, 27, 10),
+    (46, 6, 26, '2025-09-11', '11:00:00', '11:30:00', 30, 24, 15),
+    (47, 7, 30, '2025-09-11', '11:45:00', '12:15:00', 7, 29, 22),
+    (48, 8, 34, '2025-09-11', '10:30:00', '11:00:00', 10, 31, 12),
+    (49, 1, 4, '2025-09-11', '19:00:00', '19:30:00', 14, 3, 30),
+    (50, 2, 9, '2025-09-11', '19:20:00', '19:50:00', 16, 6, 30);
+
+INSERT INTO Uso_Transporte_NEW (id_usuario, id_ruta, id_horario, fecha, hora_abordaje, hora_descenso, id_parada_abordaje, id_parada_descenso, ocupacion) VALUES
+    (51, 3, 14, '2025-09-11', '19:40:00', '20:10:00', 9, 17, 35),
+    (52, 4, 19, '2025-09-11', '20:10:00', '20:40:00', 12, 19, 25),
+    (53, 5, 23, '2025-09-11', '18:00:00', '18:30:00', 2, 26, 20),
+    (54, 6, 27, '2025-09-11', '18:20:00', '18:50:00', 24, 35, 22),
+    (55, 7, 31, '2025-09-11', '18:30:00', '19:00:00', 32, 9, 15),
+    (56, 8, 35, '2025-09-11', '18:50:00', '19:20:00', 10, 34, 10),
+    (57, 1, 1, '2025-09-11', '06:05:00', '06:40:00', 1, 21, 38),
+    (58, 2, 6, '2025-09-11', '07:00:00', '07:30:00', 4, 5, 33),
+    (59, 3, 11, '2025-09-11', '07:45:00', '08:15:00', 7, 29, 40),
+    (60, 4, 16, '2025-09-11', '06:30:00', '07:05:00', 10, 11, 30),
+    (61, 5, 21, '2025-09-11', '07:00:00', '07:30:00', 26, 27, 28),
+    (62, 6, 25, '2025-09-11', '06:50:00', '07:20:00', 35, 30, 32),
+    (63, 7, 29, '2025-09-11', '06:30:00', '07:00:00', 29, 28, 20),
+    (64, 8, 33, '2025-09-11', '07:40:00', '08:10:00', 31, 25, 15),
+    (65, 1, 1, '2025-09-11', '08:00:00', '08:35:00', 13, 3, 40),
+    (66, 2, 6, '2025-09-11', '08:05:00', '08:35:00', 24, 16, 35),
+    (67, 3, 11, '2025-09-11', '08:30:00', '09:00:00', 28, 18, 42),
+    (68, 4, 16, '2025-09-11', '07:50:00', '08:25:00', 19, 12, 37),
+    (69, 5, 21, '2025-09-11', '08:20:00', '08:50:00', 33, 21, 25),
+    (70, 6, 25, '2025-09-11', '07:45:00', '08:15:00', 6, 22, 28),
+    (71, 7, 29, '2025-09-11', '06:40:00', '07:10:00', 7, 32, 21),
+    (72, 8, 33, '2025-09-11', '06:20:00', '06:50:00', 25, 19, 10),
+    (73, 1, 3, '2025-09-11', '12:10:00', '12:40:00', 2, 21, 22),
+    (74, 2, 8, '2025-09-11', '14:15:00', '14:45:00', 5, 15, 25),
+    (75, 3, 13, '2025-09-11', '15:10:00', '15:40:00', 17, 9, 30),
+    (76, 4, 18, '2025-09-11', '14:00:00', '14:30:00', 11, 20, 20),
+    (77, 5, 22, '2025-09-11', '10:30:00', '11:00:00', 26, 27, 12),
+    (78, 6, 26, '2025-09-11', '11:30:00', '12:00:00', 24, 6, 18),
+    (79, 7, 30, '2025-09-11', '12:00:00', '12:30:00', 32, 28, 25),
+    (80, 8, 34, '2025-09-11', '11:00:00', '11:30:00', 31, 25, 15),
+    (81, 1, 4, '2025-09-11', '19:40:00', '20:10:00', 3, 1, 28),
+    (82, 2, 9, '2025-09-11', '20:00:00', '20:30:00', 6, 4, 20),
+    (83, 3, 14, '2025-09-11', '20:15:00', '20:45:00', 17, 7, 28),
+    (84, 4, 19, '2025-09-11', '21:00:00', '21:30:00', 12, 10, 18),
+    (85, 5, 23, '2025-09-11', '19:00:00', '19:30:00', 33, 27, 20),
+    (86, 6, 27, '2025-09-11', '19:30:00', '20:00:00', 22, 24, 25),
+    (87, 7, 31, '2025-09-11', '19:45:00', '20:15:00', 9, 32, 12),
+    (88, 8, 35, '2025-09-11', '20:30:00', '21:00:00', 34, 12, 8),
+    (89, 1, 1, '2025-09-11', '06:15:00', '06:50:00', 1, 2, 42),
+    (90, 2, 6, '2025-09-11', '07:10:00', '07:40:00', 4, 5, 38),
+    (91, 3, 11, '2025-09-11', '07:50:00', '08:25:00', 29, 28, 40),
+    (92, 4, 16, '2025-09-11', '06:50:00', '07:25:00', 10, 11, 33),
+    (93, 5, 21, '2025-09-11', '07:15:00', '07:45:00', 2, 26, 27),
+    (94, 6, 25, '2025-09-11', '07:00:00', '07:30:00', 22, 30, 29),
+    (95, 7, 29, '2025-09-11', '06:35:00', '07:05:00', 7, 29, 22),
+    (96, 8, 33, '2025-09-11', '08:00:00', '08:30:00', 25, 34, 18);
+
+INSERT INTO Uso_Transporte_NEW (id_usuario, id_ruta, id_horario, fecha, hora_abordaje, hora_descenso, id_parada_abordaje, id_parada_descenso, ocupacion) VALUES
+    (97, 1, 3, '2025-09-11', '12:45:00', '13:15:00', 21, 13, 20),
+    (98, 2, 8, '2025-09-11', '14:20:00', '14:50:00', 31, 15, 28),
+    (99, 3, 13, '2025-09-11', '15:20:00', '15:50:00', 17, 9, 32),
+    (100, 4, 18, '2025-09-11', '13:30:00', '14:00:00', 20, 11, 25),
+    (101, 5, 22, '2025-09-11', '10:45:00', '11:15:00', 27, 33, 15),
+    (102, 6, 26, '2025-09-11', '11:40:00', '12:10:00', 24, 6, 20),
+    (103, 7, 30, '2025-09-11', '12:10:00', '12:40:00', 32, 28, 28),
+    (104, 8, 34, '2025-09-11', '11:15:00', '11:45:00', 25, 10, 18),
+    (105, 1, 4, '2025-09-11', '20:10:00', '20:40:00', 14, 3, 25),
+    (106, 2, 9, '2025-09-11', '20:40:00', '21:10:00', 16, 4, 28),
+    (107, 3, 14, '2025-09-11', '20:50:00', '21:20:00', 17, 7, 30),
+    (108, 4, 19, '2025-09-11', '21:30:00', '22:00:00', 19, 10, 20),
+    (109, 5, 23, '2025-09-11', '19:10:00', '19:40:00', 21, 26, 22),
+    (110, 6, 27, '2025-09-11', '19:50:00', '20:20:00', 24, 30, 20),
+    (111, 7, 31, '2025-09-11', '20:20:00', '20:50:00', 9, 32, 10),
+    (112, 8, 35, '2025-09-11', '21:10:00', '21:40:00', 34, 12, 5),
+    (113, 1, 1, '2025-09-11', '06:20:00', '06:55:00', 1, 2, 48),
+    (114, 2, 6, '2025-09-11', '07:15:00', '07:45:00', 4, 24, 42),
+    (115, 3, 11, '2025-09-11', '08:00:00', '08:35:00', 7, 28, 45),
+    (116, 4, 16, '2025-09-11', '06:45:00', '07:20:00', 10, 19, 32),
+    (117, 5, 21, '2025-09-11', '07:25:00', '07:55:00', 26, 27, 28),
+    (118, 6, 25, '2025-09-11', '07:10:00', '07:40:00', 35, 30, 30),
+    (119, 7, 29, '2025-09-11', '06:50:00', '07:20:00', 8, 29, 25),
+    (120, 8, 33, '2025-09-11', '07:50:00', '08:20:00', 31, 25, 18),
+    (121, 1, 1, '2025-09-11', '08:10:00', '08:45:00', 2, 21, 38),
+    (122, 2, 6, '2025-09-11', '08:20:00', '08:50:00', 5, 31, 30),
+    (123, 3, 11, '2025-09-11', '06:30:00', '07:05:00', 29, 28, 40),
+    (124, 4, 16, '2025-09-11', '08:05:00', '08:35:00', 11, 20, 30),
+    (125, 5, 21, '2025-09-11', '06:50:00', '07:20:00', 2, 33, 20),
+    (126, 6, 25, '2025-09-11', '08:40:00', '09:10:00', 24, 6, 28),
+    (127, 7, 29, '2025-09-11', '07:10:00', '07:40:00', 32, 28, 22),
+    (128, 8, 33, '2025-09-11', '06:35:00', '07:05:00', 10, 31, 12),
+    (129, 1, 3, '2025-09-11', '13:00:00', '13:30:00', 21, 13, 18),
+    (130, 2, 8, '2025-09-11', '14:30:00', '15:00:00', 31, 15, 25),
+    (131, 3, 13, '2025-09-11', '15:40:00', '16:10:00', 9, 17, 28),
+    (132, 4, 18, '2025-09-11', '14:20:00', '14:50:00', 20, 11, 18),
+    (133, 5, 22, '2025-09-11', '10:50:00', '11:20:00', 33, 21, 10),
+    (134, 6, 26, '2025-09-11', '11:50:00', '12:20:00', 6, 22, 15),
+    (135, 7, 30, '2025-09-11', '12:30:00', '13:00:00', 28, 32, 20),
+    (136, 8, 34, '2025-09-11', '11:30:00', '12:00:00', 10, 31, 10),
+    (137, 1, 4, '2025-09-11', '19:15:00', '19:45:00', 3, 1, 25),
+    (138, 2, 9, '2025-09-11', '19:40:00', '20:10:00', 6, 4, 22),
+    (139, 3, 14, '2025-09-11', '20:00:00', '20:30:00', 17, 7, 28),
+    (140, 4, 19, '2025-09-11', '20:45:00', '21:15:00', 19, 10, 18);
+
+INSERT INTO Uso_Transporte_NEW (id_usuario, id_ruta, id_horario, fecha, hora_abordaje, hora_descenso, id_parada_abordaje, id_parada_descenso, ocupacion) VALUES
+    (141, 5, 23, '2025-09-11', '18:10:00', '18:40:00', 21, 26, 20),
+    (142, 6, 27, '2025-09-11', '18:40:00', '19:10:00', 24, 30, 22),
+    (143, 7, 31, '2025-09-11', '19:10:00', '19:40:00', 32, 28, 15),
+    (144, 8, 35, '2025-09-11', '19:50:00', '20:20:00', 12, 34, 10),
+    (145, 1, 1, '2025-09-11', '06:40:00', '07:15:00', 1, 2, 40),
+    (146, 2, 6, '2025-09-11', '07:35:00', '08:05:00', 4, 5, 30),
+    (147, 3, 11, '2025-09-11', '06:05:00', '06:40:00', 7, 8, 42),
+    (148, 4, 16, '2025-09-11', '07:15:00', '07:50:00', 10, 11, 35),
+    (149, 5, 21, '2025-09-11', '07:05:00', '07:35:00', 26, 27, 25),
+    (150, 6, 25, '2025-09-11', '07:20:00', '07:50:00', 35, 24, 28),
+    (151, 7, 29, '2025-09-11', '06:45:00', '07:15:00', 29, 28, 20),
+    (152, 8, 33, '2025-09-11', '07:30:00', '08:00:00', 31, 25, 15),
+    (153, 1, 3, '2025-09-11', '12:00:00', '12:30:00', 2, 21, 18),
+    (154, 2, 8, '2025-09-11', '13:00:00', '13:30:00', 5, 15, 20),
+    (155, 3, 13, '2025-09-11', '14:00:00', '14:30:00', 8, 18, 25),
+    (156, 4, 18, '2025-09-11', '15:00:00', '15:30:00', 19, 11, 18),
+    (157, 5, 22, '2025-09-11', '11:00:00', '11:30:00', 27, 33, 10),
+    (158, 6, 26, '2025-09-11', '12:00:00', '12:30:00', 24, 6, 12),
+    (159, 7, 30, '2025-09-11', '12:30:00', '13:00:00', 32, 28, 18),
+    (160, 8, 34, '2025-09-11', '11:30:00', '12:00:00', 25, 10, 8),
+    (161, 1, 4, '2025-09-11', '20:30:00', '21:00:00', 14, 3, 20),
+    (162, 2, 9, '2025-09-11', '20:50:00', '21:20:00', 16, 4, 22),
+    (163, 3, 14, '2025-09-11', '21:05:00', '21:35:00', 17, 7, 25),
+    (164, 4, 19, '2025-09-11', '22:00:00', '22:30:00', 20, 10, 15),
+    (165, 5, 23, '2025-09-11', '18:50:00', '19:20:00', 3, 26, 18),
+    (166, 6, 27, '2025-09-11', '19:40:00', '20:10:00', 6, 24, 20),
+    (167, 7, 31, '2025-09-11', '20:30:00', '21:00:00', 32, 9, 10),
+    (168, 8, 35, '2025-09-11', '21:20:00', '21:50:00', 34, 12, 5);
+
+INSERT INTO Uso_Transporte_NEW (id_usuario, id_ruta, id_horario, fecha, hora_abordaje, hora_descenso, id_parada_abordaje, id_parada_descenso, ocupacion) VALUES
+    -- === Bloque 2: Distribución de más viajes, usuarios adicionales y patrones ida/vuelta ===
+    (169, 1, 1, '2025-09-11', '06:08:00', '06:43:00', 1, 2, 40),
+    (170, 2, 6, '2025-09-11', '07:12:00', '07:42:00', 4, 5, 38),
+    (171, 3, 11, '2025-09-11', '07:53:00', '08:23:00', 7, 28, 40),
+    (172, 4, 16, '2025-09-11', '06:58:00', '07:33:00', 10, 11, 32),
+    (169, 1, 4, '2025-09-11', '17:30:00', '18:05:00', 2, 1, 30), -- Usuario 169 vuelta
+    (173, 5, 21, '2025-09-11', '07:18:00', '07:48:00', 26, 27, 28),
+    (174, 6, 25, '2025-09-11', '06:48:00', '07:18:00', 35, 30, 30),
+    (175, 7, 29, '2025-09-11', '07:28:00', '07:58:00', 29, 28, 22),
+    (176, 8, 33, '2025-09-11', '08:00:00', '08:30:00', 31, 19, 15),
+    (170, 2, 9, '2025-09-11', '19:10:00', '19:40:00', 5, 4, 25), -- Usuario 170 vuelta
+    (177, 1, 2, '2025-09-11', '10:00:00', '10:30:00', 13, 14, 25),
+    (178, 2, 7, '2025-09-11', '11:10:00', '11:40:00', 15, 16, 28),
+    (179, 3, 12, '2025-09-11', '10:50:00', '11:20:00', 8, 18, 30),
+    (180, 4, 17, '2025-09-11', '11:40:00', '12:10:00', 11, 20, 22),
+    (181, 5, 21, '2025-09-11', '08:10:00', '08:40:00', 2, 26, 30),
+    (182, 6, 25, '2025-09-11', '08:20:00', '08:50:00', 22, 35, 32),
+    (183, 7, 29, '2025-09-11', '07:35:00', '08:05:00', 7, 8, 28),
+    (184, 8, 33, '2025-09-11', '07:05:00', '07:35:00', 31, 25, 20),
+    (185, 1, 3, '2025-09-11', '14:00:00', '14:30:00', 21, 13, 22),
+    (186, 2, 8, '2025-09-11', '15:00:00', '15:30:00', 31, 15, 25),
+    (187, 3, 13, '2025-09-11', '16:00:00', '16:30:00', 17, 9, 30),
+    (188, 4, 18, '2025-09-11', '15:00:00', '15:30:00', 20, 11, 20),
+    (189, 5, 22, '2025-09-11', '10:15:00', '10:45:00', 26, 27, 10),
+    (190, 6, 26, '2025-09-11', '12:10:00', '12:40:00', 6, 24, 15),
+    (191, 7, 30, '2025-09-11', '12:45:00', '13:15:00', 28, 32, 22),
+    (192, 8, 34, '2025-09-11', '12:00:00', '12:30:00', 31, 10, 10),
+    (193, 1, 4, '2025-09-11', '20:00:00', '20:30:00', 3, 14, 25),
+    (194, 2, 9, '2025-09-11', '20:30:00', '21:00:00', 4, 16, 28),
+    (195, 3, 14, '2025-09-11', '20:45:00', '21:15:00', 7, 18, 30),
+    (196, 4, 19, '2025-09-11', '21:00:00', '21:30:00', 10, 19, 20),
+    (197, 5, 23, '2025-09-11', '19:00:00', '19:30:00', 21, 33, 18),
+    (198, 6, 27, '2025-09-11', '19:40:00', '20:10:00', 24, 6, 20),
+    (199, 7, 31, '2025-09-11', '20:10:00', '20:40:00', 9, 32, 10),
+    (200, 8, 35, '2025-09-11', '20:50:00', '21:20:00', 12, 34, 5);
+    
+    -- === Bloque 3: Más usuarios, viajes de ida/vuelta, más intersecciones, variabilidad horaria ===
+    -- Rango de id_usuario para este bloque: ~201-450
+    -- Se incluyen viajes en las franjas "Valle" de horarios más extensos.
+
+INSERT INTO Uso_Transporte_NEW (id_usuario, id_ruta, id_horario, fecha, hora_abordaje, hora_descenso, id_parada_abordaje, id_parada_descenso, ocupacion) VALUES
+    (201, 1, 1, '2025-09-11', '06:30:00', '07:05:00', 1, 21, 35),
+    (202, 2, 6, '2025-09-11', '07:20:00', '07:50:00', 4, 5, 30),
+    (203, 3, 11, '2025-09-11', '08:05:00', '08:35:00', 7, 29, 40),
+    (204, 4, 16, '2025-09-11', '07:00:00', '07:30:00', 10, 19, 30),
+    (205, 5, 21, '2025-09-11', '07:10:00', '07:40:00', 2, 26, 25), -- Intersección (La Carolina)
+    (206, 6, 25, '2025-09-11', '07:50:00', '08:20:00', 24, 6, 28), -- Intersección (Parque Central)
+    (207, 7, 29, '2025-09-11', '06:55:00', '07:25:00', 28, 32, 22),
+    (208, 8, 33, '2025-09-11', '07:45:00', '08:15:00', 31, 25, 18),
+    (201, 1, 4, '2025-09-11', '17:45:00', '18:20:00', 21, 1, 30), -- U201 Vuelta, Parada 21 a 1 (Intersección con Ruta 5)
+    (209, 1, 2, '2025-09-11', '10:30:00', '11:00:00', 2, 13, 15), -- U209 en La Carolina (Intersección R5)
+    (210, 2, 7, '2025-09-11', '10:55:00', '11:25:00', 5, 15, 18),
+    (211, 3, 12, '2025-09-11', '11:00:00', '11:30:00', 28, 8, 20),
+    (212, 4, 17, '2025-09-11', '10:10:00', '10:40:00', 19, 11, 25),
+    (205, 5, 23, '2025-09-11', '18:00:00', '18:30:00', 33, 2, 22), -- U205 Vuelta, (La Carolina, Int R1)
+    (213, 5, 22, '2025-09-11', '14:30:00', '15:00:00', 27, 33, 12),
+    (214, 6, 26, '2025-09-11', '14:00:00', '14:30:00', 6, 22, 15), -- U214 en Parque Central (Int R2)
+    (215, 6, 27, '2025-09-11', '19:00:00', '19:30:00', 22, 35, 25),
+    (216, 7, 30, '2025-09-11', '14:15:00', '14:45:00', 7, 29, 18), -- U216 en Estación Este (Int R3, R7)
+    (217, 7, 31, '2025-09-11', '19:30:00', '20:00:00', 32, 9, 20),
+    (218, 8, 34, '2025-09-11', '14:45:00', '15:15:00', 10, 31, 10),
+    (219, 8, 35, '2025-09-11', '21:00:00', '21:30:00', 12, 19, 5),
+    (220, 1, 3, '2025-09-11', '15:00:00', '15:30:00', 13, 14, 25),
+    (221, 2, 8, '2025-09-11', '13:30:00', '14:00:00', 31, 15, 28),
+    (222, 3, 13, '2025-09-11', '16:00:00', '16:30:00', 9, 17, 32),
+    (223, 4, 18, '2025-09-11', '15:30:00', '16:00:00', 20, 11, 20),
+    (224, 5, 22, '2025-09-11', '10:00:00', '10:30:00', 26, 27, 10),
+    (225, 6, 26, '2025-09-11', '11:00:00', '11:30:00', 24, 6, 15),
+    (226, 7, 30, '2025-09-11', '11:45:00', '12:15:00', 32, 28, 20),
+    (227, 8, 34, '2025-09-11', '11:30:00', '12:00:00', 10, 31, 12),
+    (228, 1, 4, '2025-09-11', '19:40:00', '20:10:00', 3, 1, 28),
+    (229, 2, 9, '2025-09-11', '20:00:00', '20:30:00', 6, 4, 20),
+    (230, 3, 14, '2025-09-11', '20:15:00', '20:45:00', 17, 7, 28),
+    (231, 4, 19, '2025-09-11', '21:00:00', '21:30:00', 12, 10, 18),
+    (232, 5, 23, '2025-09-11', '19:00:00', '19:30:00', 33, 27, 20),
+    (233, 6, 27, '2025-09-11', '19:30:00', '20:00:00', 22, 24, 25),
+    (234, 7, 31, '2025-09-11', '19:45:00', '20:15:00', 9, 32, 12),
+    (235, 8, 35, '2025-09-11', '20:30:00', '21:00:00', 34, 12, 8),
+    (236, 1, 1, '2025-09-11', '06:10:00', '06:45:00', 1, 2, 45),
+    (237, 2, 6, '2025-09-11', '07:05:00', '07:35:00', 4, 24, 40),
+    (238, 3, 11, '2025-09-11', '07:30:00', '08:05:00', 7, 28, 48),
+    (239, 4, 16, '2025-09-11', '06:40:00', '07:15:00', 10, 19, 38),
+    (240, 5, 21, '2025-09-11', '07:20:00', '07:50:00', 26, 2, 30),
+    (241, 6, 25, '2025-09-11', '07:15:00', '07:45:00', 35, 24, 35),
+    (242, 7, 29, '2025-09-11', '07:40:00', '08:10:00', 8, 29, 25),
+    (243, 8, 33, '2025-09-11', '07:55:00', '08:25:00', 34, 10, 20),
+    (244, 1, 4, '2025-09-11', '18:15:00', '18:50:00', 3, 1, 42),
+    (245, 2, 9, '2025-09-11', '18:30:00', '19:00:00', 24, 4, 32);
+
+INSERT INTO Uso_Transporte_NEW (id_usuario, id_ruta, id_horario, fecha, hora_abordaje, hora_descenso, id_parada_abordaje, id_parada_descenso, ocupacion) VALUES
+    (246, 3, 14, '2025-09-11', '18:50:00', '19:20:00', 28, 7, 30),
+    (247, 4, 19, '2025-09-11', '19:30:00', '20:00:00', 19, 10, 35),
+    (248, 5, 23, '2025-09-11', '18:40:00', '19:10:00', 2, 26, 28),
+    (249, 6, 27, '2025-09-11', '19:15:00', '19:45:00', 24, 35, 22),
+    (250, 7, 31, '2025-09-11', '19:20:00', '19:50:00', 9, 7, 18),
+    (251, 8, 35, '2025-09-11', '21:40:00', '22:10:00', 12, 34, 8),
+    (252, 1, 1, '2025-09-11', '07:10:00', '07:45:00', 1, 2, 40),
+    (253, 2, 6, '2025-09-11', '06:55:00', '07:25:00', 4, 5, 35),
+    (254, 3, 11, '2025-09-11', '08:15:00', '08:45:00', 7, 9, 42),
+    (255, 4, 16, '2025-09-11', '07:00:00', '07:35:00', 10, 11, 30),
+    (256, 5, 21, '2025-09-11', '08:00:00', '08:30:00', 27, 21, 28),
+    (257, 6, 25, '2025-09-11', '07:30:00', '08:00:00', 6, 22, 30),
+    (258, 7, 29, '2025-09-11', '06:25:00', '06:55:00', 29, 28, 20),
+    (259, 8, 33, '2025-09-11', '08:10:00', '08:40:00', 31, 19, 15),
+    (260, 1, 1, '2025-09-11', '08:40:00', '09:00:00', 3, 1, 40),
+    (261, 2, 6, '2025-09-11', '08:50:00', '09:20:00', 24, 15, 30),
+    (262, 3, 11, '2025-09-11', '06:10:00', '06:45:00', 7, 8, 45),
+    (263, 4, 16, '2025-09-11', '08:20:00', '08:50:00', 12, 19, 40),
+    (264, 5, 21, '2025-09-11', '06:30:00', '07:00:00', 2, 33, 25),
+    (265, 6, 25, '2025-09-11', '08:35:00', '09:05:00', 30, 6, 32),
+    (266, 7, 29, '2025-09-11', '06:50:00', '07:20:00', 28, 32, 22),
+    (267, 8, 33, '2025-09-11', '06:15:00', '06:45:00', 31, 25, 10),
+    (268, 1, 3, '2025-09-11', '12:30:00', '13:00:00', 2, 21, 20),
+    (269, 2, 8, '2025-09-11', '14:00:00', '14:30:00', 24, 31, 25),
+    (270, 3, 13, '2025-09-11', '15:00:00', '15:30:00', 8, 18, 30),
+    (271, 4, 18, '2025-09-11', '13:00:00', '13:30:00', 11, 20, 20),
+    (272, 5, 22, '2025-09-11', '10:00:00', '10:30:00', 26, 27, 10),
+    (273, 6, 26, '2025-09-11', '11:00:00', '11:30:00', 30, 24, 15),
+    (274, 7, 30, '2025-09-11', '11:45:00', '12:15:00', 7, 29, 22),
+    (275, 8, 34, '2025-09-11', '10:30:00', '11:00:00', 10, 31, 12),
+    (276, 1, 4, '2025-09-11', '19:00:00', '19:30:00', 14, 3, 30),
+    (277, 2, 9, '2025-09-11', '19:20:00', '19:50:00', 16, 4, 30),
+    (278, 3, 14, '2025-09-11', '19:40:00', '20:10:00', 9, 17, 35),
+    (279, 4, 19, '2025-09-11', '20:10:00', '20:40:00', 12, 19, 25),
+    (280, 5, 23, '2025-09-11', '18:00:00', '18:30:00', 2, 26, 20),
+    (281, 6, 27, '2025-09-11', '18:20:00', '18:50:00', 24, 35, 22),
+    (282, 7, 31, '2025-09-11', '18:30:00', '19:00:00', 32, 9, 15),
+    (283, 8, 35, '2025-09-11', '18:50:00', '19:20:00', 10, 34, 10),
+    (284, 1, 1, '2025-09-11', '06:05:00', '06:40:00', 1, 21, 38),
+    (285, 2, 6, '2025-09-11', '07:00:00', '07:30:00', 4, 5, 33),
+    (286, 3, 11, '2025-09-11', '07:45:00', '08:15:00', 7, 29, 40),
+    (287, 4, 16, '2025-09-11', '06:30:00', '07:05:00', 10, 11, 30),
+    (288, 5, 21, '2025-09-11', '07:00:00', '07:30:00', 26, 27, 28),
+    (289, 6, 25, '2025-09-11', '06:50:00', '07:20:00', 35, 30, 32),
+    (290, 7, 29, '2025-09-11', '06:30:00', '07:00:00', 29, 28, 20),
+    (291, 8, 33, '2025-09-11', '07:40:00', '08:10:00', 31, 25, 15),
+    (292, 1, 1, '2025-09-11', '08:00:00', '08:35:00', 13, 3, 40),
+    (293, 2, 6, '2025-09-11', '08:05:00', '08:35:00', 24, 16, 35),
+    (294, 3, 11, '2025-09-11', '08:30:00', '09:00:00', 28, 18, 42);
+
+INSERT INTO Uso_Transporte_NEW (id_usuario, id_ruta, id_horario, fecha, hora_abordaje, hora_descenso, id_parada_abordaje, id_parada_descenso, ocupacion) VALUES
+    (295, 4, 16, '2025-09-11', '07:50:00', '08:25:00', 19, 12, 37),
+    (296, 5, 21, '2025-09-11', '08:20:00', '08:50:00', 33, 21, 25),
+    (297, 6, 25, '2025-09-11', '07:45:00', '08:15:00', 6, 22, 28),
+    (298, 7, 29, '2025-09-11', '06:40:00', '07:10:00', 7, 32, 21),
+    (299, 8, 33, '2025-09-11', '06:20:00', '06:50:00', 25, 19, 10),
+    (300, 1, 3, '2025-09-11', '12:10:00', '12:40:00', 2, 21, 22),
+    (301, 2, 8, '2025-09-11', '14:15:00', '14:45:00', 5, 15, 25),
+    (302, 3, 13, '2025-09-11', '15:10:00', '15:40:00', 17, 9, 30),
+    (303, 4, 18, '2025-09-11', '14:00:00', '14:30:00', 11, 20, 20),
+    (304, 5, 22, '2025-09-11', '10:30:00', '11:00:00', 26, 27, 12),
+    (305, 6, 26, '2025-09-11', '11:30:00', '12:00:00', 24, 6, 18),
+    (306, 7, 30, '2025-09-11', '12:00:00', '12:30:00', 32, 28, 25),
+    (307, 8, 34, '2025-09-11', '11:00:00', '11:30:00', 31, 25, 15),
+    (308, 1, 4, '2025-09-11', '19:40:00', '20:10:00', 3, 1, 28),
+    (309, 2, 9, '2025-09-11', '20:00:00', '20:30:00', 6, 4, 20),
+    (310, 3, 14, '2025-09-11', '20:15:00', '20:45:00', 17, 7, 28),
+    (311, 4, 19, '2025-09-11', '21:00:00', '21:30:00', 12, 10, 18),
+    (312, 5, 23, '2025-09-11', '19:00:00', '19:30:00', 33, 27, 20),
+    (313, 6, 27, '2025-09-11', '19:30:00', '20:00:00', 22, 24, 25),
+    (314, 7, 31, '2025-09-11', '19:45:00', '20:15:00', 9, 32, 12),
+    (315, 8, 35, '2025-09-11', '20:30:00', '21:00:00', 34, 12, 8);
+
+-- Relleno hasta 850 viajes
+-- Asegurando que todos los 700 usuarios sean utilizados de forma rotativa
+
+-- Bloque 4 (IDs 316-500)
+INSERT INTO Uso_Transporte_NEW (id_usuario, id_ruta, id_horario, fecha, hora_abordaje, hora_descenso, id_parada_abordaje, id_parada_descenso, ocupacion) VALUES
+    (316, 1, 1, '2025-09-11', '06:10:00', '06:45:00', 1, 2, 45),
+    (317, 2, 6, '2025-09-11', '07:05:00', '07:35:00', 4, 24, 40),
+    (318, 3, 11, '2025-09-11', '07:30:00', '08:05:00', 7, 28, 48),
+    (319, 4, 16, '2025-09-11', '06:40:00', '07:15:00', 10, 19, 38),
+    (320, 5, 21, '2025-09-11', '07:20:00', '07:50:00', 26, 2, 30),
+    (321, 6, 25, '2025-09-11', '07:15:00', '07:45:00', 35, 24, 35),
+    (322, 7, 29, '2025-09-11', '07:40:00', '08:10:00', 8, 29, 25),
+    (323, 8, 33, '2025-09-11', '07:55:00', '08:25:00', 34, 10, 20),
+    (324, 1, 4, '2025-09-11', '18:15:00', '18:50:00', 3, 1, 42),
+    (325, 2, 9, '2025-09-11', '18:30:00', '19:00:00', 24, 4, 32),
+    (326, 3, 14, '2025-09-11', '18:50:00', '19:20:00', 28, 7, 30),
+    (327, 4, 19, '2025-09-11', '19:30:00', '20:00:00', 19, 10, 35),
+    (328, 5, 23, '2025-09-11', '18:40:00', '19:10:00', 2, 26, 28),
+    (329, 6, 27, '2025-09-11', '19:15:00', '19:45:00', 24, 35, 22),
+    (330, 7, 31, '2025-09-11', '19:20:00', '19:50:00', 9, 7, 18),
+    (331, 8, 35, '2025-09-11', '21:40:00', '22:10:00', 12, 34, 8),
+    (332, 1, 1, '2025-09-11', '07:10:00', '07:45:00', 1, 2, 40),
+    (333, 2, 6, '2025-09-11', '06:55:00', '07:25:00', 4, 5, 35),
+    (334, 3, 11, '2025-09-11', '08:15:00', '08:45:00', 7, 9, 42),
+    (335, 4, 16, '2025-09-11', '07:00:00', '07:35:00', 10, 11, 30),
+    (336, 5, 21, '2025-09-11', '08:00:00', '08:30:00', 27, 21, 28),
+    (337, 6, 25, '2025-09-11', '07:30:00', '08:00:00', 6, 22, 30),
+    (338, 7, 29, '2025-09-11', '06:25:00', '06:55:00', 29, 28, 20),
+    (339, 8, 33, '2025-09-11', '08:10:00', '08:40:00', 31, 19, 15),
+    (340, 1, 1, '2025-09-11', '08:40:00', '09:00:00', 3, 1, 40),
+    (341, 2, 6, '2025-09-11', '08:50:00', '09:20:00', 24, 15, 30),
+    (342, 3, 11, '2025-09-11', '06:10:00', '06:45:00', 7, 8, 45),
+    (343, 4, 16, '2025-09-11', '08:20:00', '08:50:00', 12, 19, 40),
+    (344, 5, 21, '2025-09-11', '06:30:00', '07:00:00', 2, 33, 25),
+    (345, 6, 25, '2025-09-11', '08:35:00', '09:05:00', 30, 6, 32),
+    (346, 7, 29, '2025-09-11', '06:50:00', '07:20:00', 28, 32, 22),
+    (347, 8, 33, '2025-09-11', '06:15:00', '06:45:00', 31, 25, 10),
+    (348, 1, 3, '2025-09-11', '12:30:00', '13:00:00', 2, 21, 20),
+    (349, 2, 8, '2025-09-11', '14:00:00', '14:30:00', 24, 31, 25),
+    (350, 3, 13, '2025-09-11', '15:00:00', '15:30:00', 8, 18, 30),
+    (351, 4, 18, '2025-09-11', '13:00:00', '13:30:00', 11, 20, 20),
+    (352, 5, 22, '2025-09-11', '10:00:00', '10:30:00', 26, 27, 10),
+    (353, 6, 26, '2025-09-11', '11:00:00', '11:30:00', 30, 24, 15),
+    (354, 7, 30, '2025-09-11', '11:45:00', '12:15:00', 7, 29, 22),
+    (355, 8, 34, '2025-09-11', '10:30:00', '11:00:00', 10, 31, 12);
+
+INSERT INTO Uso_Transporte_NEW (id_usuario, id_ruta, id_horario, fecha, hora_abordaje, hora_descenso, id_parada_abordaje, id_parada_descenso, ocupacion) VALUES
+    (356, 1, 4, '2025-09-11', '19:00:00', '19:30:00', 14, 3, 30),
+    (357, 2, 9, '2025-09-11', '19:20:00', '19:50:00', 16, 4, 30),
+    (358, 3, 14, '2025-09-11', '19:40:00', '20:10:00', 9, 17, 35),
+    (359, 4, 19, '2025-09-11', '20:10:00', '20:40:00', 12, 19, 25),
+    (360, 5, 23, '2025-09-11', '18:00:00', '18:30:00', 2, 26, 20),
+    (361, 6, 27, '2025-09-11', '18:20:00', '18:50:00', 24, 35, 22),
+    (362, 7, 31, '2025-09-11', '18:30:00', '19:00:00', 32, 9, 15),
+    (363, 8, 35, '2025-09-11', '18:50:00', '19:20:00', 10, 34, 10),
+    (364, 1, 1, '2025-09-11', '06:05:00', '06:40:00', 1, 21, 38),
+    (365, 2, 6, '2025-09-11', '07:00:00', '07:30:00', 4, 5, 33),
+    (366, 3, 11, '2025-09-11', '07:45:00', '08:15:00', 7, 29, 40),
+    (367, 4, 16, '2025-09-11', '06:30:00', '07:05:00', 10, 11, 30),
+    (368, 5, 21, '2025-09-11', '07:00:00', '07:30:00', 26, 27, 28),
+    (369, 6, 25, '2025-09-11', '06:50:00', '07:20:00', 35, 30, 32),
+    (370, 7, 29, '2025-09-11', '06:30:00', '07:00:00', 29, 28, 20),
+    (371, 8, 33, '2025-09-11', '07:40:00', '08:10:00', 31, 25, 15),
+    (372, 1, 1, '2025-09-11', '08:00:00', '08:35:00', 13, 3, 40),
+    (373, 2, 6, '2025-09-11', '08:05:00', '08:35:00', 24, 16, 35),
+    (374, 3, 11, '2025-09-11', '08:30:00', '09:00:00', 28, 18, 42),
+    (375, 4, 16, '2025-09-11', '07:50:00', '08:25:00', 19, 12, 37),
+    (376, 5, 21, '2025-09-11', '08:20:00', '08:50:00', 33, 21, 25),
+    (377, 6, 25, '2025-09-11', '07:45:00', '08:15:00', 6, 22, 28),
+    (378, 7, 29, '2025-09-11', '06:40:00', '07:10:00', 7, 32, 21),
+    (379, 8, 33, '2025-09-11', '06:20:00', '06:50:00', 25, 19, 10),
+    (380, 1, 3, '2025-09-11', '12:10:00', '12:40:00', 2, 21, 22),
+    (381, 2, 8, '2025-09-11', '14:15:00', '14:45:00', 5, 15, 25),
+    (382, 3, 13, '2025-09-11', '15:10:00', '15:40:00', 17, 9, 30),
+    (383, 4, 18, '2025-09-11', '14:00:00', '14:30:00', 11, 20, 20),
+    (384, 5, 22, '2025-09-11', '10:30:00', '11:00:00', 26, 27, 12),
+    (385, 6, 26, '2025-09-11', '11:30:00', '12:00:00', 24, 6, 18),
+    (386, 7, 30, '2025-09-11', '12:00:00', '12:30:00', 32, 28, 25),
+    (387, 8, 34, '2025-09-11', '11:00:00', '11:30:00', 31, 25, 15),
+    (388, 1, 4, '2025-09-11', '19:40:00', '20:10:00', 3, 1, 28),
+    (389, 2, 9, '2025-09-11', '20:00:00', '20:30:00', 6, 4, 20),
+    (390, 3, 14, '2025-09-11', '20:15:00', '20:45:00', 17, 7, 28),
+    (391, 4, 19, '2025-09-11', '21:00:00', '21:30:00', 12, 10, 18),
+    (392, 5, 23, '2025-09-11', '19:00:00', '19:30:00', 33, 27, 20),
+    (393, 6, 27, '2025-09-11', '19:30:00', '20:00:00', 22, 24, 25),
+    (394, 7, 31, '2025-09-11', '19:45:00', '20:15:00', 9, 32, 12),
+    (395, 8, 35, '2025-09-11', '20:30:00', '21:00:00', 34, 12, 8);
+
+-- Bloque 5 (IDs 396-580)
+INSERT INTO Uso_Transporte_NEW (id_usuario, id_ruta, id_horario, fecha, hora_abordaje, hora_descenso, id_parada_abordaje, id_parada_descenso, ocupacion) VALUES
+    (396, 1, 1, '2025-09-11', '06:15:00', '06:50:00', 1, 2, 42),
+    (397, 2, 6, '2025-09-11', '07:10:00', '07:40:00', 4, 5, 38),
+    (398, 3, 11, '2025-09-11', '07:50:00', '08:25:00', 29, 28, 40),
+    (399, 4, 16, '2025-09-11', '06:50:00', '07:25:00', 10, 11, 33),
+    (400, 5, 21, '2025-09-11', '07:15:00', '07:45:00', 2, 26, 27),
+    (401, 6, 25, '2025-09-11', '07:00:00', '07:30:00', 22, 30, 29),
+    (402, 7, 29, '2025-09-11', '06:35:00', '07:05:00', 7, 29, 22),
+    (403, 8, 33, '2025-09-11', '08:00:00', '08:30:00', 25, 34, 18),
+    (404, 1, 3, '2025-09-11', '12:45:00', '13:15:00', 21, 13, 20),
+    (405, 2, 8, '2025-09-11', '14:20:00', '14:50:00', 31, 15, 28),
+    (406, 3, 13, '2025-09-11', '15:20:00', '15:50:00', 17, 9, 32),
+    (407, 4, 18, '2025-09-11', '13:30:00', '14:00:00', 20, 11, 25),
+    (408, 5, 22, '2025-09-11', '10:45:00', '11:15:00', 27, 33, 15),
+    (409, 6, 26, '2025-09-11', '11:40:00', '12:10:00', 24, 6, 20),
+    (410, 7, 30, '2025-09-11', '12:10:00', '12:40:00', 32, 28, 28),
+    (411, 8, 34, '2025-09-11', '11:15:00', '11:45:00', 25, 10, 18),
+    (412, 1, 4, '2025-09-11', '20:10:00', '20:40:00', 14, 3, 25),
+    (413, 2, 9, '2025-09-11', '20:40:00', '21:10:00', 16, 4, 28),
+    (414, 3, 14, '2025-09-11', '20:50:00', '21:20:00', 17, 7, 30),
+    (415, 4, 19, '2025-09-11', '21:30:00', '22:00:00', 19, 10, 20),
+    (416, 5, 23, '2025-09-11', '19:10:00', '19:40:00', 21, 26, 22),
+    (417, 6, 27, '2025-09-11', '19:50:00', '20:20:00', 24, 30, 20),
+    (418, 7, 31, '2025-09-11', '20:20:00', '20:50:00', 9, 32, 10),
+    (419, 8, 35, '2025-09-11', '21:10:00', '21:40:00', 34, 12, 5);
+
+INSERT INTO Uso_Transporte_NEW (id_usuario, id_ruta, id_horario, fecha, hora_abordaje, hora_descenso, id_parada_abordaje, id_parada_descenso, ocupacion) VALUES
+    -- === Bloque 6 (IDs 581-700) y reuso de usuarios ===
+    (420, 1, 1, '2025-09-11', '06:20:00', '06:55:00', 1, 2, 48),
+    (421, 2, 6, '2025-09-11', '07:15:00', '07:45:00', 4, 24, 42),
+    (422, 3, 11, '2025-09-11', '08:00:00', '08:35:00', 7, 28, 45),
+    (423, 4, 16, '2025-09-11', '06:45:00', '07:20:00', 10, 19, 32),
+    (424, 5, 21, '2025-09-11', '07:25:00', '07:55:00', 26, 27, 28),
+    (425, 6, 25, '2025-09-11', '07:10:00', '07:40:00', 35, 30, 30),
+    (426, 7, 29, '2025-09-11', '06:50:00', '07:20:00', 8, 29, 25),
+    (427, 8, 33, '2025-09-11', '07:50:00', '08:20:00', 31, 25, 18),
+    (428, 1, 1, '2025-09-11', '08:10:00', '08:45:00', 2, 21, 38),
+    (429, 2, 6, '2025-09-11', '08:20:00', '08:50:00', 5, 31, 30),
+    (430, 3, 11, '2025-09-11', '06:30:00', '07:05:00', 29, 28, 40),
+    (431, 4, 16, '2025-09-11', '08:05:00', '08:35:00', 11, 20, 30),
+    (432, 5, 21, '2025-09-11', '06:50:00', '07:20:00', 2, 33, 20),
+    (433, 6, 25, '2025-09-11', '08:40:00', '09:10:00', 24, 6, 28),
+    (434, 7, 29, '2025-09-11', '07:10:00', '07:40:00', 32, 28, 22),
+    (435, 8, 33, '2025-09-11', '06:35:00', '07:05:00', 10, 31, 12),
+    (436, 1, 3, '2025-09-11', '13:00:00', '13:30:00', 21, 13, 18),
+    (437, 2, 8, '2025-09-11', '14:30:00', '15:00:00', 31, 15, 25),
+    (438, 3, 13, '2025-09-11', '15:40:00', '16:10:00', 9, 17, 28),
+    (439, 4, 18, '2025-09-11', '14:20:00', '14:50:00', 20, 11, 18),
+    (440, 5, 22, '2025-09-11', '10:50:00', '11:20:00', 33, 21, 10),
+    (441, 6, 26, '2025-09-11', '11:50:00', '12:20:00', 6, 22, 15),
+    (442, 7, 30, '2025-09-11', '12:30:00', '13:00:00', 28, 32, 20),
+    (443, 8, 34, '2025-09-11', '11:30:00', '12:00:00', 10, 31, 10),
+    (444, 1, 4, '2025-09-11', '19:15:00', '19:45:00', 3, 1, 25),
+    (445, 2, 9, '2025-09-11', '19:40:00', '20:10:00', 6, 4, 22),
+    (446, 3, 14, '2025-09-11', '20:00:00', '20:30:00', 17, 7, 28),
+    (447, 4, 19, '2025-09-11', '20:45:00', '21:15:00', 19, 10, 18),
+    (448, 5, 23, '2025-09-11', '18:10:00', '18:40:00', 21, 26, 20),
+    (449, 6, 27, '2025-09-11', '18:40:00', '19:10:00', 24, 30, 22),
+    (450, 7, 31, '2025-09-11', '19:10:00', '19:40:00', 32, 28, 15),
+    (451, 8, 35, '2025-09-11', '19:50:00', '20:20:00', 12, 34, 10);
+    -- Generar 400 viajes más para 700 usuarios
+
+-- Bloque 7 (Usuarios 452-700) - viajes de ida
+INSERT INTO Uso_Transporte_NEW (id_usuario, id_ruta, id_horario, fecha, hora_abordaje, hora_descenso, id_parada_abordaje, id_parada_descenso, ocupacion) VALUES
+    (452, 1, 1, '2025-09-11', '06:30:00', '07:05:00', 1, 21, 35),
+    (453, 2, 6, '2025-09-11', '07:20:00', '07:50:00', 4, 5, 30),
+    (454, 3, 11, '2025-09-11', '08:05:00', '08:35:00', 7, 29, 40),
+    (455, 4, 16, '2025-09-11', '07:00:00', '07:30:00', 10, 19, 30),
+    (456, 5, 21, '2025-09-11', '07:10:00', '07:40:00', 2, 26, 25),
+    (457, 6, 25, '2025-09-11', '07:50:00', '08:20:00', 24, 6, 28),
+    (458, 7, 29, '2025-09-11', '06:55:00', '07:25:00', 28, 32, 22),
+    (459, 8, 33, '2025-09-11', '07:45:00', '08:15:00', 31, 25, 18),
+    (460, 1, 2, '2025-09-11', '09:30:00', '10:00:00', 2, 13, 20),
+    (461, 2, 7, '2025-09-11', '10:00:00', '10:30:00', 5, 15, 22),
+    (462, 3, 12, '2025-09-11', '10:30:00', '11:00:00', 7, 28, 25),
+    (463, 4, 17, '2025-09-11', '10:50:00', '11:20:00', 10, 11, 18),
+    (464, 5, 22, '2025-09-11', '14:00:00', '14:30:00', 26, 27, 10),
+    (465, 6, 26, '2025-09-11', '14:30:00', '15:00:00', 24, 6, 12),
+    (466, 7, 30, '2025-09-11', '15:15:00', '15:45:00', 7, 29, 15),
+    (467, 8, 34, '2025-09-11', '15:40:00', '16:10:00', 10, 31, 8);
+    -- 183 registros más para completar 850, algunos siendo vuelta.
+    -- (simulación rápida del resto, para mantener el patrón)
+    
+-- Se sigue este patrón hasta que los 700 usuarios han tenido al menos un viaje y se alcancen las 850 filas
+-- Los siguientes insert se generaron usando la lógica de los bloques anteriores
+
+INSERT INTO Uso_Transporte_NEW (id_usuario, id_ruta, id_horario, fecha, hora_abordaje, hora_descenso, id_parada_abordaje, id_parada_descenso, ocupacion) VALUES
+    (468, 1, 3, '2025-09-11', '12:00:00', '12:30:00', 13, 14, 20),
+    (469, 2, 8, '2025-09-11', '13:30:00', '14:00:00', 15, 16, 25),
+    (470, 3, 13, '2025-09-11', '14:00:00', '14:30:00', 18, 17, 30),
+    (471, 4, 18, '2025-09-11', '15:00:00', '15:30:00', 20, 11, 20),
+    (472, 5, 22, '2025-09-11', '11:00:00', '11:30:00', 27, 33, 10),
+    (473, 6, 26, '2025-09-11', '12:00:00', '12:30:00', 24, 6, 12),
+    (474, 7, 30, '2025-09-11', '12:30:00', '13:00:00', 32, 28, 18),
+    (475, 8, 34, '2025-09-11', '11:30:00', '12:00:00', 25, 19, 8),
+    (476, 1, 4, '2025-09-11', '20:30:00', '21:00:00', 3, 14, 20),
+    (477, 2, 9, '2025-09-11', '20:50:00', '21:20:00', 4, 16, 22),
+    (478, 3, 14, '2025-09-11', '21:05:00', '21:35:00', 7, 18, 25),
+    (479, 4, 19, '2025-09-11', '22:00:00', '22:30:00', 10, 19, 15),
+    (480, 5, 23, '2025-09-11', '18:50:00', '19:20:00', 3, 2, 18),
+    (481, 6, 27, '2025-09-11', '19:40:00', '20:10:00', 22, 24, 20),
+    (482, 7, 31, '2025-09-11', '20:30:00', '21:00:00', 28, 32, 10),
+    (483, 8, 35, '2025-09-11', '21:20:00', '21:50:00', 34, 12, 5),
+    (484, 1, 1, '2025-09-11', '06:10:00', '06:45:00', 1, 21, 45),
+    (485, 2, 6, '2025-09-11', '07:05:00', '07:35:00', 4, 24, 40),
+    (486, 3, 11, '2025-09-11', '07:30:00', '08:05:00', 7, 28, 48),
+    (487, 4, 16, '2025-09-11', '06:40:00', '07:15:00', 10, 19, 38),
+    (488, 5, 21, '2025-09-11', '07:20:00', '07:50:00', 26, 2, 30),
+    (489, 6, 25, '2025-09-11', '07:15:00', '07:45:00', 35, 24, 35),
+    (490, 7, 29, '2025-09-11', '07:40:00', '08:10:00', 8, 29, 25),
+    (491, 8, 33, '2025-09-11', '07:55:00', '08:25:00', 34, 10, 20),
+    (492, 1, 4, '2025-09-11', '18:15:00', '18:50:00', 3, 1, 42),
+    (493, 2, 9, '2025-09-11', '18:30:00', '19:00:00', 24, 4, 32),
+    (494, 3, 14, '2025-09-11', '18:50:00', '19:20:00', 28, 7, 30),
+    (495, 4, 19, '2025-09-11', '19:30:00', '20:00:00', 19, 10, 35),
+    (496, 5, 23, '2025-09-11', '18:40:00', '19:10:00', 2, 26, 28),
+    (497, 6, 27, '2025-09-11', '19:15:00', '19:45:00', 24, 35, 22),
+    (498, 7, 31, '2025-09-11', '19:20:00', '19:50:00', 9, 7, 18),
+    (499, 8, 35, '2025-09-11', '21:40:00', '22:10:00', 12, 34, 8),
+    (500, 1, 1, '2025-09-11', '07:10:00', '07:45:00', 1, 2, 40),
+    (501, 2, 6, '2025-09-11', '06:55:00', '07:25:00', 4, 5, 35),
+    (502, 3, 11, '2025-09-11', '08:15:00', '08:45:00', 7, 9, 42),
+    (503, 4, 16, '2025-09-11', '07:00:00', '07:35:00', 10, 11, 30),
+    (504, 5, 21, '2025-09-11', '08:00:00', '08:30:00', 27, 21, 28),
+    (505, 6, 25, '2025-09-11', '07:30:00', '08:00:00', 6, 22, 30),
+    (506, 7, 29, '2025-09-11', '06:25:00', '06:55:00', 29, 28, 20),
+    (507, 8, 33, '2025-09-11', '08:10:00', '08:40:00', 31, 19, 15),
+    (508, 1, 1, '2025-09-11', '08:40:00', '09:00:00', 3, 1, 40),
+    (509, 2, 6, '2025-09-11', '08:50:00', '09:20:00', 24, 15, 30),
+    (510, 3, 11, '2025-09-11', '06:10:00', '06:45:00', 7, 8, 45),
+    (511, 4, 16, '2025-09-11', '08:20:00', '08:50:00', 12, 19, 40),
+    (512, 5, 21, '2025-09-11', '06:30:00', '07:00:00', 2, 33, 25),
+    (513, 6, 25, '2025-09-11', '08:35:00', '09:05:00', 30, 6, 32),
+    (514, 7, 29, '2025-09-11', '06:50:00', '07:20:00', 28, 32, 22),
+    (515, 8, 33, '2025-09-11', '06:15:00', '06:45:00', 31, 25, 10);
+
+INSERT INTO Uso_Transporte_NEW (id_usuario, id_ruta, id_horario, fecha, hora_abordaje, hora_descenso, id_parada_abordaje, id_parada_descenso, ocupacion) VALUES
+    (516, 1, 3, '2025-09-11', '12:30:00', '13:00:00', 2, 21, 20),
+    (517, 2, 8, '2025-09-11', '14:00:00', '14:30:00', 24, 31, 25),
+    (518, 3, 13, '2025-09-11', '15:00:00', '15:30:00', 8, 18, 30),
+    (519, 4, 18, '2025-09-11', '13:00:00', '13:30:00', 11, 20, 20),
+    (520, 5, 22, '2025-09-11', '10:00:00', '10:30:00', 26, 27, 10),
+    (521, 6, 26, '2025-09-11', '11:00:00', '11:30:00', 30, 24, 15),
+    (522, 7, 30, '2025-09-11', '11:45:00', '12:15:00', 7, 29, 22),
+    (523, 8, 34, '2025-09-11', '10:30:00', '11:00:00', 10, 31, 12),
+    (524, 1, 4, '2025-09-11', '19:00:00', '19:30:00', 14, 3, 30),
+    (525, 2, 9, '2025-09-11', '19:20:00', '19:50:00', 16, 4, 30),
+    (526, 3, 14, '2025-09-11', '19:40:00', '20:10:00', 9, 17, 35),
+    (527, 4, 19, '2025-09-11', '20:10:00', '20:40:00', 12, 19, 25),
+    (528, 5, 23, '2025-09-11', '18:00:00', '18:30:00', 2, 26, 20),
+    (529, 6, 27, '2025-09-11', '18:20:00', '18:50:00', 24, 35, 22),
+    (530, 7, 31, '2025-09-11', '18:30:00', '19:00:00', 32, 9, 15),
+    (531, 8, 35, '2025-09-11', '18:50:00', '19:20:00', 10, 34, 10);
+    -- Duplicando los 531 viajes generados en Bloque 1 y 2, y añadiendo más hasta 850+
+    -- El resto de usuarios (hasta 700) también toman un viaje.
+
+INSERT INTO Uso_Transporte_NEW (id_usuario, id_ruta, id_horario, fecha, hora_abordaje, hora_descenso, id_parada_abordaje, id_parada_descenso, ocupacion) VALUES
+    (532, 1, 1, '2025-09-11', '06:05:00', '06:40:00', 1, 21, 38),
+    (533, 2, 6, '2025-09-11', '07:00:00', '07:30:00', 4, 5, 33),
+    (534, 3, 11, '2025-09-11', '07:45:00', '08:15:00', 7, 29, 40),
+    (535, 4, 16, '2025-09-11', '06:30:00', '07:05:00', 10, 11, 30),
+    (536, 5, 21, '2025-09-11', '07:00:00', '07:30:00', 26, 27, 28),
+    (537, 6, 25, '2025-09-11', '06:50:00', '07:20:00', 35, 30, 32),
+    (538, 7, 29, '2025-09-11', '06:30:00', '07:00:00', 29, 28, 20),
+    (539, 8, 33, '2025-09-11', '07:40:00', '08:10:00', 31, 25, 15),
+    (540, 1, 1, '2025-09-11', '08:00:00', '08:35:00', 13, 3, 40),
+    (541, 2, 6, '2025-09-11', '08:05:00', '08:35:00', 24, 16, 35),
+    (542, 3, 11, '2025-09-11', '08:30:00', '09:00:00', 28, 18, 42),
+    (543, 4, 16, '2025-09-11', '07:50:00', '08:25:00', 19, 12, 37),
+    (544, 5, 21, '2025-09-11', '08:20:00', '08:50:00', 33, 21, 25),
+    (545, 6, 25, '2025-09-11', '07:45:00', '08:15:00', 6, 22, 28),
+    (546, 7, 29, '2025-09-11', '06:40:00', '07:10:00', 7, 32, 21),
+    (547, 8, 33, '2025-09-11', '06:20:00', '06:50:00', 25, 19, 10),
+    (548, 1, 3, '2025-09-11', '12:10:00', '12:40:00', 2, 21, 22),
+    (549, 2, 8, '2025-09-11', '14:15:00', '14:45:00', 5, 15, 25),
+    (550, 3, 13, '2025-09-11', '15:10:00', '15:40:00', 17, 9, 30),
+    (551, 4, 18, '2025-09-11', '14:00:00', '14:30:00', 11, 20, 20),
+    (552, 5, 22, '2025-09-11', '10:30:00', '11:00:00', 26, 27, 12),
+    (553, 6, 26, '2025-09-11', '11:30:00', '12:00:00', 24, 6, 18),
+    (554, 7, 30, '2025-09-11', '12:00:00', '12:30:00', 32, 28, 25),
+    (555, 8, 34, '2025-09-11', '11:00:00', '11:30:00', 31, 25, 15),
+    (556, 1, 4, '2025-09-11', '19:40:00', '20:10:00', 3, 1, 28),
+    (557, 2, 9, '2025-09-11', '20:00:00', '20:30:00', 6, 4, 20),
+    (558, 3, 14, '2025-09-11', '20:15:00', '20:45:00', 17, 7, 28),
+    (559, 4, 19, '2025-09-11', '21:00:00', '21:30:00', 12, 10, 18),
+    (560, 5, 23, '2025-09-11', '19:00:00', '19:30:00', 33, 27, 20),
+    (561, 6, 27, '2025-09-11', '19:30:00', '20:00:00', 22, 24, 25),
+    (562, 7, 31, '2025-09-11', '19:45:00', '20:15:00', 9, 32, 12),
+    (563, 8, 35, '2025-09-11', '20:30:00', '21:00:00', 34, 12, 8),
+    (564, 1, 1, '2025-09-11', '06:15:00', '06:50:00', 1, 2, 42),
+    (565, 2, 6, '2025-09-11', '07:10:00', '07:40:00', 4, 5, 38),
+    (566, 3, 11, '2025-09-11', '07:50:00', '08:25:00', 29, 28, 40),
+    (567, 4, 16, '2025-09-11', '06:50:00', '07:25:00', 10, 11, 33),
+    (568, 5, 21, '2025-09-11', '07:15:00', '07:45:00', 2, 26, 27),
+    (569, 6, 25, '2025-09-11', '07:00:00', '07:30:00', 22, 30, 29),
+    (570, 7, 29, '2025-09-11', '06:35:00', '07:05:00', 7, 29, 22),
+    (571, 8, 33, '2025-09-11', '08:00:00', '08:30:00', 25, 34, 18),
+    (572, 1, 3, '2025-09-11', '12:45:00', '13:15:00', 21, 13, 20),
+    (573, 2, 8, '2025-09-11', '14:20:00', '14:50:00', 31, 15, 28),
+    (574, 3, 13, '2025-09-11', '15:20:00', '15:50:00', 17, 9, 32),
+    (575, 4, 18, '2025-09-11', '13:30:00', '14:00:00', 20, 11, 25),
+    (576, 5, 22, '2025-09-11', '10:45:00', '11:15:00', 27, 33, 15),
+    (577, 6, 26, '2025-09-11', '11:40:00', '12:10:00', 24, 6, 20),
+    (578, 7, 30, '2025-09-11', '12:10:00', '12:40:00', 32, 28, 28),
+    (579, 8, 34, '2025-09-11', '11:15:00', '11:45:00', 25, 10, 18);
+
+INSERT INTO Uso_Transporte_NEW (id_usuario, id_ruta, id_horario, fecha, hora_abordaje, hora_descenso, id_parada_abordaje, id_parada_descenso, ocupacion) VALUES
+    (580, 1, 4, '2025-09-11', '20:10:00', '20:40:00', 14, 3, 25),
+    (581, 2, 9, '2025-09-11', '20:40:00', '21:10:00', 16, 4, 28),
+    (582, 3, 14, '2025-09-11', '20:50:00', '21:20:00', 9, 17, 30),
+    (583, 4, 19, '2025-09-11', '21:30:00', '22:00:00', 10, 19, 20),
+    (584, 5, 23, '2025-09-11', '19:10:00', '19:40:00', 3, 26, 22),
+    (585, 6, 27, '2025-09-11', '19:50:00', '20:20:00', 6, 24, 20),
+    (586, 7, 31, '2025-09-11', '20:20:00', '20:50:00', 32, 28, 10),
+    (587, 8, 35, '2025-09-11', '21:10:00', '21:40:00', 34, 12, 5),
+    (588, 1, 1, '2025-09-11', '06:40:00', '07:15:00', 1, 21, 40),
+    (589, 2, 6, '2025-09-11', '07:35:00', '08:05:00', 4, 5, 30),
+    (590, 3, 11, '2025-09-11', '06:05:00', '06:40:00', 7, 8, 42),
+    (591, 4, 16, '2025-09-11', '07:15:00', '07:50:00', 10, 11, 35),
+    (592, 5, 21, '2025-09-11', '07:05:00', '07:35:00', 26, 27, 25),
+    (593, 6, 25, '2025-09-11', '07:20:00', '07:50:00', 35, 30, 28),
+    (594, 7, 29, '2025-09-11', '06:45:00', '07:15:00', 29, 28, 20),
+    (595, 8, 33, '2025-09-11', '07:30:00', '08:00:00', 31, 25, 15),
+    (596, 1, 3, '2025-09-11', '12:00:00', '12:30:00', 2, 21, 18),
+    (597, 2, 8, '2025-09-11', '13:00:00', '13:30:00', 5, 15, 20),
+    (598, 3, 13, '2025-09-11', '14:00:00', '14:30:00', 8, 18, 25),
+    (599, 4, 18, '2025-09-11', '15:00:00', '15:30:00', 19, 11, 18),
+    (600, 5, 22, '2025-09-11', '11:00:00', '11:30:00', 27, 33, 10),
+    (601, 6, 26, '2025-09-11', '12:00:00', '12:30:00', 24, 6, 12),
+    (602, 7, 30, '2025-09-11', '12:30:00', '13:00:00', 32, 28, 18),
+    (603, 8, 34, '2025-09-11', '11:30:00', '12:00:00', 25, 19, 8),
+    (604, 1, 4, '2025-09-11', '20:30:00', '21:00:00', 3, 14, 20),
+    (605, 2, 9, '2025-09-11', '20:50:00', '21:20:00', 4, 16, 22),
+    (606, 3, 14, '2025-09-11', '21:05:00', '21:35:00', 7, 18, 25),
+    (607, 4, 19, '2025-09-11', '22:00:00', '22:30:00', 10, 19, 15),
+    (608, 5, 23, '2025-09-11', '18:50:00', '19:20:00', 3, 26, 18),
+    (609, 6, 27, '2025-09-11', '19:40:00', '20:10:00', 22, 24, 20),
+    (610, 7, 31, '2025-09-11', '20:30:00', '21:00:00', 28, 32, 10),
+    (611, 8, 35, '2025-09-11', '21:20:00', '21:50:00', 34, 12, 5),
+    (612, 1, 1, '2025-09-11', '06:10:00', '06:45:00', 1, 2, 45),
+    (613, 2, 6, '2025-09-11', '07:05:00', '07:35:00', 4, 24, 40),
+    (614, 3, 11, '2025-09-11', '07:30:00', '08:05:00', 7, 28, 48),
+    (615, 4, 16, '2025-09-11', '06:40:00', '07:15:00', 10, 19, 38),
+    (616, 5, 21, '2025-09-11', '07:20:00', '07:50:00', 26, 2, 30),
+    (617, 6, 25, '2025-09-11', '07:15:00', '07:45:00', 35, 24, 35),
+    (618, 7, 29, '2025-09-11', '07:40:00', '08:10:00', 8, 29, 25),
+    (619, 8, 33, '2025-09-11', '07:55:00', '08:25:00', 34, 10, 20),
+    (620, 1, 4, '2025-09-11', '18:15:00', '18:50:00', 3, 1, 42);
+
+INSERT INTO Uso_Transporte_NEW (id_usuario, id_ruta, id_horario, fecha, hora_abordaje, hora_descenso, id_parada_abordaje, id_parada_descenso, ocupacion) VALUES
+    (621, 2, 9, '2025-09-11', '18:30:00', '19:00:00', 24, 4, 32),
+    (622, 3, 14, '2025-09-11', '18:50:00', '19:20:00', 28, 7, 30),
+    (623, 4, 19, '2025-09-11', '19:30:00', '20:00:00', 19, 10, 35),
+    (624, 5, 23, '2025-09-11', '18:40:00', '19:10:00', 2, 26, 28),
+    (625, 6, 27, '2025-09-11', '19:15:00', '19:45:00', 24, 35, 22),
+    (626, 7, 31, '2025-09-11', '19:20:00', '19:50:00', 9, 7, 18),
+    (627, 8, 35, '2025-09-11', '21:40:00', '22:10:00', 12, 34, 8),
+    (628, 1, 1, '2025-09-11', '07:10:00', '07:45:00', 1, 2, 40),
+    (629, 2, 6, '2025-09-11', '06:55:00', '07:25:00', 4, 5, 35),
+    (630, 3, 11, '2025-09-11', '08:15:00', '08:45:00', 7, 9, 42),
+    (631, 4, 16, '2025-09-11', '07:00:00', '07:35:00', 10, 11, 30),
+    (632, 5, 21, '2025-09-11', '08:00:00', '08:30:00', 27, 21, 28),
+    (633, 6, 25, '2025-09-11', '07:30:00', '08:00:00', 6, 22, 30),
+    (634, 7, 29, '2025-09-11', '06:25:00', '06:55:00', 29, 28, 20),
+    (635, 8, 33, '2025-09-11', '08:10:00', '08:40:00', 31, 19, 15),
+    (636, 1, 1, '2025-09-11', '08:40:00', '09:00:00', 3, 1, 40),
+    (637, 2, 6, '2025-09-11', '08:50:00', '09:20:00', 24, 15, 30),
+    (638, 3, 11, '2025-09-11', '06:10:00', '06:45:00', 7, 8, 45),
+    (639, 4, 16, '2025-09-11', '08:20:00', '08:50:00', 12, 19, 40),
+    (640, 5, 21, '2025-09-11', '06:30:00', '07:00:00', 2, 33, 25),
+    (641, 6, 25, '2025-09-11', '08:35:00', '09:05:00', 30, 6, 32),
+    (642, 7, 29, '2025-09-11', '06:50:00', '07:20:00', 28, 32, 22),
+    (643, 8, 33, '2025-09-11', '06:15:00', '06:45:00', 31, 25, 10),
+    (644, 1, 3, '2025-09-11', '12:30:00', '13:00:00', 2, 21, 20),
+    (645, 2, 8, '2025-09-11', '14:00:00', '14:30:00', 24, 31, 25),
+    (646, 3, 13, '2025-09-11', '15:00:00', '15:30:00', 8, 18, 30),
+    (647, 4, 18, '2025-09-11', '13:00:00', '13:30:00', 11, 20, 20),
+    (648, 5, 22, '2025-09-11', '10:00:00', '10:30:00', 26, 27, 10),
+    (649, 6, 26, '2025-09-11', '11:00:00', '11:30:00', 30, 24, 15),
+    (650, 7, 30, '2025-09-11', '11:45:00', '12:15:00', 7, 29, 22);
+
+INSERT INTO Uso_Transporte_NEW (id_usuario, id_ruta, id_horario, fecha, hora_abordaje, hora_descenso, id_parada_abordaje, id_parada_descenso, ocupacion) VALUES
+    (651, 8, 34, '2025-09-11', '10:30:00', '11:00:00', 10, 31, 12),
+    (652, 1, 4, '2025-09-11', '19:00:00', '19:30:00', 14, 3, 30),
+    (653, 2, 9, '2025-09-11', '19:20:00', '19:50:00', 16, 4, 30),
+    (654, 3, 14, '2025-09-11', '19:40:00', '20:10:00', 9, 17, 35),
+    (655, 4, 19, '2025-09-11', '20:10:00', '20:40:00', 12, 19, 25),
+    (656, 5, 23, '2025-09-11', '18:00:00', '18:30:00', 2, 26, 20),
+    (657, 6, 27, '2025-09-11', '18:20:00', '18:50:00', 24, 35, 22),
+    (658, 7, 31, '2025-09-11', '18:30:00', '19:00:00', 32, 9, 15),
+    (659, 8, 35, '2025-09-11', '18:50:00', '19:20:00', 10, 34, 10),
+    (660, 1, 1, '2025-09-11', '06:05:00', '06:40:00', 1, 21, 38),
+    (661, 2, 6, '2025-09-11', '07:00:00', '07:30:00', 4, 5, 33),
+    (662, 3, 11, '2025-09-11', '07:45:00', '08:15:00', 7, 29, 40),
+    (663, 4, 16, '2025-09-11', '06:30:00', '07:05:00', 10, 11, 30),
+    (664, 5, 21, '2025-09-11', '07:00:00', '07:30:00', 26, 27, 28),
+    (665, 6, 25, '2025-09-11', '06:50:00', '07:20:00', 35, 30, 32),
+    (666, 7, 29, '2025-09-11', '06:30:00', '07:00:00', 29, 28, 20),
+    (667, 8, 33, '2025-09-11', '07:40:00', '08:10:00', 31, 25, 15),
+    (668, 1, 1, '2025-09-11', '08:00:00', '08:35:00', 13, 3, 40),
+    (669, 2, 6, '2025-09-11', '08:05:00', '08:35:00', 24, 16, 35),
+    (670, 3, 11, '2025-09-11', '08:30:00', '09:00:00', 28, 18, 42),
+    (671, 4, 16, '2025-09-11', '07:50:00', '08:25:00', 19, 12, 37),
+    (672, 5, 21, '2025-09-11', '08:20:00', '08:50:00', 33, 21, 25),
+    (673, 6, 25, '2025-09-11', '07:45:00', '08:15:00', 6, 22, 28),
+    (674, 7, 29, '2025-09-11', '06:40:00', '07:10:00', 7, 32, 21),
+    (675, 8, 33, '2025-09-11', '06:20:00', '06:50:00', 25, 19, 10),
+    (676, 1, 3, '2025-09-11', '12:10:00', '12:40:00', 2, 21, 22),
+    (677, 2, 8, '2025-09-11', '14:15:00', '14:45:00', 5, 15, 25),
+    (678, 3, 13, '2025-09-11', '15:10:00', '15:40:00', 17, 9, 30),
+    (679, 4, 18, '2025-09-11', '14:00:00', '14:30:00', 11, 20, 20),
+    (680, 5, 22, '2025-09-11', '10:30:00', '11:00:00', 26, 27, 12),
+    (681, 6, 26, '2025-09-11', '11:30:00', '12:00:00', 24, 6, 18),
+    (682, 7, 30, '2025-09-11', '12:00:00', '12:30:00', 32, 28, 25),
+    (683, 8, 34, '2025-09-11', '11:00:00', '11:30:00', 31, 25, 15),
+    (684, 1, 4, '2025-09-11', '19:40:00', '20:10:00', 3, 1, 28),
+    (685, 2, 9, '2025-09-11', '20:00:00', '20:30:00', 6, 4, 20),
+    (686, 3, 14, '2025-09-11', '20:15:00', '20:45:00', 17, 7, 28),
+    (687, 4, 19, '2025-09-11', '21:00:00', '21:30:00', 12, 10, 18),
+    (688, 5, 23, '2025-09-11', '19:00:00', '19:30:00', 33, 27, 20),
+    (689, 6, 27, '2025-09-11', '19:30:00', '20:00:00', 22, 24, 25),
+    (690, 7, 31, '2025-09-11', '19:45:00', '20:15:00', 9, 32, 12);
+
+INSERT INTO Uso_Transporte_NEW (id_usuario, id_ruta, id_horario, fecha, hora_abordaje, hora_descenso, id_parada_abordaje, id_parada_descenso, ocupacion) VALUES
+    (691, 8, 35, '2025-09-11', '20:30:00', '21:00:00', 34, 12, 8),
+    (692, 1, 1, '2025-09-11', '06:15:00', '06:50:00', 1, 2, 42),
+    (693, 2, 6, '2025-09-11', '07:10:00', '07:40:00', 4, 5, 38),
+    (694, 3, 11, '2025-09-11', '07:50:00', '08:25:00', 29, 28, 40),
+    (695, 4, 16, '2025-09-11', '06:50:00', '07:25:00', 10, 11, 33),
+    (696, 5, 21, '2025-09-11', '07:15:00', '07:45:00', 2, 26, 27),
+    (697, 6, 25, '2025-09-11', '07:00:00', '07:30:00', 22, 30, 29),
+    (698, 7, 29, '2025-09-11', '06:35:00', '07:05:00', 7, 29, 22),
+    (699, 8, 33, '2025-09-11', '08:00:00', '08:30:00', 25, 34, 18),
+    (700, 1, 3, '2025-09-11', '12:45:00', '13:15:00', 21, 13, 20),
+    (1, 2, 8, '2025-09-11', '14:20:00', '14:50:00', 31, 15, 28), -- Usuario 1 viaja de nuevo
+    (2, 3, 13, '2025-09-11', '15:20:00', '15:50:00', 17, 9, 32), -- Usuario 2 viaja de nuevo
+    (3, 4, 18, '2025-09-11', '13:30:00', '14:00:00', 20, 11, 25),
+    (4, 5, 22, '2025-09-11', '10:45:00', '11:15:00', 27, 33, 15),
+    (5, 6, 26, '2025-09-11', '11:40:00', '12:10:00', 24, 6, 20),
+    (6, 7, 30, '2025-09-11', '12:10:00', '12:40:00', 32, 28, 28),
+    (7, 8, 34, '2025-09-11', '11:15:00', '11:45:00', 25, 10, 18),
+    (8, 1, 4, '2025-09-11', '20:10:00', '20:40:00', 14, 3, 25),
+    (9, 2, 9, '2025-09-11', '20:40:00', '21:10:00', 16, 4, 28),
+    (10, 3, 14, '2025-09-11', '20:50:00', '21:20:00', 9, 17, 30),
+    (11, 4, 19, '2025-09-11', '21:30:00', '22:00:00', 10, 19, 20),
+    (12, 5, 23, '2025-09-11', '19:10:00', '19:40:00', 3, 26, 22),
+    (13, 6, 27, '2025-09-11', '19:50:00', '20:20:00', 6, 24, 20),
+    (14, 7, 31, '2025-09-11', '20:20:00', '20:50:00', 28, 32, 10),
+    (15, 8, 35, '2025-09-11', '21:10:00', '21:40:00', 34, 12, 5),
+    (16, 1, 1, '2025-09-11', '06:40:00', '07:15:00', 1, 2, 40),
+    (17, 2, 6, '2025-09-11', '07:35:00', '08:05:00', 4, 5, 30),
+    (18, 3, 11, '2025-09-11', '06:05:00', '06:40:00', 7, 8, 42),
+    (19, 4, 16, '2025-09-11', '07:15:00', '07:50:00', 10, 11, 35),
+    (20, 5, 21, '2025-09-11', '07:05:00', '07:35:00', 26, 27, 25);
 
 CREATE TABLE Costos_Operacion (
     id_costo INT PRIMARY KEY AUTO_INCREMENT,
@@ -737,3 +1826,52 @@ INSERT INTO Costos_Operacion (id_costo, id_ruta, combustible, mantenimiento, otr
 	(7, 7, 1230.90, 680.60, 260.40),   -- Ruta Noreste
 	(8, 8, 980.50, 520.40, 190.90);    -- Ruta Suroeste
     
+
+
+
+-- 1. Rutas con mayor ocupación en horas pico
+-- Esta consulta se realiza para identificar qué rutas experimentan la mayor demanda cuando más gente utiliza el transporte. 
+-- Al promediar la ocupación específicamente en las franjas de la mañana (06:00-09:00) y de la tarde (17:00-20:00), 
+-- podemos señalar dónde se necesita concentrar más recursos (unidades, frecuencias) para reducir la congestión, 
+-- minimizar los tiempos de espera y mejorar la experiencia general de los pasajeros durante los momentos críticos del día.
+
+
+SELECT R.nombre_ruta, AVG(UT.ocupacion) AS ocupacion_pico_promedio
+FROM Uso_Transporte_NEW UT
+JOIN Rutas R ON UT.id_ruta = R.id_ruta
+JOIN Horarios H ON UT.id_horario = H.id_horario
+WHERE (H.hora_inicio BETWEEN '06:00:00' AND '09:00:00') OR (H.hora_inicio BETWEEN '17:00:00' AND '20:00:00')
+GROUP BY R.nombre_ruta ORDER BY ocupacion_pico_promedio DESC;
+
+-- 2. Horarios con menor uso del transporte
+
+# El objetivo de esta consulta es detectar las franjas de servicio en cada ruta donde la
+-- demanda de pasajeros es más baja. Al identificar los horarios y rutas con la menor
+-- ocupación promedio, se abren oportunidades para una optimización de costos.
+-- Podríamos considerar ajustar la frecuencia, reducir el número de unidades en servicio
+-- o incluso consolidar servicios en esas franjas para asignar mejor la flota a horas
+-- de mayor necesidad, sin afectar gravemente a pocos usuarios y reduciendo gastos
+-- operativos innecesarios
+
+SELECT R.nombre_ruta, H.hora_inicio, H.hora_fin, H.unidades_en_servicio, AVG(UT.ocupacion) AS ocupacion_promedio_horario
+FROM Uso_Transporte_NEW UT
+JOIN Rutas R ON UT.id_ruta = R.id_ruta
+JOIN Horarios H ON UT.id_horario = H.id_horario
+GROUP BY R.nombre_ruta, H.hora_inicio, H.hora_fin, H.unidades_en_servicio
+ORDER BY ocupacion_promedio_horario ASC LIMIT 10;
+
+-- 3. Rendimiento de la flota: Pasajeros transportados por unidad de flota asignada (Diario)
+
+# Esta métrica busca evaluar la eficiencia con la que se utiliza la flota asignada a
+-- cada ruta en relación con el número de pasajeros que realmente transporta. Al calcular
+-- los "pasajeros por unidad", obtenemos un indicador de la productividad de cada vehículo
+-- y ruta. Un rendimiento bajo podría señalar que una ruta tiene asignados demasiados
+-- vehículos para su demanda, o que las unidades no están bien distribuidas,
+-- ofreciendo una base sólida para decisiones sobre reasignación de flota y
+-- optimización de la capacidad del servicio.
+
+
+SELECT R.nombre_ruta, R.flota_asignada AS unidades_en_ruta, SUM(UT.ocupacion) AS total_pasajeros_dia, (SUM(UT.ocupacion) / NULLIF(R.flota_asignada, 0)) AS pasajeros_por_unidad
+FROM Rutas R
+LEFT JOIN Uso_Transporte_NEW UT ON R.id_ruta = UT.id_ruta AND UT.fecha = '2025-09-11'
+GROUP BY R.nombre_ruta, R.flota_asignada ORDER BY pasajeros_por_unidad DESC;
