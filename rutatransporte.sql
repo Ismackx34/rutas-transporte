@@ -4,11 +4,11 @@
 -- ==================================================
 -- ==============================================
 -- CREACIÓN DE TABLAS E INGRESO DE DATOS 
--- 
+-- ==============================================
 create database transporte_urbano_new;
 use transporte_urbano_new;
 
-CREATE TABLE Rutas (	
+CREATE TABLE Rutas (
     id_ruta INT PRIMARY KEY AUTO_INCREMENT,
     nombre_ruta VARCHAR(100) NOT NULL,
     origen VARCHAR(50),
@@ -83,7 +83,7 @@ CREATE TABLE Horarios (
     CONSTRAINT chk_hora_fin_mayor_inicio CHECK (hora_fin > hora_inicio)
 );
 
-
+select * from horarios;
 INSERT INTO Horarios (id_ruta, hora_inicio, hora_fin, unidades_en_servicio, tiempo_espera_promedio_min) VALUES
     -- ==============================================
     -- Rutas Cardinales (IDs 1-4): Generalmente más unidades y menor tiempo de espera
@@ -144,6 +144,8 @@ INSERT INTO Horarios (id_ruta, hora_inicio, hora_fin, unidades_en_servicio, tiem
     (8, '09:00:00', '17:00:00', 2, 40.00), -- Valle Largo
     (8, '17:00:00', '20:00:00', 3, 20.00), -- Pico Tarde
     (8, '20:00:00', '23:00:00', 2, 60.00); -- Noche Valle
+    
+    
     
 CREATE TABLE Ruta_Parada (
     id_ruta INT,
@@ -1806,6 +1808,12 @@ INSERT INTO Uso_Transporte_NEW (id_usuario, id_ruta, id_horario, fecha, hora_abo
     (19, 4, 16, '2025-09-11', '07:15:00', '07:50:00', 10, 11, 35),
     (20, 5, 21, '2025-09-11', '07:05:00', '07:35:00', 26, 27, 25);
 
+ALTER TABLE Uso_Transporte_NEW
+DROP COLUMN ocupacion;
+
+select * from Uso_Transporte_NEW;
+
+
 CREATE TABLE Costos_Operacion (
     id_costo INT PRIMARY KEY AUTO_INCREMENT,
     id_ruta INT NOT NULL UNIQUE, -- id_ruta ahora es NOT NULL y UNIQUE
@@ -1826,52 +1834,3 @@ INSERT INTO Costos_Operacion (id_costo, id_ruta, combustible, mantenimiento, otr
 	(7, 7, 1230.90, 680.60, 260.40),   -- Ruta Noreste
 	(8, 8, 980.50, 520.40, 190.90);    -- Ruta Suroeste
     
-
-
-
--- 1. Rutas con mayor ocupación en horas pico
--- Esta consulta se realiza para identificar qué rutas experimentan la mayor demanda cuando más gente utiliza el transporte. 
--- Al promediar la ocupación específicamente en las franjas de la mañana (06:00-09:00) y de la tarde (17:00-20:00), 
--- podemos señalar dónde se necesita concentrar más recursos (unidades, frecuencias) para reducir la congestión, 
--- minimizar los tiempos de espera y mejorar la experiencia general de los pasajeros durante los momentos críticos del día.
-
-
-SELECT R.nombre_ruta, AVG(UT.ocupacion) AS ocupacion_pico_promedio
-FROM Uso_Transporte_NEW UT
-JOIN Rutas R ON UT.id_ruta = R.id_ruta
-JOIN Horarios H ON UT.id_horario = H.id_horario
-WHERE (H.hora_inicio BETWEEN '06:00:00' AND '09:00:00') OR (H.hora_inicio BETWEEN '17:00:00' AND '20:00:00')
-GROUP BY R.nombre_ruta ORDER BY ocupacion_pico_promedio DESC;
-
--- 2. Horarios con menor uso del transporte
-
-# El objetivo de esta consulta es detectar las franjas de servicio en cada ruta donde la
--- demanda de pasajeros es más baja. Al identificar los horarios y rutas con la menor
--- ocupación promedio, se abren oportunidades para una optimización de costos.
--- Podríamos considerar ajustar la frecuencia, reducir el número de unidades en servicio
--- o incluso consolidar servicios en esas franjas para asignar mejor la flota a horas
--- de mayor necesidad, sin afectar gravemente a pocos usuarios y reduciendo gastos
--- operativos innecesarios
-
-SELECT R.nombre_ruta, H.hora_inicio, H.hora_fin, H.unidades_en_servicio, AVG(UT.ocupacion) AS ocupacion_promedio_horario
-FROM Uso_Transporte_NEW UT
-JOIN Rutas R ON UT.id_ruta = R.id_ruta
-JOIN Horarios H ON UT.id_horario = H.id_horario
-GROUP BY R.nombre_ruta, H.hora_inicio, H.hora_fin, H.unidades_en_servicio
-ORDER BY ocupacion_promedio_horario ASC LIMIT 10;
-
--- 3. Rendimiento de la flota: Pasajeros transportados por unidad de flota asignada (Diario)
-
-# Esta métrica busca evaluar la eficiencia con la que se utiliza la flota asignada a
--- cada ruta en relación con el número de pasajeros que realmente transporta. Al calcular
--- los "pasajeros por unidad", obtenemos un indicador de la productividad de cada vehículo
--- y ruta. Un rendimiento bajo podría señalar que una ruta tiene asignados demasiados
--- vehículos para su demanda, o que las unidades no están bien distribuidas,
--- ofreciendo una base sólida para decisiones sobre reasignación de flota y
--- optimización de la capacidad del servicio.
-
-
-SELECT R.nombre_ruta, R.flota_asignada AS unidades_en_ruta, SUM(UT.ocupacion) AS total_pasajeros_dia, (SUM(UT.ocupacion) / NULLIF(R.flota_asignada, 0)) AS pasajeros_por_unidad
-FROM Rutas R
-LEFT JOIN Uso_Transporte_NEW UT ON R.id_ruta = UT.id_ruta AND UT.fecha = '2025-09-11'
-GROUP BY R.nombre_ruta, R.flota_asignada ORDER BY pasajeros_por_unidad DESC;
