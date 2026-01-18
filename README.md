@@ -1,6 +1,4 @@
 # Proyecto-1 SQL Análisis de Trasporte 
-
-# Proyecto-SQL
 # 🚌 Optimización de Redes de Transporte Urbano (SQL Project)
  
 Este proyecto es parte del **Data Foundations Program**, específicamente del módulo de *Database SQL and Query Optimization*. El objetivo principal fue diseñar, normalizar y optimizar una base de datos relacional para gestionar y analizar la eficiencia de una red de transporte urbano.
