@@ -1,2 +1,1 @@
-# rutas-transporte
-repositorio del grupo 1 
+# Proyecto-1 SQL Análisis de Trasporte 
